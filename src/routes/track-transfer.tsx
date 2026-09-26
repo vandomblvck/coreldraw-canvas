@@ -85,6 +85,7 @@ function TrackTransfer() {
           <Button variant="ghost" role="tab" aria-selected={role === "sender"} className={role === "sender" ? "track-tab active" : "track-tab"} onClick={() => {setRole("sender");setSubmitted(false)}}><ArrowUpFromLine aria-hidden="true"/>I'm the sender</Button>
           <Button variant="ghost" role="tab" aria-selected={role === "receiver"} className={role === "receiver" ? "track-tab active" : "track-tab"} onClick={() => {setRole("receiver");setSubmitted(false)}}><ArrowDownToLine aria-hidden="true"/>I'm the receiver</Button>
         </div>
+        {mode === "mtcn" ? (
         <form className="track-form" onSubmit={event => {event.preventDefault(); if(valid) setSubmitted(true)}}>
           <label htmlFor="track-mtcn" className="track-instruction">Please enter your 10-digit tracking number (MTCN).</label>
           <div className="track-number" onClick={() => inputRef.current?.focus()}>
@@ -94,8 +95,45 @@ function TrackTransfer() {
           <label className="track-name"><input aria-label="Sender's First Name" placeholder="Sender's First Name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false)}}/></label>
           <Button type="submit" className="track-continue" disabled={!valid}>Continue</Button>
           {submitted && <p className="track-status" role="status">For your security, check your transfer status directly on <a href={`${official}/web/global-service/track-transfer`}>Western Union's official tracking page</a>.</p>}
-          <a className="track-help-link" href={hrefs["How to find your WU tracking number"]}>Don't know the MTCN?</a>
+          <button type="button" className="track-help-link" onClick={() => {setMode("details");setSubmitted(false)}}>Don't know the MTCN?</button>
         </form>
+        ) : (
+        <form className="track-form track-alt-form" onSubmit={event => {event.preventDefault(); if(detailsValid) setSubmitted(true)}}>
+          <div className="track-radio-row" role="radiogroup" aria-label="Lookup method">
+            <label className="track-radio"><input type="radio" name="lookup-by" checked={lookupBy === "phone"} onChange={() => {setLookupBy("phone");setSubmitted(false)}}/>Sender's phone number</label>
+            <label className="track-radio"><input type="radio" name="lookup-by" checked={lookupBy === "names"} onChange={() => {setLookupBy("names");setSubmitted(false)}}/>Sender and receiver names</label>
+          </div>
+          {lookupBy === "phone" ? (
+            <div className="track-field-row">
+              <label className="track-select-wrap track-country-code"><span className="track-select-label">Sender's Country</span>
+                <select aria-label="Sender's country code" defaultValue="1"><option value="1">1 (US)</option><option value="52">52 (MX)</option><option value="63">63 (PH)</option><option value="91">91 (IN)</option><option value="502">502 (GT)</option></select>
+              </label>
+              <label className="track-input-wrap grow"><input aria-label="Sender's phone number" placeholder="Sender's phone number" inputMode="tel" autoComplete="tel" value={phone} onChange={event => {setPhone(event.target.value.replace(/[^\d\s()-]/g, ""));setSubmitted(false)}}/></label>
+            </div>
+          ) : (
+            <div className="track-field-row">
+              <label className="track-input-wrap grow"><input aria-label="Sender's first name" placeholder="Sender's first name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false)}}/></label>
+              <label className="track-input-wrap grow"><input aria-label="Receiver's first name" placeholder="Receiver's first name"/></label>
+            </div>
+          )}
+          <label className="track-select-wrap track-receiver-country"><span className="track-select-label">Receiver's country</span>
+            <span className="track-country-value"><img src="https://flagcdn.com/w80/us.png" alt="" width="34" height="24"/>United States</span>
+          </label>
+          <div className="track-field-row">
+            <label className="track-select-wrap grow"><select aria-label="Amount type" value={amountKind} onChange={event => setAmountKind(event.target.value as "send" | "receive")}><option value="send">Select send amount</option><option value="receive">Select receive amount</option></select></label>
+            <label className="track-input-wrap grow track-amount"><input aria-label={amountKind === "send" ? "Enter send amount" : "Enter receive amount"} placeholder={amountKind === "send" ? "Enter send amount" : "Enter receive amount"} inputMode="decimal" value={amount} onChange={event => setAmount(event.target.value.replace(/[^\d.]/g, ""))}/><span className="track-amount-currency">USD</span></label>
+          </div>
+          <p className="track-date-hint"><span className="track-date-icon" aria-hidden="true">+</span>For better results, add transfer date (optional)</p>
+          <fieldset className="track-date-fields"><legend>Date of transfer</legend>
+            <label className="track-select-wrap"><select aria-label="Month" value={month} onChange={event => setMonth(event.target.value)}><option value="">Month</option>{months.map(name => <option key={name} value={name}>{name}</option>)}</select></label>
+            <label className="track-select-wrap"><select aria-label="Day" value={day} onChange={event => setDay(event.target.value)}><option value="">Day</option>{Array.from({length: 31}, (_, index) => String(index + 1).padStart(2, "0")).map(value => <option key={value} value={value}>{value}</option>)}</select></label>
+            <label className="track-select-wrap"><select aria-label="Year" value={year} onChange={event => setYear(event.target.value)}><option value="">Year</option>{years.map(value => <option key={value} value={value}>{value}</option>)}</select></label>
+          </fieldset>
+          <Button type="submit" className="track-continue" disabled={!detailsValid}>Continue</Button>
+          {submitted && <p className="track-status" role="status">For your security, check your transfer status directly on <a href={`${official}/web/global-service/track-transfer`}>Western Union's official tracking page</a>.</p>}
+          <button type="button" className="track-help-link" onClick={() => {setMode("mtcn");setSubmitted(false)}}>I have an MTCN</button>
+        </form>
+        )}
       </div>
     </section>
     <footer className="track-footer">
