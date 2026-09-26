@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUp, BadgeCheck, ChevronDown, ChevronLeft, ChevronRight, Facebook, Gift, Globe2, Instagram, Lightbulb, LockKeyhole, Menu, RefreshCcw, Search, ShieldCheck, Smartphone, Store, Tag, Wallet, X, Youtube } from "lucide-react";
+import { ArrowRight, ArrowUp, BadgeCheck, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, CircleHelp, CreditCard, Facebook, Gift, Globe2, IdCard, Instagram, Landmark, Lightbulb, LockKeyhole, MapPin, Menu, MessageCircleQuestion, Radar, ReceiptText, RefreshCcw, Search, Send, Settings, ShieldCheck, Smartphone, Star, Store, Tag, UsersRound, Wallet, X, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/Primary_Black.svg.asset.json";
 import wMark from "@/assets/wu-w-mark.svg.asset.json";
@@ -45,6 +45,25 @@ const footerHrefs: Record<string, string> = {
   "Log in / Register": loginUrl, "Become an agent": "https://agentportal.westernunion.com/ap/agentregister.do?pid=usFtBecomeAgent", "Become a Bill Pay Partner": "https://www.westernunion.com/corporate/biller-support.html", "Fraud awareness": "https://www.westernunion.com/global/en/fraud-awareness/fraud-home.html", "Customer care": `${official}/frequently-asked-questions.html`, "Western Union Rewards": `${official}/rewards/home.html`, "Refer a Friend": `${official}/refer-a-friend.html`, "Western Union Prepaid": "https://www.westernunion.com/prepaid/", "Transfer History Request": "https://www.westernunion.com/global/en/carf-form.html",
   "Terms and Conditions": `${official}/legal/terms-conditions.html`, "Intellectual Property": `${official}/legal/intellectual-property.html`, "Online Privacy Statement": "https://www.westernunion.com/global/en/privacy-statement.html", "File a Complaint": `${official}/legal/file-complaint.html`, "Vigo Money by Western Union Terms and Conditions": `${official}/wallet/terms-and-conditions.html`, "Western Union Prepaid Visa® Card Terms and Conditions": `${official}/prepaid/us-gpr-terms-and-conditions.html`, "Rewards Terms and Conditions": `${official}/rewards/rewards-terms-conditions.html`,
 };
+const menuItems: { label: string; href: string; icon: React.ComponentType<{ size?: number; strokeWidth?: number }> }[] = [
+  { label: "Send money", href: sendUrl, icon: Send },
+  { label: "Track a transfer", href: "https://www.westernunion.com/web/global-service/track-transfer", icon: Radar },
+  { label: "Prepaid Card", href: "https://www.westernunion.com/prepaid/", icon: CreditCard },
+  { label: "Pay bills", href: `${official}/bill-pay.html`, icon: ReceiptText },
+  { label: "Find locations", href: "https://www.westernunion.com/global-services/find-locations?WUCountry=us&WULanguage=en", icon: MapPin },
+  { label: "Contact Us", href: `${official}/contact-us.html`, icon: MessageCircleQuestion },
+  { label: "Western Union Rewards", href: `${official}/rewards/home.html`, icon: Star },
+  { label: "Member Deals", href: `${official}/rewards.html`, icon: Tag },
+  { label: "Refer a friend", href: `${official}/refer-a-friend.html`, icon: UsersRound },
+  { label: "Mobile app", href: `${official}/mobile-app.html`, icon: Smartphone },
+  { label: "Money orders", href: `${official}/money-order.html`, icon: CircleDollarSign },
+  { label: "Money Order Refunds", href: `${official}/money-order-refunds.html`, icon: BadgeDollarSign },
+  { label: "Pay inmate", href: `${official}/send-money/app/sendinmatestart`, icon: IdCard },
+  { label: "Mobile top-up", href: `${official}/mobile-top-up.html`, icon: Smartphone },
+  { label: "Update delivery method", href: `${official}/home.html`, icon: Landmark },
+  { label: "Settings", href: `${official}/home.html`, icon: Settings },
+  { label: "Help", href: `${official}/frequently-asked-questions.html`, icon: CircleHelp },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -97,7 +116,10 @@ function HomePage() {
         <Action href={loginUrl} className="wu-desktop">Log in</Action>
         <Action href={registerUrl} variant="wuOutline" className="wu-register">Register</Action>
       </nav>
-    </div>{menuOpen && <div className="absolute z-20 right-4 top-[76px] md:top-[94px] bg-card border border-border rounded-md shadow-lg p-5 flex flex-col gap-4 min-w-[220px] text-primary"><a href={sendUrl}>Send money</a><a href={`${official}/track-transfer.html`}>Track a transfer</a><a href={loginUrl}>Log in</a><a href={registerUrl}>Register</a><a href={`${official}/agent-locator.html`}>Find locations</a></div>}</header>
+    </div>{menuOpen && <nav className="wu-menu-panel" aria-label="Site menu">
+      <div className="wu-menu-auth"><a href={loginUrl} onClick={()=>setMenuOpen(false)}>Log in</a><span aria-hidden="true"/><a href={registerUrl} onClick={()=>setMenuOpen(false)}>Register</a></div>
+      <ul>{menuItems.map(item=><li key={item.label}><a href={item.href} onClick={()=>setMenuOpen(false)}><span className="wu-menu-icon" aria-hidden="true"><item.icon size={22} strokeWidth={1.4}/></span>{item.label}</a></li>)}</ul>
+    </nav>}</header>
     <section id="top" className="wu-hero"><div className="wu-shell wu-hero-inner">
       <div className="wu-hero-copy"><h1 className="wu-heading">Send money<br className="wu-mobile-break"/> online from the<br className="wu-mobile-break"/><br className="hidden xl:block" /> United States at<br className="wu-mobile-break"/> our best price</h1>
         <div className="wu-intro"><Lightbulb size={29} className="shrink-0 mt-1" strokeWidth={1.8}/><span>Join millions of customers around the world and start sending and receiving money with Western Union.</span></div>

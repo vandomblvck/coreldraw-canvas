@@ -41,7 +41,18 @@
 }
 .wu-shell { width: min(100% - 86px, 1290px); margin-inline: auto; }
 .wu-heading { font-family: "Right Grotesk", Arial, sans-serif; font-weight: 500; letter-spacing: 0; line-height: 1.11; }
-.wu-nav { height: 104px; background: var(--brand); }
+.wu-nav { position: relative; height: 104px; background: var(--brand); }
+.wu-menu-panel { position: absolute; z-index: 30; top: 100%; right: 24px; width: min(560px, calc(100% - 52px)); max-height: calc(100vh - 128px); background: var(--card); box-shadow: 0 20px 45px color-mix(in oklab, var(--primary) 25%, transparent); display: flex; flex-direction: column; color: var(--foreground); }
+.wu-menu-auth { display: flex; align-items: center; gap: 26px; padding: 25px 32px 21px; border-bottom: 1px solid var(--border); font-family: "Right Grotesk", Arial, sans-serif; font-weight: 500; font-size: 20px; color: var(--link); }
+.wu-menu-auth span { width: 1px; height: 30px; background: var(--border); }
+.wu-menu-auth a:hover { text-decoration: underline; }
+.wu-menu-panel ul { list-style: none; margin: 0; padding: 8px 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--footer-pill) var(--secondary); }
+.wu-menu-panel ul::-webkit-scrollbar { width: 8px; }
+.wu-menu-panel ul::-webkit-scrollbar-track { background: var(--secondary); }
+.wu-menu-panel ul::-webkit-scrollbar-thumb { background: var(--footer-pill); border-radius: 4px; }
+.wu-menu-panel li a { display: flex; align-items: center; gap: 18px; padding: 15px 32px; font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--foreground); }
+.wu-menu-panel li a:hover { background: var(--secondary); }
+.wu-menu-icon { width: 44px; height: 44px; flex-shrink: 0; border: 1.5px solid var(--foreground); border-radius: 50%; display: grid; place-items: center; }
 .wu-nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .wu-nav-links { display: flex; align-items: center; gap: 34px; color: var(--primary); }
 .wu-nav-links a, .wu-nav-links button { font-family: "Right Grotesk", Arial, sans-serif; font-weight: 500; font-size: 17px; white-space: nowrap; }
@@ -337,6 +348,9 @@
   .wu-deals-grid { margin-top: 30px; }
   .wu-mobile-cta { display: block; position: fixed; z-index: 40; bottom: 0; left: 0; width: 100%; padding: 14px 16px max(14px, env(safe-area-inset-bottom)); background: var(--brand); }
   .wu-mobile-cta a { height: 48px; }
+  .wu-menu-panel { right: 24px; width: min(314px, calc(100% - 48px)); max-height: calc(100vh - 96px); }
+  .wu-menu-auth { padding: 24px 30px 20px; }
+  .wu-menu-panel li a { padding: 14px 30px; }
   .wu-footer { padding-bottom: 77px; }
 }
 .wu-mobile-break { display: none; }
