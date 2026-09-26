@@ -129,7 +129,7 @@ function HomePage() {
   ];
   return <main>
     <header className="wu-nav"><div className="wu-shell wu-nav-inner">
-      <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
+      <a href="#top" aria-label="Western Union home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior }); }}><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
       <nav className="wu-nav-links" aria-label="Primary navigation">
         <a className="wu-desktop" href={sendUrl}>Send money</a>
         <Link className="wu-desktop" to="/track-transfer">Track a transfer</Link>
