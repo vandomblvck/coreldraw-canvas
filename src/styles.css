@@ -578,7 +578,7 @@
   .track-menu-panel li a { padding: 17px 0; gap: 16px; font-size: 16.5px; line-height: 1.3; }
   .track-menu-panel li a svg { width: 27px; height: 27px; stroke-width: 1.4; }
   .track-menu-panel li a > span { gap: 14px; }
-  .track-menu-new { font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 2px; margin-left: 52px; }
+  .track-menu-new { font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 2px; }
   .track-main { background: var(--background); padding: 40px 15px 0; }
   .track-form-wrap { padding: 0; max-width: none; }
   .track-heading-row { align-items: center; }
