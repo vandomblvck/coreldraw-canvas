@@ -10,10 +10,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        wuBlack: "bg-primary text-primary-foreground hover:bg-primary/85 rounded-full font-display font-black",
-        wuYellow: "bg-brand text-brand-foreground hover:bg-brand/85 rounded-full font-display font-black",
-        wuOutline: "border border-primary bg-transparent text-foreground hover:bg-foreground/5 rounded-full font-display font-black",
-        wuLightOutline: "border border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-display font-black",
+        wuBlack: "bg-primary text-primary-foreground hover:bg-primary/85 rounded-full font-display font-medium",
+        wuYellow: "bg-brand text-brand-foreground hover:bg-brand/85 rounded-full font-display font-medium",
+        wuOutline: "border border-primary bg-transparent text-foreground hover:bg-foreground/5 rounded-full font-display font-medium",
+        wuLightOutline: "border border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10 rounded-full font-display font-medium",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",

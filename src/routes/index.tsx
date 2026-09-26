@@ -71,7 +71,7 @@ function HomePage() {
     <section id="top" className="wu-hero"><div className="wu-shell wu-hero-inner">
       <div className="wu-hero-copy"><h1 className="wu-heading">Send money online from the<br className="hidden xl:block" /> United States at our best price</h1>
         <div className="wu-intro"><Lightbulb size={29} className="shrink-0 mt-1" strokeWidth={1.8}/><span>Join millions of customers around the world and start sending and receiving money with Western Union.</span></div>
-        <div className="wu-trust"><div><div className="font-display font-black text-[18px] leading-none"><span className="text-teal text-[28px]">★</span>Trustpilot</div><div className="wu-trust-stars">{[1,2,3,4,5].map(i => <span key={i}>★</span>)}</div></div><strong>4.3</strong><span className="wu-trust-divider"/><strong className="leading-6">Excellent<br/>169,837+ reviews</strong></div>
+        <div className="wu-trust"><div><div className="font-display font-medium text-[18px] leading-none"><span className="text-teal text-[28px]">★</span>Trustpilot</div><div className="wu-trust-stars">{[1,2,3,4,5].map(i => <span key={i}>★</span>)}</div></div><strong>4.3</strong><span className="wu-trust-divider"/><strong className="leading-6">Excellent<br/>169,837+ reviews</strong></div>
         <a className="wu-fraud underline underline-offset-2" href={`${official}/fraud-awareness.html`}><ShieldCheck size={23} strokeWidth={1.8} /><span>Smarter. Safer. Together. Learn how to #BeFraudSmart.</span></a>
       </div>
       <div className="wu-quote"><div className="wu-offer"><Gift size={27} strokeWidth={1.5}/><span>Get a <strong>0 USD transfer fee*</strong> on your first online transfer!</span></div>

@@ -2,7 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
-@font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/b3e508c1-cffe-4b9e-bff6-ab5d9d50d8bc/right-black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/b3e508c1-cffe-4b9e-bff6-ab5d9d50d8bc/right-black.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/d530c8f9-0c3f-43ff-934c-736eb4d775bc/right-medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Roboto WU"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/97a3844f-0e38-4316-abb0-9b2fbcbda5ab/roboto-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Roboto WU"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/7bf094bd-dc50-4f8f-9977-20f8667037f1/roboto-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
@@ -42,7 +42,7 @@
 .wu-nav { height: 104px; background: var(--brand); }
 .wu-nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .wu-nav-links { display: flex; align-items: center; gap: 34px; color: var(--primary); }
-.wu-nav-links a, .wu-nav-links button { font-family: "Right Grotesk", Arial, sans-serif; font-weight: 900; font-size: 17px; white-space: nowrap; }
+.wu-nav-links a, .wu-nav-links button { font-family: "Right Grotesk", Arial, sans-serif; font-weight: 500; font-size: 17px; white-space: nowrap; }
 .wu-nav-links a:hover, .wu-footer a:hover { text-decoration: underline; }
 .wu-hero { background: var(--brand); min-height: 652px; }
 .wu-hero-inner { display: grid; grid-template-columns: minmax(0,1fr) 461px; gap: 56px; padding-top: 24px; padding-bottom: 34px; }
@@ -53,7 +53,7 @@
 .wu-trust-divider { height: 54px; border-left: 1px solid var(--primary); }
 .wu-trust-stars { display: flex; gap: 2px; margin-top: 2px; }
 .wu-trust-stars span { background: oklch(.64 .15 166); color: var(--primary-foreground); width: 20px; height: 20px; display: grid; place-items: center; font-size: 16px; }
-.wu-fraud { margin-top: auto; display: flex; gap: 32px; align-items: center; font-family: "Right Grotesk"; font-weight: 900; font-size: 17px; color: var(--foreground); }
+.wu-fraud { margin-top: auto; display: flex; gap: 32px; align-items: center; font-family: "Right Grotesk"; font-weight: 500; font-size: 17px; color: var(--foreground); }
 .wu-quote { background: var(--card); border-radius: 9px; padding: 26px; align-self: start; color: var(--foreground); }
 .wu-offer { min-height: 72px; background: var(--mint); border-radius: 9px; padding: 14px 17px; display: flex; align-items: center; gap: 17px; font-size: 17px; line-height: 1.4; }
 .wu-field { border: 1px solid var(--border); border-radius: 9px; height: 64px; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; margin-top: 16px; }
@@ -68,7 +68,7 @@
 .wu-disclaimer { font-size: 14px; line-height: 1.8; margin: 24px 0 0; }
 .wu-benefits { background: var(--primary); color: var(--primary-foreground); }
 .wu-benefits-inner { display: grid; grid-template-columns: repeat(3,1fr); gap: 50px; min-height: 103px; align-items: center; }
-.wu-benefits-item { display: flex; gap: 20px; align-items: flex-start; font-family: "Right Grotesk"; font-weight: 900; line-height: 1.45; font-size: 17px; }
+.wu-benefits-item { display: flex; gap: 20px; align-items: flex-start; font-family: "Right Grotesk"; font-weight: 500; line-height: 1.45; font-size: 17px; }
 .wu-benefits-item svg { color: var(--brand); flex-shrink: 0; }
 .wu-ways { background: var(--secondary); padding: 42px 0 52px; }
 .wu-section-title { font-size: 32px; margin: 0; }
@@ -77,7 +77,7 @@
 .wu-tab.active { border-color: var(--primary); color: var(--primary); }
 .wu-ways-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 21px; margin-top: 34px; }
 .wu-way { background: var(--card); border-radius: 9px; padding: 25px; min-height: 230px; display: flex; flex-direction: column; align-items: flex-start; position: relative; color: var(--primary); }
-.wu-way h3 { font-family: "Right Grotesk"; font-size: 21px; font-weight: 900; margin: 0 0 13px; }
+.wu-way h3 { font-family: "Right Grotesk"; font-size: 21px; font-weight: 500; margin: 0 0 13px; }
 .wu-way p { font-size: 16px; line-height: 1.3; max-width: 240px; margin: 0 0 22px; }
 .wu-way > svg { position: absolute; right: 25px; top: 25px; border: 2px solid var(--primary); padding: 11px; width: 60px; height: 60px; border-radius: 50%; }
 .wu-app { background: var(--brand); min-height: 588px; overflow: hidden; position: relative; }
@@ -85,13 +85,13 @@
 .wu-app-copy { position: relative; z-index: 1; padding: 58px 0 42px; width: 59%; min-height: 588px; clip-path: polygon(0 0, 79% 0, 100% 100%, 0 100%); background: var(--brand); margin-left: calc((100vw - min(100vw - 86px, 1290px)) / -2); padding-left: calc((100vw - min(100vw - 86px, 1290px)) / 2); }
 .wu-app-copy-content { width: min(640px, 78%); }
 .wu-app-list { display: grid; gap: 25px; margin: 27px 0 35px; padding: 0; list-style: none; }
-.wu-app-list li { display: flex; align-items: center; gap: 35px; font-family: "Right Grotesk"; font-size: 17px; font-weight: 900; }
+.wu-app-list li { display: flex; align-items: center; gap: 35px; font-family: "Right Grotesk"; font-size: 17px; font-weight: 500; }
 .wu-badges { display: flex; gap: 22px; margin-top: 30px; }
 .wu-badges img { width: 215px; height: 72px; object-fit: contain; }
 .wu-more { display: grid; grid-template-columns: 36% 1fr; gap: 22px; padding-top: 38px; padding-bottom: 85px; }
 .wu-more > img { width: 100%; aspect-ratio: 1.5; object-fit: cover; border-radius: 8px; }
 .wu-more p { font-size: 17px; line-height: 1.4; max-width: 620px; margin: 27px 0 0; }
-.wu-referral { background: var(--primary); color: var(--primary-foreground); border-radius: 8px; padding: 40px 55px; display: grid; grid-template-columns: 1fr 1.2fr auto; align-items: center; gap: 30px; margin-bottom: 42px; font-family: "Right Grotesk"; font-size: 17px; font-weight: 900; }
+.wu-referral { background: var(--primary); color: var(--primary-foreground); border-radius: 8px; padding: 40px 55px; display: grid; grid-template-columns: 1fr 1.2fr auto; align-items: center; gap: 30px; margin-bottom: 42px; font-family: "Right Grotesk"; font-size: 17px; font-weight: 500; }
 .wu-referral h2 { color: var(--brand); font-size: 26px; }
 .wu-rewards { background: var(--teal); padding: 42px 0 50px; }
 .wu-rewards-inner { display: grid; grid-template-columns: 30% 1fr; gap: 22px; }
@@ -100,7 +100,7 @@
 .wu-rewards h2 span { color: var(--brand); }
 .wu-rewards p { font-size: 17px; line-height: 1.35; margin: 4px 0 25px; }
 .wu-reward-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 21px; }
-.wu-reward-card { height: 245px; background: var(--card); border-radius: 8px; padding: 27px 20px; text-align: center; overflow: hidden; color: var(--primary); font-family: "Right Grotesk"; font-weight: 900; font-size: 18px; line-height: 1.4; }
+.wu-reward-card { height: 245px; background: var(--card); border-radius: 8px; padding: 27px 20px; text-align: center; overflow: hidden; color: var(--primary); font-family: "Right Grotesk"; font-weight: 500; font-size: 18px; line-height: 1.4; }
 .wu-reward-card:first-child { background: var(--brand); }
 .wu-reward-card:last-child { background: var(--primary); color: var(--primary-foreground); }
 .wu-reward-card img { display: block; margin: 0 auto 12px; width: 44px; height: 44px; }
@@ -121,18 +121,18 @@
 .wu-reasons { display: grid; grid-template-columns: 36% 1fr; gap: 100px; padding-block: 85px; }
 .wu-reasons > img { width: 100%; height: 430px; object-fit: cover; border-radius: 8px; }
 .wu-reasons-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 30px; margin-top: 40px; }
-.wu-reasons-grid h3 { font-family: "Right Grotesk"; font-weight: 900; font-size: 20px; }
+.wu-reasons-grid h3 { font-family: "Right Grotesk"; font-weight: 500; font-size: 20px; }
 .wu-review { background: var(--secondary); text-align: center; padding: 38px 20px 26px; }
 .wu-faq { padding-top: 42px; padding-bottom: 55px; }
 .wu-faq details { border-top: 1px solid var(--border); }
 .wu-faq details:first-of-type { margin-top: 38px; }
-.wu-faq summary { display: flex; align-items: center; gap: 50px; padding: 17px 0; cursor: pointer; list-style: none; font-family: "Right Grotesk"; font-weight: 900; font-size: 17px; }
+.wu-faq summary { display: flex; align-items: center; gap: 50px; padding: 17px 0; cursor: pointer; list-style: none; font-family: "Right Grotesk"; font-weight: 500; font-size: 17px; }
 .wu-faq summary::-webkit-details-marker { display:none; }
 .wu-faq summary span { background: var(--brand); border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; font-family: Arial; font-size: 28px; font-weight: 400; }
 .wu-faq details[open] summary span { transform: rotate(45deg); }
 .wu-faq details p { margin: 0 0 20px 88px; max-width: 850px; line-height: 1.5; }
 .wu-footer { background: var(--primary); color: var(--primary-foreground); padding: 50px 0; font-size: 15px; }
-.wu-footer a { color: var(--brand); text-decoration: underline; font-family: "Right Grotesk"; font-weight: 900; font-size: 17px; }
+.wu-footer a { color: var(--brand); text-decoration: underline; font-family: "Right Grotesk"; font-weight: 500; font-size: 17px; }
 .wu-footer-links { display: flex; flex-wrap: wrap; gap: 13px 27px; max-width: 850px; margin: 24px 0 45px; }
 .wu-footer-bottom { display: grid; grid-template-columns: 300px 1fr; gap: 40px; border-top: 1px solid var(--muted-foreground); padding-top: 42px; line-height: 1.4; }
 @media (max-width: 900px) {
