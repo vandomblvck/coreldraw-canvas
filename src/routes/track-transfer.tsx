@@ -55,17 +55,20 @@ function TrackTransfer() {
   const [mode, setMode] = useState<"mtcn" | "details">("mtcn");
   const [lookupBy, setLookupBy] = useState<"phone" | "names">("phone");
   const [phone, setPhone] = useState("");
+  const [senderLast, setSenderLast] = useState("");
+  const [receiverFirst, setReceiverFirst] = useState("");
+  const [receiverLast, setReceiverLast] = useState("");
   const [amountKind, setAmountKind] = useState<"send" | "receive">("send");
   const [amount, setAmount] = useState("");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [year, setYear] = useState("");
-  const [receiverCountry, setReceiverCountry] = useState(countries.find(item => item.iso === "us") ?? countries[countries.length - 1]);
+  const [receiverCountry, setReceiverCountry] = useState(countries.find(item => item.iso === "us") ?? countries[0]!);
   const [countryOpen, setCountryOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const valid = mtcn.length === 10 && firstName.trim().length > 0;
-  const detailsValid = lookupBy === "phone" ? phone.trim().length >= 7 : firstName.trim().length > 0;
+  const detailsValid = lookupBy === "phone" ? phone.trim().length >= 7 : firstName.trim().length > 0 && senderLast.trim().length > 0 && receiverFirst.trim().length > 0 && receiverLast.trim().length > 0;
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const years = Array.from({length: 6}, (_, index) => String(2026 - index));
 
@@ -115,10 +118,16 @@ function TrackTransfer() {
               <label className="track-input-wrap grow"><input aria-label="Sender's phone number" placeholder="Sender's phone number" inputMode="tel" autoComplete="tel" value={phone} onChange={event => {setPhone(event.target.value.replace(/[^\d\s()-]/g, ""));setSubmitted(false)}}/></label>
             </div>
           ) : (
+            <>
             <div className="track-field-row">
               <label className="track-input-wrap grow"><input aria-label="Sender's first name" placeholder="Sender's first name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false)}}/></label>
-              <label className="track-input-wrap grow"><input aria-label="Receiver's first name" placeholder="Receiver's first name"/></label>
+              <label className="track-input-wrap grow"><input aria-label="Sender's last name" placeholder="Sender's last name" autoComplete="family-name" value={senderLast} onChange={event => {setSenderLast(event.target.value);setSubmitted(false)}}/></label>
             </div>
+            <div className="track-field-row">
+              <label className="track-input-wrap grow"><input aria-label="Receiver's first name" placeholder="Receiver's first name" value={receiverFirst} onChange={event => {setReceiverFirst(event.target.value);setSubmitted(false)}}/></label>
+              <label className="track-input-wrap grow"><input aria-label="Receiver's last name" placeholder="Receiver's last name" value={receiverLast} onChange={event => {setReceiverLast(event.target.value);setSubmitted(false)}}/></label>
+            </div>
+            </>
           )}
           <div className="track-country-picker">
             <button type="button" className="track-select-wrap track-receiver-country" aria-haspopup="listbox" aria-expanded={countryOpen} onClick={() => {setCountryOpen(!countryOpen);setCountrySearch("")}}>
