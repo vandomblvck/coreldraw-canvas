@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUp, BadgeCheck, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, CircleHelp, CreditCard, Gift, Globe2, IdCard, Landmark, Lightbulb, LockKeyhole, MapPin, Menu, MessageCircleQuestion, Radar, ReceiptText, RefreshCcw, Search, Send, Settings, ShieldCheck, Smartphone, Star, Store, Tag, UsersRound, Wallet, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -84,6 +84,7 @@ function Action({ children, href, variant = "wuBlack", className = "" }: {childr
 }
 
 function HomePage() {
+  const locationHref = useRouterState({ select: (s) => s.location.href });
   const [amount, setAmount] = useState("100.00");
   const [currency, setCurrency] = useState("MXN");
   const [currencyName, setCurrencyName] = useState("Mexico");
@@ -95,6 +96,13 @@ function HomePage() {
   const [footerLocation, setFooterLocation] = useState("United States");
   const [footerOpen, setFooterOpen] = useState<string | null>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
+  // Always land at the very top of the Homepage, never at a restored scroll position.
+  useEffect(() => {
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    resetScroll();
+    const timer = setTimeout(resetScroll, 100);
+    return () => clearTimeout(timer);
+  }, [locationHref]);
   useEffect(() => {
     const onScroll = () => setCtaVisible(window.scrollY > 300);
     onScroll();
@@ -121,7 +129,7 @@ function HomePage() {
   ];
   return <main>
     <header className="wu-nav"><div className="wu-shell wu-nav-inner">
-      <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
+      <a href="#top" aria-label="Western Union home" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior }); }}><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
       <nav className="wu-nav-links" aria-label="Primary navigation">
         <a className="wu-desktop" href={sendUrl}>Send money</a>
         <Link className="wu-desktop" to="/track-transfer">Track a transfer</Link>
