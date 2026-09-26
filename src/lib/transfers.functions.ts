@@ -80,9 +80,12 @@ export const updateTransfer = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }) => {
     await requireAdmin(context.supabase, context.userId);
+    const updates = Object.fromEntries(
+      Object.entries(data.updates).filter(([, value]) => value !== undefined),
+    );
     const { data: row, error } = await context.supabase
       .from("transfers")
-      .update(data.updates)
+      .update(updates)
       .eq("id", data.id)
       .select()
       .single();
