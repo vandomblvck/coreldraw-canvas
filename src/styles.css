@@ -611,7 +611,44 @@
 .track-date-fields legend { font-size: 16px; margin-bottom: 10px; }
 .track-date-fields .track-select-wrap { flex: 1; }
 @media (max-width: 620px) {
-  .track-field-row, .track-date-fields { flex-direction: column; gap: 16px; }
-  .track-country-code { flex: 1; }
-  .track-radio-row { gap: 20px; }
+  .track-main { padding: 40px 32px 0; }
+  .track-heading-row { margin-inline: -2px; }
+  .track-heading-row h1 { font-size: 23px; white-space: nowrap; }
+  .track-heading-row span { font-size: 12px; }
+  .track-tab { font-weight: 400; }
+  .track-tab.active { font-weight: 500; }
+  .track-alt-form { padding-top: 34px; }
+  .track-radio-row { display: grid; gap: 23px; margin-bottom: 24px; }
+  .track-radio { font-size: 15px; gap: 16px; min-height: 22px; white-space: nowrap; }
+  .track-radio input { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; }
+  .track-alt-form > .track-field-row { display: flex; flex-direction: column; gap: 0; }
+  .track-alt-form > .track-field-row:nth-of-type(2) { flex-direction: row; }
+  .track-country-code { flex: 0 0 47%; min-width: 0; }
+  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap { min-width: 0; }
+  .track-alt-form > .track-field-row:nth-of-type(2) .track-select-wrap select,
+  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap input { height: 50px; border-radius: 0; }
+  .track-alt-form > .track-field-row:nth-of-type(2) .track-select-wrap select { border-radius: 3px 0 0 3px; padding-top: 12px; padding-left: 12px; }
+  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap input { border-left: 0; border-radius: 0 3px 3px 0; padding-inline: 12px; }
+  .track-alt-form .track-select-label { top: 8px; left: 10px; padding: 0; font-size: 12px; color: var(--muted-foreground); background: transparent; }
+  .track-receiver-country { margin-top: 74px; height: 50px; padding: 0 12px 0 55px; }
+  .track-receiver-country .track-select-label { top: 8px; left: 55px; }
+  .track-country-value { font-size: 15px; padding-top: 13px; }
+  .track-country-value img { position: absolute; left: 12px; top: 10px; width: 34px; height: 25px; }
+  .track-receiver-country + .track-field-row { margin-top: 30px; }
+  .track-receiver-country + .track-field-row select,
+  .track-receiver-country + .track-field-row input { height: 50px; font-size: 15px; }
+  .track-receiver-country + .track-field-row select { border-radius: 3px 3px 0 0; }
+  .track-receiver-country + .track-field-row input { border-radius: 0 0 3px 3px; }
+  .track-amount-currency { font-size: 14px; }
+  .track-date-hint { margin: 74px 0 20px; font-size: 14px; line-height: 1.35; gap: 7px; white-space: nowrap; }
+  .track-date-icon { width: 13px; height: 13px; flex: 0 0 13px; font-size: 0; }
+  .track-date-icon::after { content: ""; width: 7px; height: 2px; background: var(--background); }
+  .track-date-fields { display: flex; flex-direction: row; gap: 15px; min-width: 0; }
+  .track-date-fields legend { font-size: 15px; margin-bottom: 12px; }
+  .track-date-fields .track-select-wrap { flex: 1 1 0; min-width: 0; }
+  .track-date-fields select { height: 50px; padding: 0 11px; font-size: 14px; }
+  .track-date-fields select { background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%; background-size: 6px 6px; }
+  .track-alt-form .track-continue { margin-top: 61px; }
+  .track-alt-form .track-help-link { margin-top: 22px; }
+  .track-footer-inner { padding-top: 48px; }
 }
