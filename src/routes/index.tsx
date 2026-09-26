@@ -84,6 +84,7 @@ function Action({ children, href, variant = "wuBlack", className = "" }: {childr
 }
 
 function HomePage() {
+  const locationKey = useRouterState({ select: (s) => s.location.key });
   const [amount, setAmount] = useState("100.00");
   const [currency, setCurrency] = useState("MXN");
   const [currencyName, setCurrencyName] = useState("Mexico");
@@ -95,6 +96,13 @@ function HomePage() {
   const [footerLocation, setFooterLocation] = useState("United States");
   const [footerOpen, setFooterOpen] = useState<string | null>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
+  // Always land at the very top of the Homepage, never at a restored scroll position.
+  useEffect(() => {
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    resetScroll();
+    const timer = setTimeout(resetScroll, 100);
+    return () => clearTimeout(timer);
+  }, [locationKey]);
   useEffect(() => {
     const onScroll = () => setCtaVisible(window.scrollY > 300);
     onScroll();
