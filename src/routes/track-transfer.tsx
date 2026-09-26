@@ -83,6 +83,7 @@ function TrackTransfer() {
         <Button variant="ghost" className="track-menu-trigger" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span className="track-menu-desktop">{menuOpen ? <X size={26}/> : <Menu size={29}/>}</span><span className="track-menu-mobile">{menuOpen ? "Close" : "Menu"}</span></Button>
         <div className="track-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><a href={`${official}/us/en/web/user/register`}>Register</a></div>
       </div>
+      {menuOpen && <div className="track-menu-backdrop" aria-hidden="true" onClick={() => setMenuOpen(false)} />}
       {menuOpen && <nav className="track-menu-panel" aria-label="Site menu">
         <div className="track-menu-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><span aria-hidden="true"/><a href={`${official}/us/en/web/user/register`}>Sign up</a></div>
         <ul>
