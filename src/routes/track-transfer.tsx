@@ -51,8 +51,19 @@ function TrackTransfer() {
   const [firstName, setFirstName] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [mode, setMode] = useState<"mtcn" | "details">("mtcn");
+  const [lookupBy, setLookupBy] = useState<"phone" | "names">("phone");
+  const [phone, setPhone] = useState("");
+  const [amountKind, setAmountKind] = useState<"send" | "receive">("send");
+  const [amount, setAmount] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const valid = mtcn.length === 10 && firstName.trim().length > 0;
+  const detailsValid = lookupBy === "phone" ? phone.trim().length >= 7 : firstName.trim().length > 0;
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const years = Array.from({length: 6}, (_, index) => String(2026 - index));
 
   return <main className="track-page">
     <header className="track-header">
