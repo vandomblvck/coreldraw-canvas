@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowRight, ArrowUp, BadgeCheck, ChevronDown, ChevronLeft, ChevronRight, Facebook, Gift, Globe2, Instagram, Lightbulb, LockKeyhole, Menu, RefreshCcw, Search, ShieldCheck, Smartphone, Store, Tag, Wallet, X, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/Primary_Black.svg.asset.json";
+import wMark from "@/assets/wu-w-mark.svg.asset.json";
 import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
 import appPhoto from "@/assets/section-786x560-1-1790132239916.webp.asset.json";
 import morePhoto from "@/assets/GettyImages-2170511239-scaled-1790132239918.webp.asset.json";
@@ -83,7 +84,7 @@ function HomePage() {
   ];
   return <main>
     <header className="wu-nav"><div className="wu-shell wu-nav-inner">
-      <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="w-[220px] h-auto" /></a>
+      <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
       <nav className="wu-nav-links" aria-label="Primary navigation">
         <a className="wu-desktop" href={sendUrl}>Send money</a>
         <a className="wu-desktop" href={`${official}/track-transfer.html`}>Track a transfer</a>
