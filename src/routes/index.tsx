@@ -13,6 +13,10 @@ import googlePlay from "@/assets/google-play-badge-ai.svg.asset.json";
 import starReward from "@/assets/star_rewards.svg.asset.json";
 import discountReward from "@/assets/discount_rewards.svg.asset.json";
 import giftReward from "@/assets/gift.svg.asset.json";
+import usFlag from "@/assets/us.svg.asset.json";
+import mxFlag from "@/assets/mx.svg.asset.json";
+import inFlag from "@/assets/in.svg.asset.json";
+import euFlag from "@/assets/eu.svg.asset.json";
 
 const official = "https://www.westernunion.com/us/en";
 const sendUrl = `${official}/web/send-money/start`;
@@ -71,8 +75,8 @@ function HomePage() {
         <a className="wu-fraud underline underline-offset-2" href={`${official}/fraud-awareness.html`}><ShieldCheck size={23} strokeWidth={1.8} /><span>Smarter. Safer. Together. Learn how to #BeFraudSmart.</span></a>
       </div>
       <div className="wu-quote"><div className="wu-offer"><Gift size={27} strokeWidth={1.5}/><span>Get a <strong>0 USD transfer fee*</strong> on your first online transfer!</span></div>
-        <div className="wu-field"><div><label htmlFor="amount">You’re sending</label><input id="amount" aria-label="Amount you are sending in USD" inputMode="decimal" value={amount} onChange={e=>setAmount(e.target.value.replace(/[^\d.]/g,""))} onBlur={()=>setAmount(numericAmount.toFixed(2))}/></div><span className="wu-currency"><span className="wu-flag">🇺🇸</span> USD</span></div>
-        <div className="wu-field"><div><label htmlFor="currency">Your receiver gets</label><strong className="text-[17px]">{receiverAmount}</strong></div><span className="wu-currency"><span className="wu-flag">{currency === "MXN" ? "🇲🇽" : currency === "INR" ? "🇮🇳" : "🇪🇺"}</span><select id="currency" value={currency} onChange={e=>setCurrency(e.target.value)} aria-label="Receiver currency" className="bg-transparent outline-none"><option value="MXN">MXN</option><option value="INR">INR</option><option value="EUR">EUR</option></select><ChevronDown size={17}/></span></div>
+        <div className="wu-field"><div><label htmlFor="amount">You’re sending</label><input id="amount" aria-label="Amount you are sending in USD" inputMode="decimal" value={amount} onChange={e=>setAmount(e.target.value.replace(/[^\d.]/g,""))} onBlur={()=>setAmount(numericAmount.toFixed(2))}/></div><span className="wu-currency"><img className="wu-flag" src={usFlag.url} alt="United States"/> USD</span></div>
+        <div className="wu-field"><div><label htmlFor="currency">Your receiver gets</label><strong className="text-[17px]">{receiverAmount}</strong></div><span className="wu-currency"><img className="wu-flag" src={currency === "MXN" ? mxFlag.url : currency === "INR" ? inFlag.url : euFlag.url} alt=""/><select id="currency" value={currency} onChange={e=>setCurrency(e.target.value)} aria-label="Receiver currency" className="bg-transparent outline-none"><option value="MXN">MXN</option><option value="INR">INR</option><option value="EUR">EUR</option></select><ChevronDown size={17}/></span></div>
         <div className="wu-summary"><div className="wu-summary-row"><span>Exchange rate</span><span><s className="text-muted-foreground mr-2">17.3417 MXN</s><strong>{rate.toFixed(4)} {currency}</strong></span></div><div className="wu-summary-row"><span>Our fees</span><span><s className="text-muted-foreground">1.99 USD</s> 0.00 USD <strong className="ml-2 bg-mint rounded-full px-3">100% off</strong></span></div><div className="wu-summary-row"><span>Delivery time</span><strong>In minutes</strong></div><div className="wu-summary-row wu-summary-total"><span>Total Amount</span><span>{numericAmount.toFixed(2)} USD</span></div></div>
         <Action href={sendUrl} className="w-full mt-[26px] text-brand">Send now</Action>
         <p className="wu-disclaimer">*Western Union makes money from FX. Fees and rates subject to change without notice. Offer not available for Quick Collect, transfers within the United States, credit cards and Google Pay.</p>
