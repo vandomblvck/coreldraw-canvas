@@ -567,7 +567,7 @@
   .track-menu-trigger { position: absolute; right: 0; top: 0; height: 60px; width: auto; margin: 0; border: 0; padding: 0 0 0 8px; }
   .track-menu-mobile { display: block; border: 1px solid var(--brand); border-radius: 2px; padding: 5px 10px; color: var(--brand); font-size: 15px; font-weight: 400; }
   .track-menu-backdrop { display: block; position: fixed; top: 60px; right: 0; bottom: 0; left: 0; z-index: 24; background: color-mix(in oklab, black 45%, transparent); animation: track-fade .2s ease-out; }
-  .track-menu-panel { top: 60px; bottom: 0; left: auto; right: 0; width: 50%; max-height: none; animation: track-slide .25s ease-out; }
+  .track-menu-panel { position: fixed; top: 60px; bottom: 0; left: auto; right: 0; width: 50%; max-height: none; animation: track-slide .25s ease-out; }
   @keyframes track-slide { from { transform: translateX(100%); } to { transform: translateX(0); } }
   @keyframes track-fade { from { opacity: 0; } to { opacity: 1; } }
   .track-menu-auth { padding: 20px 16px 16px; }
