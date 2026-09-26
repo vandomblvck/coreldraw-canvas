@@ -8,3 +8,4 @@
 - [ ] Admin login page + admin panel (list/create/edit/delete transfers)
 - [ ] Wire Track a Transfer form to real lookup without changing design
 - [ ] Verify end-to-end (create transfer in admin, track it on /track-transfer)
+- [x] Match customer tracking timeline screenshot with event-backed history and test six statuses

@@ -36,15 +36,26 @@ export const trackTransfer = createServerFn({ method: "GET" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: row } = await supabaseAdmin
       .from("transfers")
-      .select("mtcn, sender_first_name, receiver_first_name, receiver_last_name, receiver_country, send_amount, send_currency, receive_amount, receive_currency, status, status_detail, created_at, updated_at")
+      .select("id, mtcn, sender_first_name, status, status_detail")
       .eq("mtcn", data.mtcn)
       .maybeSingle();
     if (!row) return { found: false as const };
     if (row.sender_first_name.trim().toLowerCase() !== data.firstName.trim().toLowerCase()) {
       return { found: false as const };
     }
-    const { sender_first_name: _omit, ...publicFields } = row;
-    return { found: true as const, transfer: publicFields };
+    const { data: history, error } = await supabaseAdmin
+      .from("transfer_events")
+      .select("status, title, description, created_at")
+      .eq("transfer_id", row.id)
+      .order("created_at", { ascending: true })
+      .limit(100);
+    if (error) throw new Error("Transfer history is temporarily unavailable.");
+    return { found: true as const, transfer: {
+      mtcn: row.mtcn,
+      status: row.status,
+      status_detail: row.status_detail,
+      events: history ?? [],
+    } };
   });
 
 export const listTransfers = createServerFn({ method: "GET" })

@@ -32,6 +32,7 @@
   --legal-surface: oklch(.27 0 0); --footer-pill: oklch(.35 0 0);
   --social-facebook: oklch(.55 .2 258); --social-youtube: oklch(.62 .25 29); --social-instagram: oklch(.65 .19 15);
   --track-header: oklch(.25 .018 235); --track-surface: oklch(.978 .005 135); --track-blue: oklch(.43 .08 246); --track-button: oklch(.58 .085 263); --track-rule: oklch(.84 .003 250);
+  --track-progress: oklch(.59 .16 146); --track-progress-faint: oklch(.83 .005 240);
 }
 @layer base {
   * { box-sizing: border-box; }
@@ -736,3 +737,40 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
 .track-result-row { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; }
 .track-result-row span:first-child { color: oklch(.5 .02 95); }
 .track-result-detail { font-size: 14px; margin: 4px 0 0; }
+
+/* Customer result: reference composition, separate from the tracking form. */
+.track-timeline-result { margin: 0 -16px -26px; color: var(--foreground); font-family: "Roboto WU", Arial, sans-serif; }
+.track-timeline-reference { background: var(--track-surface); text-align: center; padding: 22px 16px 26px; font-size: 23px; line-height: 1.2; color: var(--muted-foreground); }
+.track-timeline-reference strong { display: block; margin-top: 10px; color: var(--foreground); font-weight: 400; font-variant-numeric: tabular-nums; }
+.track-timeline-body { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); padding: 30px 32px 31px; min-height: 349px; }
+.track-timeline-steps { position: relative; list-style: none; margin: 0; padding: 0 18px 0 0; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { content: ""; position: absolute; left: 27px; top: 20px; bottom: 29px; width: 5px; background: var(--track-progress); }
+.track-timeline-step { position: relative; display: grid; grid-template-columns: 62px minmax(0, 1fr); align-items: center; min-height: 42px; font-size: 25px; line-height: 1.15; color: var(--foreground); }
+.track-timeline-step:last-child { z-index: 1; }
+.track-timeline-marker { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--track-progress); color: var(--primary-foreground); }
+.track-timeline-check { font: 29px/1 Arial, sans-serif; transform: translateY(-1px); }
+.track-timeline-step-current .track-timeline-marker { width: 58px; height: 58px; margin-left: -9px; background: var(--background); border: 3px solid var(--track-progress); }
+.track-timeline-dot { width: 29px; height: 29px; border-radius: 50%; background: var(--track-progress); }
+.track-timeline-step-current .track-timeline-label { font-weight: 700; }
+.track-timeline-message { position: relative; min-width: 0; border-left: 4px solid var(--track-progress-faint); padding: 0 0 0 18px; }
+.track-timeline-message::after { content: ""; position: absolute; left: -14px; bottom: 21px; width: 17px; height: 17px; border-left: 3px solid var(--track-progress-faint); border-bottom: 3px solid var(--track-progress-faint); background: var(--background); transform: rotate(45deg); }
+.track-timeline-message h2 { margin: 0 0 24px; font-size: 28px; line-height: 1.2; font-weight: 400; }
+.track-timeline-message p { margin: 0; font-size: 22px; line-height: 1.55; overflow-wrap: anywhere; }
+.track-timeline-actions { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px dashed var(--track-progress-faint); margin: 0 32px; padding: 22px 0 29px; gap: 12px; }
+.track-timeline-action, .track-timeline-actions .track-timeline-action { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 9px; min-width: 0; height: auto; padding: 0; background: transparent; color: var(--track-blue); font: 22px/1.3 "Roboto WU", Arial, sans-serif; text-align: center; text-decoration: none; white-space: normal; border-radius: 0; }
+.track-timeline-actions .track-timeline-action:hover { background: transparent; color: var(--track-blue); text-decoration: underline; }
+.track-timeline-action svg { width: 40px; height: 40px; stroke-width: 1.3; }
+@media (max-width: 620px) {
+  .track-timeline-result { margin: 0 -32px; }
+  .track-timeline-reference { font-size: 19px; padding: 18px 16px 20px; }
+  .track-timeline-body { display: block; padding: 25px 26px 27px; min-height: 0; }
+  .track-timeline-steps { min-height: 190px; gap: 33px; padding: 0 0 25px; }
+  .track-timeline-step { grid-template-columns: 60px 1fr; font-size: 22px; }
+  .track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { bottom: 54px; }
+  .track-timeline-message { margin: 5px 0 0 28px; padding-left: 17px; }
+  .track-timeline-message h2 { font-size: 25px; margin-bottom: 15px; }
+  .track-timeline-message p { font-size: 19px; line-height: 1.45; }
+  .track-timeline-actions { margin: 0 26px; gap: 8px; padding: 23px 0 30px; }
+  .track-timeline-action, .track-timeline-actions .track-timeline-action { font-size: 16px; min-height: 78px; }
+  .track-timeline-action svg { width: 32px; height: 32px; }
+}
