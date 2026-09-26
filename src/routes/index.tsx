@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUp, BadgeCheck, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, CircleHelp, CreditCard, Gift, Globe2, IdCard, Landmark, Lightbulb, LockKeyhole, MapPin, Menu, MessageCircleQuestion, Radar, ReceiptText, RefreshCcw, Search, Send, Settings, ShieldCheck, Smartphone, Star, Store, Tag, UsersRound, Wallet, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,14 +41,14 @@ const footerGroups = [
   { title: "Legal", links: ["Terms and Conditions", "Intellectual Property", "Online Privacy Statement", "File a Complaint", "Vigo Money by Western Union Terms and Conditions", "Western Union Prepaid Visa® Card Terms and Conditions", "Rewards Terms and Conditions"] },
 ];
 const footerHrefs: Record<string, string> = {
-  "Send money": sendUrl, "Send money online": `${official}/send-money.html`, "Send money in person": `${official}/locations.html`, "Send money by phone": `${official}/mobile-app.html`, "Send money to an inmate": `${official}/send-money/app/sendinmatestart`, "Track a transfer": "https://www.westernunion.com/web/global-service/track-transfer", "Receive money": `${official}/receive-money.html`, "Find locations": "https://www.westernunion.com/global-services/find-locations?WUCountry=us&WULanguage=en", "Download app": `${official}/mobile-app.html`, "Currency converter": `${official}/currency-converter.html`, "Money Orders": `${official}/money-order.html`, "Swift/BIC": `${official}/swift-bic-codes.html`,
+  "Send money": sendUrl, "Send money online": `${official}/send-money.html`, "Send money in person": `${official}/locations.html`, "Send money by phone": `${official}/mobile-app.html`, "Send money to an inmate": `${official}/send-money/app/sendinmatestart`, "Track a transfer": "/track-transfer", "Receive money": `${official}/receive-money.html`, "Find locations": "https://www.westernunion.com/global-services/find-locations?WUCountry=us&WULanguage=en", "Download app": `${official}/mobile-app.html`, "Currency converter": `${official}/currency-converter.html`, "Money Orders": `${official}/money-order.html`, "Swift/BIC": `${official}/swift-bic-codes.html`,
   "About us": "https://corporate.westernunion.com/", "Help": `${official}/frequently-asked-questions.html`, "Blog": "https://www.westernunion.com/blog/", "Contact Us": `${official}/contact-us.html`, "Careers": "https://careers.westernunion.com", "Investor Relations": "https://ir.westernunion.com/investor-relations/default.aspx", "Western Union Foundation": "https://www.westernunionfoundation.org/",
   "Log in / Register": loginUrl, "Become an agent": "https://agentportal.westernunion.com/ap/agentregister.do?pid=usFtBecomeAgent", "Become a Bill Pay Partner": "https://www.westernunion.com/corporate/biller-support.html", "Fraud awareness": "https://www.westernunion.com/global/en/fraud-awareness/fraud-home.html", "Customer care": `${official}/frequently-asked-questions.html`, "Western Union Rewards": `${official}/rewards/home.html`, "Refer a Friend": `${official}/refer-a-friend.html`, "Western Union Prepaid": "https://www.westernunion.com/prepaid/", "Transfer History Request": "https://www.westernunion.com/global/en/carf-form.html",
   "Terms and Conditions": `${official}/legal/terms-conditions.html`, "Intellectual Property": `${official}/legal/intellectual-property.html`, "Online Privacy Statement": "https://www.westernunion.com/global/en/privacy-statement.html", "File a Complaint": `${official}/legal/file-complaint.html`, "Vigo Money by Western Union Terms and Conditions": `${official}/wallet/terms-and-conditions.html`, "Western Union Prepaid Visa® Card Terms and Conditions": `${official}/prepaid/us-gpr-terms-and-conditions.html`, "Rewards Terms and Conditions": `${official}/rewards/rewards-terms-conditions.html`,
 };
 const menuItems: { label: string; href: string; icon: React.ComponentType<{ size?: number; strokeWidth?: number }> }[] = [
   { label: "Send money", href: sendUrl, icon: Send },
-  { label: "Track a transfer", href: "https://www.westernunion.com/web/global-service/track-transfer", icon: Radar },
+  { label: "Track a transfer", href: "/track-transfer", icon: Radar },
   { label: "Prepaid Card", href: "https://www.westernunion.com/prepaid/", icon: CreditCard },
   { label: "Pay bills", href: `${official}/bill-pay.html`, icon: ReceiptText },
   { label: "Find locations", href: "https://www.westernunion.com/global-services/find-locations?WUCountry=us&WULanguage=en", icon: MapPin },
@@ -119,7 +119,7 @@ function HomePage() {
       <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="wu-logo-desktop w-[220px] h-auto" /><img src={wMark.url} alt="Western Union" className="wu-logo-mobile" /></a>
       <nav className="wu-nav-links" aria-label="Primary navigation">
         <a className="wu-desktop" href={sendUrl}>Send money</a>
-        <a className="wu-desktop" href={`${official}/track-transfer.html`}>Track a transfer</a>
+        <Link className="wu-desktop" to="/track-transfer">Track a transfer</Link>
         <a className="wu-language flex items-center gap-2" href={`${official}/home.html`} aria-label="Language: English"><Globe2 size={26} /> EN</a>
         <Button variant="ghost" size="icon" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={26} /> : <Menu size={26} />}</Button>
         <Action href={loginUrl} className="wu-desktop">Log in</Action>

@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep the single-page Western Union reference implementation at `/` with semantic styling in `src/styles.css` and CDN asset pointers in `src/assets`; this preserves the supplied visual reference without embedding browser screenshots.
+- Keep the Western Union reference landing page at `/` and its distinct transfer-tracking page at `/track-transfer`, with semantic styling in `src/styles.css` and existing asset pointers; this preserves the supplied visual references without embedding browser screenshots.
