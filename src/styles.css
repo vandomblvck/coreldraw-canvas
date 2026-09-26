@@ -743,9 +743,9 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
 .track-timeline-reference { background: var(--track-surface); text-align: center; padding: 22px 16px 26px; font-size: 23px; line-height: 1.2; color: var(--muted-foreground); }
 .track-timeline-reference strong { display: block; margin-top: 10px; color: var(--foreground); font-weight: 400; font-variant-numeric: tabular-nums; }
 .track-timeline-body { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); padding: 30px 32px 31px; min-height: 349px; }
-.track-timeline-steps { list-style: none; margin: 0; padding: 0 18px 0 0; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.track-timeline-steps { position: relative; list-style: none; margin: 0; padding: 0 18px 0 0; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { content: ""; position: absolute; left: 27px; top: 20px; bottom: 29px; width: 5px; background: var(--track-progress); }
 .track-timeline-step { position: relative; display: grid; grid-template-columns: 62px minmax(0, 1fr); align-items: center; min-height: 42px; font-size: 25px; line-height: 1.15; color: var(--foreground); }
-.track-timeline-step:not(:last-child)::after { content: ""; position: absolute; z-index: 0; left: 27px; top: 42px; bottom: -100px; width: 5px; background: var(--track-progress); }
 .track-timeline-step:last-child { z-index: 1; }
 .track-timeline-marker { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--track-progress); color: var(--primary-foreground); }
 .track-timeline-check { font: 29px/1 Arial, sans-serif; transform: translateY(-1px); }
@@ -766,7 +766,7 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
   .track-timeline-body { display: block; padding: 25px 26px 27px; min-height: 0; }
   .track-timeline-steps { min-height: 190px; gap: 33px; padding: 0 0 25px; }
   .track-timeline-step { grid-template-columns: 60px 1fr; font-size: 22px; }
-  .track-timeline-step:not(:last-child)::after { top: 42px; bottom: -36px; }
+  .track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { bottom: 54px; }
   .track-timeline-message { margin: 5px 0 0 28px; padding-left: 17px; }
   .track-timeline-message h2 { font-size: 25px; margin-bottom: 15px; }
   .track-timeline-message p { font-size: 19px; line-height: 1.45; }
