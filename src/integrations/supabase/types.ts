@@ -14,6 +14,50 @@ export type Database = {
   }
   public: {
     Tables: {
+      transfer_events: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          description: string
+          id: string
+          location: string | null
+          status: string
+          title: string
+          transfer_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          location?: string | null
+          status: string
+          title: string
+          transfer_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          location?: string | null
+          status?: string
+          title?: string
+          transfer_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transfer_events_transfer_id_fkey"
+            columns: ["transfer_id"]
+            isOneToOne: false
+            referencedRelation: "transfers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       transfers: {
         Row: {
           created_at: string
