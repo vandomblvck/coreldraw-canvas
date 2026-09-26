@@ -631,13 +631,13 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
   .track-radio { font-size: 15px; gap: 16px; min-height: 22px; white-space: nowrap; }
   .track-radio input { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; }
   .track-alt-form > .track-field-row { display: flex; flex-direction: column; gap: 0; }
-  .track-alt-form > .track-field-row:nth-of-type(2) { flex-direction: row; }
+  .track-alt-form > .track-field-row:has(.track-country-code) { flex-direction: row; }
   .track-country-code { flex: 0 0 47%; min-width: 0; }
-  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap { min-width: 0; }
-  .track-alt-form > .track-field-row:nth-of-type(2) .track-select-wrap select,
-  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap input { height: 50px; border-radius: 0; }
-  .track-alt-form > .track-field-row:nth-of-type(2) .track-select-wrap select { border-radius: 3px 0 0 3px; padding-top: 12px; padding-left: 12px; }
-  .track-alt-form > .track-field-row:nth-of-type(2) .track-input-wrap input { border-left: 0; border-radius: 0 3px 3px 0; padding-inline: 12px; }
+  .track-alt-form > .track-field-row:has(.track-country-code) .track-input-wrap { min-width: 0; }
+  .track-alt-form > .track-field-row:has(.track-country-code) .track-select-wrap select,
+  .track-alt-form > .track-field-row:has(.track-country-code) .track-input-wrap input { height: 50px; border-radius: 0; }
+  .track-alt-form > .track-field-row:has(.track-country-code) .track-select-wrap select { border-radius: 3px 0 0 3px; padding-top: 12px; padding-left: 12px; }
+  .track-alt-form > .track-field-row:has(.track-country-code) .track-input-wrap input { border-left: 0; border-radius: 0 3px 3px 0; padding-inline: 12px; }
   .track-alt-form .track-select-label { top: 8px; left: 10px; padding: 0; font-size: 12px; color: var(--muted-foreground); background: transparent; }
   .track-receiver-country { margin-top: 74px; height: 50px; padding: 0 12px 0 55px; }
   .track-receiver-country .track-select-label { top: 8px; left: 55px; }
@@ -653,6 +653,7 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
   .track-date-hint { margin: 74px 0 20px; font-size: 14px; line-height: 1.35; gap: 7px; white-space: nowrap; }
   .track-date-icon { width: 13px; height: 13px; flex: 0 0 13px; font-size: 0; }
   .track-date-icon::after { content: ""; width: 7px; height: 2px; background: var(--background); }
+  .track-names-gap { margin-top: 16px; }
   .track-date-fields { display: flex; flex-direction: row; gap: 15px; min-width: 0; }
   .track-date-fields legend { font-size: 15px; margin-bottom: 12px; }
   .track-date-fields .track-select-wrap { flex: 1 1 0; min-width: 0; }
