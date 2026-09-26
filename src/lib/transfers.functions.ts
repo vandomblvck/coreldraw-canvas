@@ -93,7 +93,7 @@ export const searchAdminTransfers = createServerFn({ method: "GET" })
     await requireAdmin(context.supabase, context.userId);
     let query = context.supabase.from("transfers").select("*", { count: "exact" });
     if (data.status !== "All") query = data.status === "Delivered" ? query.in("status", ["Delivered", "Completed"]) : query.eq("status", data.status);
-    const search = data.search.trim().replace(/[%_(),.]/g, "");
+    const search = data.search.trim().replace(/[^\p{L}\p{N} -]/gu, "");
     if (search) query = query.or(`mtcn.ilike.%${search}%,sender_first_name.ilike.%${search}%,sender_last_name.ilike.%${search}%,receiver_first_name.ilike.%${search}%,receiver_last_name.ilike.%${search}%`);
     const { data: rows, count, error } = await query.order("created_at", { ascending: false }).range(data.page * 20, data.page * 20 + 19);
     if (error) throw new Error("Unable to load transfers.");
