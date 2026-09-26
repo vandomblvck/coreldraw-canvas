@@ -2,7 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 
-@font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/b3e508c1-cffe-4b9e-bff6-ab5d9d50d8bc/right-black.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/b3e508c1-cffe-4b9e-bff6-ab5d9d50d8bc/right-black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
 @font-face { font-family: "Right Grotesk"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/d530c8f9-0c3f-43ff-934c-736eb4d775bc/right-medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Roboto WU"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/97a3844f-0e38-4316-abb0-9b2fbcbda5ab/roboto-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Roboto WU"; src: url("https://id-preview--0a8a0509-de14-4b47-ad19-428204d5ba03.lovable.app/__l5e/assets-v1/7bf094bd-dc50-4f8f-9977-20f8667037f1/roboto-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }

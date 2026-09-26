@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUp, BadgeCheck, ChevronDown, CircleHelp, Gift, Globe2, Lightbulb, LockKeyhole, Menu, MonitorSmartphone, RefreshCcw, ShieldCheck, Smartphone, Store, Tag, Wallet, X } from "lucide-react";
+import { ArrowUp, BadgeCheck, ChevronDown, Gift, Globe2, Lightbulb, LockKeyhole, Menu, RefreshCcw, ShieldCheck, Smartphone, Store, Tag, Wallet, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/Primary_Black.svg.asset.json";
 import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
