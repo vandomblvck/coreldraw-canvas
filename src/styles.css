@@ -115,6 +115,7 @@
 .wu-deal:first-child .wu-deal-label { background: var(--primary); color: var(--brand); }
 .wu-deal-logo { height: 120px; display: grid; place-items: center; font-size: 26px; font-weight: 700; }
 .wu-deal-logo-desktop img { width: 94px; height: 94px; }
+.wu-deal-logo-desktop img.wu-deal-logo-nordvpn { width: 200px; height: auto; }
 .wu-deal-body { padding: 14px 17px; border-top: 1px dashed var(--border); }
 .wu-deal-body strong { display: block; margin: 10px 0 5px; }
 .wu-deal-body p { margin: 0; font-size: 15px; }
