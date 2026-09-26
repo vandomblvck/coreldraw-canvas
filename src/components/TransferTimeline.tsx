@@ -45,7 +45,7 @@ export function TransferTimeline({
   const description = statusDetail.trim() || ordered.at(-1)?.description.trim() || current.description;
 
   return <section className="track-timeline-result" aria-label="Transfer status" role="status">
-    <div className="track-timeline-reference">Tracking # (MTCN): <strong>{mtcn}</strong></div>
+    <div className="track-timeline-reference">Tracking # (MTCN): <strong>{mtcn.length === 10 ? `${mtcn.slice(0, 3)}-${mtcn.slice(3, 6)}-${mtcn.slice(6)}` : mtcn}</strong></div>
     <div className="track-timeline-body">
       <ol className="track-timeline-steps" aria-label="Transfer history">
         {steps.map((step) => <li key={step.key} className={`track-timeline-step track-timeline-step-${step.state}`} aria-current={step.state === "current" ? "step" : undefined}>
