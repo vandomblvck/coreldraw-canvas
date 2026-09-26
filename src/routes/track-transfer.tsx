@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { trackTransfer } from "@/lib/transfers.functions";
+import { TransferTimeline } from "@/components/TransferTimeline";
 import { ArrowDownToLine, ArrowUpFromLine, Building2, CreditCard, Crosshair, HandCoins, Landmark, MapPin, Menu, MessageCircleQuestion, ReceiptText, Search, Send, Settings, Smartphone, Star, UsersRound, X } from "lucide-react";
 import { countries } from "@/lib/countries";
 import { Button } from "@/components/ui/button";
@@ -115,7 +116,7 @@ function TrackTransfer() {
           <Button variant="ghost" role="tab" aria-selected={role === "sender"} className={role === "sender" ? "track-tab active" : "track-tab"} onClick={() => {setRole("sender");setSubmitted(false)}}><ArrowUpFromLine aria-hidden="true"/>I'm the sender</Button>
           <Button variant="ghost" role="tab" aria-selected={role === "receiver"} className={role === "receiver" ? "track-tab active" : "track-tab"} onClick={() => {setRole("receiver");setSubmitted(false)}}><ArrowDownToLine aria-hidden="true"/>I'm the receiver</Button>
         </div>
-        {mode === "mtcn" ? (
+        {submitted && result?.found ? <TransferTimeline mtcn={result.transfer.mtcn} status={result.transfer.status} statusDetail={result.transfer.status_detail} events={result.transfer.events} onReset={() => {setSubmitted(false);setResult(null);setMtcn("");setFirstName("");setMode("mtcn");inputRef.current?.focus()}} /> : mode === "mtcn" ? (
         <form className="track-form" onSubmit={async event => {event.preventDefault(); if(!valid || searching) return; setSearching(true); setResult(null); try { setResult(await lookupTransfer({data: {mtcn, firstName: firstName.trim()}})); } catch { setResult({found: false}); } setSearching(false); setSubmitted(true); }}>
           <label htmlFor="track-mtcn" className="track-instruction">Please enter your 10-digit tracking number (MTCN).</label>
           <div className="track-number" onClick={() => inputRef.current?.focus()}>
@@ -124,15 +125,6 @@ function TrackTransfer() {
           </div>
           <label className="track-name"><input aria-label="Sender's First Name" placeholder="Sender's First Name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false);setResult(null)}}/></label>
           <Button type="submit" className="track-continue" disabled={!valid || searching}>{searching ? "Searching…" : "Continue"}</Button>
-          {submitted && result?.found && <div className="track-result" role="status">
-            <p className="track-result-status">{result.transfer.status}</p>
-            {result.transfer.status_detail && <p className="track-result-detail">{result.transfer.status_detail}</p>}
-            <div className="track-result-row"><span>MTCN</span><span>{result.transfer.mtcn}</span></div>
-            <div className="track-result-row"><span>Receiver</span><span>{result.transfer.receiver_first_name} {result.transfer.receiver_last_name}</span></div>
-            <div className="track-result-row"><span>Destination</span><span>{result.transfer.receiver_country}</span></div>
-            <div className="track-result-row"><span>Amount</span><span>{result.transfer.send_amount} {result.transfer.send_currency}</span></div>
-            <div className="track-result-row"><span>Sent</span><span>{new Date(result.transfer.created_at).toLocaleDateString()}</span></div>
-          </div>}
           {submitted && result && !result.found && <p className="track-status" role="status">We couldn't find a transfer matching that tracking number and sender's first name. Please check the details and try again.</p>}
           <button type="button" className="track-help-link" onClick={() => {setMode("details");setSubmitted(false)}}>Don't know the MTCN?</button>
         </form>
