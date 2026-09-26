@@ -24,6 +24,7 @@ import indiaFlag from "@/assets/in-footer.svg.asset.json";
 import pakistanFlag from "@/assets/pk-footer.svg.asset.json";
 import chinaFlag from "@/assets/cn-footer.svg.asset.json";
 import { currencies } from "@/lib/currencies";
+import { loadSmartsupp, hideSmartsupp } from "@/lib/smartsupp";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
 import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
 import socialInstagram from "@/assets/social/instagram.svg";
@@ -98,7 +99,11 @@ function HomePage() {
     const onScroll = () => setCtaVisible(window.scrollY > 300);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    loadSmartsupp();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      hideSmartsupp();
+    };
   }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
   const rates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
