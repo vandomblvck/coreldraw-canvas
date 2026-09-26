@@ -123,7 +123,7 @@ function TrackTransfer() {
               <label className="track-input-wrap grow"><input aria-label="Sender's first name" placeholder="Sender's first name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false)}}/></label>
               <label className="track-input-wrap grow"><input aria-label="Sender's last name" placeholder="Sender's last name" autoComplete="family-name" value={senderLast} onChange={event => {setSenderLast(event.target.value);setSubmitted(false)}}/></label>
             </div>
-            <div className="track-field-row">
+            <div className="track-field-row track-names-gap">
               <label className="track-input-wrap grow"><input aria-label="Receiver's first name" placeholder="Receiver's first name" value={receiverFirst} onChange={event => {setReceiverFirst(event.target.value);setSubmitted(false)}}/></label>
               <label className="track-input-wrap grow"><input aria-label="Receiver's last name" placeholder="Receiver's last name" value={receiverLast} onChange={event => {setReceiverLast(event.target.value);setSubmitted(false)}}/></label>
             </div>
