@@ -581,3 +581,37 @@
   .track-footer-bottom { gap: 11px; }
   .track-social a img { width: 25px; height: 25px; }
 }
+
+/* Track transfer — alternate "no MTCN" lookup form */
+.track-help-link { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+.track-alt-form { gap: 22px; }
+.track-radio-row { display: flex; gap: 48px; flex-wrap: wrap; }
+.track-radio { display: flex; align-items: center; gap: 12px; font-size: 17px; cursor: pointer; }
+.track-radio input { width: 20px; height: 20px; accent-color: var(--track-blue); cursor: pointer; }
+.track-field-row { display: flex; gap: 24px; }
+.track-field-row .grow { flex: 1; }
+.track-select-wrap, .track-input-wrap { position: relative; display: flex; flex-direction: column; }
+.track-select-wrap select, .track-input-wrap input {
+  width: 100%; height: 56px; padding: 0 16px; font-size: 16px; color: var(--foreground);
+  background: var(--background); border: 1px solid var(--track-rule); border-radius: 3px; appearance: none;
+}
+.track-select-wrap select { padding-right: 40px; background-image: linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%), linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%); background-position: calc(100% - 21px) 50%, calc(100% - 14px) 50%; background-size: 7px 7px; background-repeat: no-repeat; cursor: pointer; }
+.track-select-wrap select:focus, .track-input-wrap input:focus { outline: 2px solid var(--track-blue); outline-offset: 1px; }
+.track-select-label { position: absolute; top: -9px; left: 12px; padding: 0 4px; font-size: 13px; color: var(--track-blue); background: var(--background); }
+.track-country-code { flex: 0 0 220px; }
+.track-receiver-country { border: 1px solid var(--track-rule); border-radius: 3px; height: 64px; justify-content: center; padding: 0 16px; }
+.track-country-value { display: flex; align-items: center; gap: 12px; font-size: 17px; }
+.track-country-value img { border-radius: 2px; }
+.track-amount { flex-direction: row; align-items: center; }
+.track-amount input { padding-right: 56px; }
+.track-amount-currency { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--muted-foreground); }
+.track-date-hint { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--track-blue); margin: 4px 0 0; }
+.track-date-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--track-blue); color: var(--background); font-size: 14px; font-weight: 700; }
+.track-date-fields { display: flex; gap: 24px; border: 0; padding: 0; margin: 0; }
+.track-date-fields legend { font-size: 16px; margin-bottom: 10px; }
+.track-date-fields .track-select-wrap { flex: 1; }
+@media (max-width: 620px) {
+  .track-field-row, .track-date-fields { flex-direction: column; gap: 16px; }
+  .track-country-code { flex: 1; }
+  .track-radio-row { gap: 20px; }
+}
