@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { trackTransfer } from "@/lib/transfers.functions";
 import { ArrowDownToLine, ArrowUpFromLine, Building2, CreditCard, Crosshair, HandCoins, Landmark, MapPin, Menu, MessageCircleQuestion, ReceiptText, Search, Send, Settings, Smartphone, Star, UsersRound, X } from "lucide-react";
 import { countries } from "@/lib/countries";
 import { Button } from "@/components/ui/button";
@@ -52,6 +54,9 @@ function TrackTransfer() {
   const [firstName, setFirstName] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [result, setResult] = useState<Awaited<ReturnType<typeof trackTransfer>> | null>(null);
+  const lookupTransfer = useServerFn(trackTransfer);
   const [mode, setMode] = useState<"mtcn" | "details">("mtcn");
   const [lookupBy, setLookupBy] = useState<"phone" | "names">("phone");
   const [phone, setPhone] = useState("");
@@ -111,15 +116,24 @@ function TrackTransfer() {
           <Button variant="ghost" role="tab" aria-selected={role === "receiver"} className={role === "receiver" ? "track-tab active" : "track-tab"} onClick={() => {setRole("receiver");setSubmitted(false)}}><ArrowDownToLine aria-hidden="true"/>I'm the receiver</Button>
         </div>
         {mode === "mtcn" ? (
-        <form className="track-form" onSubmit={event => {event.preventDefault(); if(valid) setSubmitted(true)}}>
+        <form className="track-form" onSubmit={async event => {event.preventDefault(); if(!valid || searching) return; setSearching(true); setResult(null); try { setResult(await lookupTransfer({data: {mtcn, firstName: firstName.trim()}})); } catch { setResult({found: false}); } setSearching(false); setSubmitted(true); }}>
           <label htmlFor="track-mtcn" className="track-instruction">Please enter your 10-digit tracking number (MTCN).</label>
           <div className="track-number" onClick={() => inputRef.current?.focus()}>
             {Array.from({length: 10}, (_, index) => <span key={index} className={`track-digit ${index === 3 || index === 6 ? "track-digit-gap" : ""}`}>{mtcn[index] ?? ""}</span>)}
-            <input ref={inputRef} id="track-mtcn" aria-label="10-digit tracking number (MTCN)" inputMode="numeric" autoComplete="off" pattern="[0-9]{10}" maxLength={10} value={mtcn} onChange={event => {setMtcn(event.target.value.replace(/\D/g, "").slice(0,10));setSubmitted(false)}}/>
+            <input ref={inputRef} id="track-mtcn" aria-label="10-digit tracking number (MTCN)" inputMode="numeric" autoComplete="off" pattern="[0-9]{10}" maxLength={10} value={mtcn} onChange={event => {setMtcn(event.target.value.replace(/\D/g, "").slice(0,10));setSubmitted(false);setResult(null)}}/>
           </div>
-          <label className="track-name"><input aria-label="Sender's First Name" placeholder="Sender's First Name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false)}}/></label>
-          <Button type="submit" className="track-continue" disabled={!valid}>Continue</Button>
-          {submitted && <p className="track-status" role="status">For your security, check your transfer status directly on <a href={`${official}/web/global-service/track-transfer`}>Western Union's official tracking page</a>.</p>}
+          <label className="track-name"><input aria-label="Sender's First Name" placeholder="Sender's First Name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false);setResult(null)}}/></label>
+          <Button type="submit" className="track-continue" disabled={!valid || searching}>{searching ? "Searching…" : "Continue"}</Button>
+          {submitted && result?.found && <div className="track-result" role="status">
+            <p className="track-result-status">{result.transfer.status}</p>
+            {result.transfer.status_detail && <p className="track-result-detail">{result.transfer.status_detail}</p>}
+            <div className="track-result-row"><span>MTCN</span><span>{result.transfer.mtcn}</span></div>
+            <div className="track-result-row"><span>Receiver</span><span>{result.transfer.receiver_first_name} {result.transfer.receiver_last_name}</span></div>
+            <div className="track-result-row"><span>Destination</span><span>{result.transfer.receiver_country}</span></div>
+            <div className="track-result-row"><span>Amount</span><span>{result.transfer.send_amount} {result.transfer.send_currency}</span></div>
+            <div className="track-result-row"><span>Sent</span><span>{new Date(result.transfer.created_at).toLocaleDateString()}</span></div>
+          </div>}
+          {submitted && result && !result.found && <p className="track-status" role="status">We couldn't find a transfer matching that tracking number and sender's first name. Please check the details and try again.</p>}
           <button type="button" className="track-help-link" onClick={() => {setMode("details");setSubmitted(false)}}>Don't know the MTCN?</button>
         </form>
         ) : (
