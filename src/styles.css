@@ -349,8 +349,10 @@
   .wu-mobile-cta { display: block; position: fixed; z-index: 40; bottom: 0; left: 0; width: 100%; padding: 14px 16px max(14px, env(safe-area-inset-bottom)); background: var(--brand); }
   .wu-mobile-cta a { height: 48px; }
   .wu-menu-panel { right: 24px; width: min(314px, calc(100% - 48px)); max-height: calc(100vh - 96px); }
-  .wu-menu-auth { padding: 24px 30px 20px; }
-  .wu-menu-panel li a { padding: 14px 30px; }
+  .wu-menu-auth { padding: 22px 26px 18px; font-size: 19px; }
+  .wu-menu-panel li a { padding: 14px 26px; gap: 16px; font-size: 18px; }
+  .wu-menu-icon { width: 36px; height: 36px; }
+  .wu-menu-icon svg { width: 18px; height: 18px; }
   .wu-footer { padding-bottom: 77px; }
 }
 .wu-mobile-break { display: none; }
