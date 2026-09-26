@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LayoutDashboard, List, Plus, History, Settings, LogOut, Menu, X, Copy, ArrowRight, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { adminOverview, createTransfer, getAdminTransfer, searchAdminTransfers, updateTransfer } from "@/lib/transfers.functions";
 import { countries } from "@/lib/countries";
+import { currencies } from "@/lib/currencies";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Transfer = Tables<"transfers">;
@@ -17,7 +18,9 @@ const navigation = [
   { name: "Create Transfer", icon: Plus }, { name: "Transfer History", icon: History },
   { name: "Settings", icon: Settings },
 ] as const;
-const initialForm = { sender_first_name: "", sender_last_name: "", sender_phone: "", receiver_first_name: "", receiver_last_name: "", receiver_country: "United States", send_amount: "", send_currency: "USD", receive_amount: "", receive_currency: "", status: "Sent", status_detail: "", delivery_method: "Bank transfer" };
+const initialForm = { sender_first_name: "", sender_last_name: "", sender_phone: "", receiver_first_name: "", receiver_last_name: "", receiver_country: "United States", send_amount: "", send_currency: "USD", receive_amount: "", receive_currency: "USD", status: "Sent", status_detail: "", delivery_method: "Bank transfer" };
+const currencyCodes = (country: string) => Array.from(new Set(currencies.filter(c => c.name === country).map(c => c.code)));
+const defaultCurrency = (country: string) => { const codes = currencyCodes(country); return codes.find(c => c !== "USD") ?? codes[0] ?? ""; };
 const label = (value: string) => value === "Completed" ? "Delivered" : value;
 const date = (value: string) => new Date(value).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 const money = (value: Transfer) => `${Number(value.send_amount).toLocaleString()} ${value.send_currency}`;
