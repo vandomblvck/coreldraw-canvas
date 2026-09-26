@@ -652,3 +652,8 @@
   .track-alt-form .track-help-link { margin-top: 22px; }
   .track-footer-inner { padding-top: 48px; }
 }
+@media (max-width: 370px) {
+  .track-heading-row h1 { font-size: 20px; }
+  .track-heading-row span { font-size: 10px; }
+  .track-date-hint { white-space: normal; }
+}
