@@ -653,6 +653,7 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
   .track-date-hint { margin: 74px 0 20px; font-size: 14px; line-height: 1.35; gap: 7px; white-space: nowrap; }
   .track-date-icon { width: 13px; height: 13px; flex: 0 0 13px; font-size: 0; }
   .track-date-icon::after { content: ""; width: 7px; height: 2px; background: var(--background); }
+  .track-names-gap { margin-top: 16px; }
   .track-date-fields { display: flex; flex-direction: row; gap: 15px; min-width: 0; }
   .track-date-fields legend { font-size: 15px; margin-bottom: 12px; }
   .track-date-fields .track-select-wrap { flex: 1 1 0; min-width: 0; }
