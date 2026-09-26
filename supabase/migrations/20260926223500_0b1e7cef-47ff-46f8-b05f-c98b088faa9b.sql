@@ -1,0 +1,1 @@
+REVOKE ALL ON FUNCTION public.record_transfer_event() FROM PUBLIC, anon, authenticated;
