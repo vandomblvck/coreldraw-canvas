@@ -95,19 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
       { rel: "manifest", href: "/manifest.webmanifest" },
     ],
-    scripts: [
-      {
-        tag: "script",
-        type: "text/javascript",
-        children: `window._smartsupp = window._smartsupp || {};_smartsupp.key = '4565c00085cae6172377c10a3b9b5e28e2ebbe01';window.smartsupp||(function(d){var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];s=d.getElementsByTagName('script')[0];c=d.createElement('script');c.type='text/javascript';c.charset='utf-8';c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);})(document);`,
-      },
-      {
-        tag: "script",
-        type: "text/javascript",
-        async: true,
-        src: "https://www.smartsuppchat.com/loader.js?",
-      },
-    ],
+    scripts: [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
