@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { createTransfer, deleteTransfer, listTransfers, updateTransfer } from "@/lib/transfers.functions";
 
-export const Route = createFileRoute("/admin/")({
+export const Route = createFileRoute("/ecoencypt/admin/")({
   head: () => ({ meta: [
     { title: "Admin Panel | Western Union" },
     { name: "description", content: "Manage money transfers and tracking statuses." },
@@ -58,17 +58,17 @@ function AdminPanel() {
     try {
       setTransfers((await fetchTransfers()) as Transfer[]);
     } catch {
-      navigate({ to: "/admin/login" });
+      navigate({ to: "/ecoencypt/admin/login" });
     }
   };
 
   useEffect(() => {
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session) { navigate({ to: "/admin/login" }); return; }
+      if (!session) { navigate({ to: "/ecoencypt/admin/login" }); return; }
       const { data: roleRow } = await supabase
         .from("user_roles").select("role").eq("role", "admin").maybeSingle();
-      if (!roleRow) { navigate({ to: "/admin/login" }); return; }
+      if (!roleRow) { navigate({ to: "/ecoencypt/admin/login" }); return; }
       setReady(true);
       await load();
     })();
@@ -121,7 +121,7 @@ function AdminPanel() {
 
   const signOut = async () => {
     await supabase.auth.signOut();
-    navigate({ to: "/admin/login" });
+    navigate({ to: "/ecoencypt/admin/login" });
   };
 
   if (!ready) return <main className="admin-page"><p className="admin-loading">Loading…</p></main>;

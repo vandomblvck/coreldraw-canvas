@@ -3,7 +3,7 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/admin/login")({
+export const Route = createFileRoute("/ecoencypt/admin/login")({
   head: () => ({ meta: [
     { title: "Admin Login | Western Union" },
     { name: "description", content: "Administrator sign in for transfer management." },
@@ -40,7 +40,7 @@ function AdminLogin() {
       setError("This account does not have admin access.");
       return;
     }
-    navigate({ to: "/admin" });
+    navigate({ to: "/ecoencypt/admin" });
   };
 
   return (
