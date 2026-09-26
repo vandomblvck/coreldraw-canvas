@@ -9,4 +9,5 @@
 - [ ] Wire Track a Transfer form to real lookup without changing design
 - [ ] Verify end-to-end (create transfer in admin, track it on /track-transfer)
 - [x] Match customer tracking timeline screenshot with event-backed history and test six statuses
-- [ ] Replace centered admin panel with responsive dashboard and verify five mobile widths (authenticated preview requires access to external Supabase account)
+- [x] Replace centered admin panel with responsive dashboard, real statistics, paginated list, creation, details, and history
+- [ ] Verify authenticated dashboard at 320, 375, 390, 414, and 430px (external Supabase session unavailable in preview)
