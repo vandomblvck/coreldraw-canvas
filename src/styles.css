@@ -576,3 +576,8 @@
   .track-social > div { gap: 24px; }
 }
 @media (max-width: 370px) { .track-digit { width: 19px; } .track-number { gap: 7px; } .track-digit-gap { margin-left: 6px; } .track-number::before { left: 77px; } .track-number::after { left: 167px; } .track-heading-row h1 { font-size: 21px; } .track-heading-row span { font-size: 11px; } }
+@media (max-width: 780px) {
+  .track-footer-links { font-size: 11px; }
+  .track-footer-bottom { gap: 11px; }
+  .track-social a img { width: 25px; height: 25px; }
+}
