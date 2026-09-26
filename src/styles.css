@@ -227,3 +227,142 @@
  .wu-footer-links a { font-size: 16px; white-space: normal; }
  .wu-footer-social > div { gap: 16px; }
 }
+
+/* Phone composition follows the supplied mobile reference; desktop remains unchanged. */
+.wu-trust-mobile, .wu-way-dots, .wu-tab-arrow, .wu-reward-mobile-photo, .wu-mobile-cta { display: none; }
+@media (max-width: 620px) {
+  .wu-shell { width: calc(100% - 32px); }
+  .wu-nav { height: 72px; }
+  .wu-nav-inner > a img { width: 68px; }
+  .wu-nav-links { gap: 15px; }
+  .wu-nav-links .wu-language { display: flex; font-size: 16px; gap: 8px; }
+  .wu-nav-links .wu-language svg { width: 24px; height: 24px; }
+  .wu-nav-links button { width: 32px; height: 38px; padding: 0; }
+  .wu-nav-links button svg { width: 28px; height: 28px; }
+  .wu-hero-inner { display: flex; flex-direction: column; gap: 0; padding-top: 55px; padding-bottom: 35px; }
+  .wu-hero-copy { display: contents; }
+  .wu-hero h1 { order: 1; font-size: 38px; line-height: 1.16; margin: 0; }
+  .wu-intro { order: 2; margin-top: 42px; margin-bottom: 39px; font-size: 20px; line-height: 1.29; gap: 14px; }
+  .wu-intro svg { width: 27px; height: 27px; margin-top: 3px; }
+  .wu-quote { order: 3; padding: 16px; border-radius: 8px; }
+  .wu-offer { min-height: 66px; padding: 13px 10px; gap: 11px; font-size: 16px; line-height: 1.25; }
+  .wu-offer svg { flex: 0 0 26px; }
+  .wu-field { height: 60px; margin-top: 8px; padding: 7px 12px; }
+  .wu-offer + .wu-field { margin-top: 16px; }
+  .wu-field label { font-size: 13px; }
+  .wu-field input, .wu-field strong { font-size: 16px; }
+  .wu-currency { font-size: 17px; gap: 6px; }
+  .wu-currency select { font-size: 17px; appearance: none; max-width: 56px; }
+  .wu-currency svg { width: 20px; }
+  .wu-summary { margin-top: 8px; padding: 9px 8px 8px; font-size: 13px; }
+  .wu-summary-row { min-height: 27px; white-space: nowrap; }
+  .wu-summary-row > span:last-child { font-size: 12px; }
+  .wu-summary-row strong { font-size: 13px; }
+  .wu-summary-row .ml-2 { margin-left: 4px; padding-inline: 6px; }
+  .wu-summary-total { margin-top: 15px; padding: 19px 7px 3px; font-size: 16px; }
+  .wu-summary-total > span:last-child, .wu-summary-total strong { font-size: 16px; }
+  .wu-quote > a { height: 48px; margin-top: 16px; }
+  .wu-disclaimer { font-size: 13px; line-height: 1.85; margin-top: 18px; }
+  .wu-trust { order: 4; flex-wrap: nowrap; margin-top: 24px; gap: 8px; font-size: 16px; }
+  .wu-trust > div:first-child .text-teal { font-size: 24px; }
+  .wu-trust > div:first-child .font-display { font-size: 17px; }
+  .wu-trust-stars span { width: 20px; height: 20px; }
+  .wu-trust-divider { height: 50px; }
+  .wu-trust-mobile { display: inline; }
+  .wu-trust-desktop { display: none; }
+  .wu-fraud { order: 5; margin-top: 26px; gap: 25px; font-size: 16px; line-height: 1.45; }
+  .wu-fraud svg { flex: 0 0 25px; }
+  .wu-benefits-inner { gap: 18px; padding-block: 58px 23px; }
+  .wu-benefits-item { font-size: 16px; gap: 17px; line-height: 1.32; align-items: center; }
+  .wu-benefits-item svg { width: 23px; height: 23px; }
+  .wu-ways { padding: 37px 0 27px; }
+  .wu-section-title { font-size: 33px; line-height: 1.08; }
+  .wu-tabs-wrap { display: flex; align-items: center; gap: 10px; margin-top: 30px; }
+  .wu-tab-arrow { display: grid; flex: 0 0 26px; width: 26px; height: 32px; padding: 0; border: 1.5px solid var(--primary); border-radius: 50%; }
+  .wu-tab-arrow svg { width: 21px; height: 21px; }
+  .wu-tabs { margin-top: 0; flex: 1; min-width: 0; }
+  .wu-tab { font-size: 16px; padding: 6px 2px 11px; white-space: nowrap; }
+  .wu-ways-grid { display: block; margin-top: 26px; }
+  .wu-way { display: none; min-height: 178px; padding: 22px 16px; }
+  .wu-way-current { display: flex; }
+  .wu-way h3 { font-size: 21px; margin-bottom: 16px; }
+  .wu-way p { font-size: 15px; max-width: 225px; line-height: 1.3; }
+  .wu-way > svg { width: 59px; height: 59px; right: 16px; top: 16px; }
+  .wu-way a { height: 34px; font-size: 13px; }
+  .wu-way-dots { display: flex; justify-content: center; gap: 3px; margin-top: 10px; }
+  .wu-way-dots button { width: 19px; height: 23px; padding: 0; }
+  .wu-way-dots span { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--border); }
+  .wu-way-dots [aria-current="true"] span { background: var(--primary); }
+  .wu-app { display: flex; flex-direction: column; }
+  .wu-app-photo { position: static; order: 0; width: 100%; height: 365px; object-fit: cover; object-position: center; border-bottom-left-radius: 190px; }
+  .wu-app > .wu-shell { order: 1; }
+  .wu-app-copy { width: calc(100% + 32px); margin-inline: -16px; padding: 45px 24px 37px; }
+  .wu-app-list { gap: 22px; margin: 28px 0 27px; }
+  .wu-app-list li { font-size: 17px; line-height: 1.28; gap: 18px; margin: 0; }
+  .wu-app-list li svg { flex: 0 0 30px; }
+  .wu-app-copy-content > a { width: 100%; }
+  .wu-badges { gap: 12px; margin-top: 24px; }
+  .wu-badges a { min-width: 0; flex: 1; }
+  .wu-badges b { white-space: nowrap; font-size: 17px; }
+  .wu-badges img { width: 100%; max-width: 120px; height: 42px; object-position: left; }
+  .wu-app-copy small { display: block; margin-top: 12px; font-size: 12px; font-weight: 700; }
+  .wu-more { gap: 20px; padding-block: 31px 24px; }
+  .wu-more > img { aspect-ratio: 1.5; }
+  .wu-more p { font-size: 16px; line-height: 1.4; margin-top: 19px; }
+  .wu-more p + p { margin-top: 25px; }
+  .wu-more a { width: 100%; margin-top: 25px; }
+  .wu-referral { width: calc(100% - 16px); gap: 8px; margin-bottom: 32px; padding: 36px 40px 29px; font-size: 16px; line-height: 1.4; }
+  .wu-referral h2 { font-size: 24px; margin: 0; }
+  .wu-referral a { width: 100%; margin-top: 5px; }
+  .wu-rewards { padding: 33px 0 39px; }
+  .wu-rewards-inner > img { display: none; }
+  .wu-rewards h2 { font-size: 34px; line-height: .94; }
+  .wu-rewards p { font-size: 16px; line-height: 1.4; margin: 14px 0 18px; }
+  .wu-reward-cards { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+  .wu-reward-card { height: 218px; padding: 17px 10px; font-size: 16px; line-height: 1.4; }
+  .wu-reward-card img { width: 44px; height: 44px; }
+  .wu-reward-card:first-child strong { font-size: 31px; }
+  .wu-reward-card small { font-size: 15px; }
+  .wu-reward-card:last-of-type { height: 215px; }
+  .wu-reward-mobile-photo { display: block; width: 100%; height: 215px; object-fit: cover; border-radius: 8px; }
+  .wu-reward-actions { flex-direction: column; gap: 8px; }
+  .wu-reward-actions a { width: 100%; }
+  .wu-deals { padding: 33px 0 55px; }
+  .wu-deals h2 { font-size: 38px; line-height: 1.1; }
+  .wu-deals-grid { margin-top: 30px; }
+  .wu-mobile-cta { display: block; position: fixed; z-index: 40; bottom: 0; left: 0; width: 100%; padding: 14px 16px max(14px, env(safe-area-inset-bottom)); background: var(--brand); }
+  .wu-mobile-cta a { height: 48px; }
+  .wu-footer { padding-bottom: 77px; }
+}
+.wu-mobile-break { display: none; }
+@media (max-width: 620px) {
+  .wu-mobile-break { display: initial; }
+  .wu-hero h1 { font-size: 36px; line-height: 1.2; }
+  .wu-tabs-wrap { gap: 12px; }
+  .wu-tab { font-size: 14px; }
+  .wu-way { min-height: 188px; }
+  .wu-way p { max-width: 225px; }
+  .wu-reward-card:last-of-type { background: var(--primary); color: var(--primary-foreground); }
+  .wu-reward-card:first-child strong { display: block; max-width: 130px; margin-inline: auto; }
+  .wu-reward-card:first-child small { display: block; margin-top: 5px; }
+}
+.wu-currency-wrap { position: relative; }
+.wu-currency-wrap .wu-field { margin-top: 16px; }
+.wu-currency-menu { position: absolute; top: 100%; left: 0; right: 0; z-index: 15; background: var(--card); border: 1px solid var(--border); border-radius: 0 0 8px 8px; padding: 8px 12px; box-shadow: 0 10px 20px color-mix(in oklab, var(--primary) 12%, transparent); }
+.wu-currency-search { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 7px; padding: 9px 12px; }
+.wu-currency-search input { width: 100%; min-width: 0; outline: none; }
+.wu-currency-options { max-height: 205px; overflow-y: auto; }
+.wu-currency-option { display: flex; justify-content: flex-start; gap: 12px; width: 100%; height: 48px; border-bottom: 1px solid var(--border); border-radius: 0; font-weight: 700; }
+@media (max-width: 620px) {
+  .wu-currency-wrap .wu-field { margin-top: 8px; }
+  .wu-field + .wu-currency-wrap .wu-field { margin-top: 8px; }
+  .wu-currency-wrap .wu-currency { width: auto; height: 43px; min-width: 102px; padding: 0 0 0 12px; border-left: 1px solid var(--border); border-radius: 0; font-size: 17px; }
+  .wu-currency-menu { top: calc(100% - 1px); }
+  .wu-currency-search { height: 51px; margin-bottom: 7px; }
+  .wu-currency-option { font-size: 14px; }
+}
+.wu-mobile-currency { display: none; }
+@media (max-width: 620px) {
+  .wu-desktop-currency { display: none; }
+  .wu-mobile-currency { display: flex; }
+}
