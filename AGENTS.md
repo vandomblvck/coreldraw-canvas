@@ -11,3 +11,4 @@
 
 - Keep the Western Union reference landing page at `/` and its distinct transfer-tracking page at `/track-transfer`, with semantic styling in `src/styles.css` and existing asset pointers; this preserves the supplied visual references without embedding browser screenshots.
 - Keep customer tracking history in `transfer_events` and present only verified, projected history through the public lookup; this prevents direct anonymous table reads and preserves status changes.
+- Keep administration in a full-width dashboard with a mobile drawer, and fetch its data through admin-authorized Supabase functions; customer tracking remains a separate interface.

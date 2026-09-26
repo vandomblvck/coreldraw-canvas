@@ -61,6 +61,7 @@ export type Database = {
       transfers: {
         Row: {
           created_at: string
+          delivery_method: string
           id: string
           mtcn: string
           receive_amount: number | null
@@ -79,6 +80,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          delivery_method?: string
           id?: string
           mtcn: string
           receive_amount?: number | null
@@ -97,6 +99,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          delivery_method?: string
           id?: string
           mtcn?: string
           receive_amount?: number | null
@@ -138,6 +141,48 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_admin_transfer: {
+        Args: {
+          p_delivery_method: string
+          p_receive_amount: number
+          p_receive_currency: string
+          p_receiver_country: string
+          p_receiver_first_name: string
+          p_receiver_last_name: string
+          p_send_amount: number
+          p_send_currency: string
+          p_sender_first_name: string
+          p_sender_last_name: string
+          p_sender_phone: string
+          p_status: string
+          p_status_detail: string
+        }
+        Returns: {
+          created_at: string
+          delivery_method: string
+          id: string
+          mtcn: string
+          receive_amount: number | null
+          receive_currency: string | null
+          receiver_country: string
+          receiver_first_name: string
+          receiver_last_name: string
+          send_amount: number
+          send_currency: string
+          sender_first_name: string
+          sender_last_name: string
+          sender_phone: string
+          status: string
+          status_detail: string
+          updated_at: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "transfers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
