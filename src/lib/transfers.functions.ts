@@ -123,7 +123,8 @@ export const createTransfer = createServerFn({ method: "POST" })
       p_sender_phone: data.sender_phone, p_receiver_first_name: data.receiver_first_name,
       p_receiver_last_name: data.receiver_last_name, p_receiver_country: data.receiver_country,
       p_send_amount: data.send_amount, p_send_currency: data.send_currency,
-      p_receive_amount: data.receive_amount, p_receive_currency: data.receive_currency,
+      // Database function accepts nullable optional values; generated RPC args do not reflect nullable parameters.
+      p_receive_amount: data.receive_amount as number, p_receive_currency: data.receive_currency as string,
       p_status: data.status, p_status_detail: data.status_detail, p_delivery_method: data.delivery_method,
     });
     if (error || !row) throw new Error("Unable to create transfer. Please try again.");
