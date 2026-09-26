@@ -1,3 +1,3 @@
-- [ ] Match mobile deals, pickup, reasons, review, FAQ, and legal notes to supplied screens.
-- [ ] Match mobile footer directory, destinations, social links, and bottom legal area.
-- [ ] Verify phone interaction and desktop layout remain intact.
+- [x] Match mobile deals, pickup, reasons, review, FAQ, and legal notes to supplied screens.
+- [x] Match mobile footer directory, destinations, social links, and bottom legal area.
+- [x] Verify phone interaction and desktop layout remain intact.
