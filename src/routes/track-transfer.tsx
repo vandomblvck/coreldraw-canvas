@@ -93,7 +93,7 @@ function TrackTransfer() {
           <li><a href={`${official}/us/en/bill-pay.html`}><ReceiptText aria-hidden="true"/>Pay bills</a></li>
           <li><a href={`${official}/us/en/find-locations.html`}><MapPin aria-hidden="true"/>Find locations</a></li>
           <li><a href={`${official}/us/en/frequently-asked-questions.html`}><MessageCircleQuestion aria-hidden="true"/>Help</a></li>
-          <li><a href={`${official}/us/en/rewards.html`}><Star aria-hidden="true"/><span>Western Union Rewards<em className="track-menu-new">New</em></span></a></li>
+          <li><a href={`${official}/us/en/rewards.html`}><Star aria-hidden="true"/><span>Western Union<br/>Rewards<em className="track-menu-new">New</em></span></a></li>
           <li><a href={`${official}/us/en/refer-a-friend.html`}><UsersRound aria-hidden="true"/>Refer a Friend</a></li>
           <li><a href={`${official}/us/en/pay-inmate.html`}><Landmark aria-hidden="true"/>Pay inmate</a></li>
           <li><a href={`${official}/us/en/mobile-top-up.html`}><Smartphone aria-hidden="true"/>Mobile top-up</a></li>
