@@ -565,6 +565,12 @@
   .track-nav, .track-auth, .track-menu-desktop { display: none; }
   .track-menu-trigger { position: absolute; right: 0; top: 0; height: 60px; width: auto; margin: 0; border: 0; padding: 0 0 0 8px; }
   .track-menu-mobile { display: block; border: 1px solid var(--brand); border-radius: 2px; padding: 5px 10px; color: var(--brand); font-size: 15px; font-weight: 400; }
+  .track-menu-panel { right: 0; left: 0; width: 100%; max-height: calc(100vh - 60px); }
+  .track-menu-auth { padding: 24px 30px 20px; }
+  .track-menu-auth a { font-size: 19px; }
+  .track-menu-panel ul { padding: 0 30px 16px; }
+  .track-menu-panel li a { padding: 14px 0; gap: 16px; font-size: 17px; }
+  .track-menu-panel li a svg { width: 22px; height: 22px; }
   .track-main { background: var(--background); padding: 40px 15px 0; }
   .track-form-wrap { padding: 0; max-width: none; }
   .track-heading-row { align-items: center; }
