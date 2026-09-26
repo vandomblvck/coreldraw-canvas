@@ -89,7 +89,7 @@ function TrackTransfer() {
     </section>
     <footer className="track-footer">
       <div className="track-footer-inner">
-        <nav className="track-footer-links" aria-label="Footer navigation">{links.map((label, index) => <span key={label}>{index > 0 && <span className="track-separator" aria-hidden="true">|</span>}{label === "Home" ? <Link to="/">Home</Link> : <a href={hrefs[label]}>{label}</a>}</span>)}</nav>
+        <nav className="track-footer-links" aria-label="Footer navigation">{links.map((label, index) => <span key={label}>{index > 0 && <span className="track-separator" aria-hidden="true">|</span>}{label === "Home" ? <Link to="/">Home</Link> : <a href={hrefs[label]}>{label}</a>}{" "}</span>)}</nav>
         <p className="track-legal">Services may be provided by Western Union Financial Services, Inc. NMLS# 906983 and/or Western Union International Services, LLC NMLS# 906985, which are licensed as Money Transmitters by the New York State Department of Financial Services. See terms and conditions for details.</p>
         <div className="track-footer-bottom"><p>© 2026 Western Union Holdings, Inc. All Rights Reserved</p><div className="track-social"><strong>Follow us on</strong><div><a href="https://www.facebook.com/WesternUnion" aria-label="Facebook"><img src={socialFacebook} alt=""/></a><a href="https://www.youtube.com/user/WesternUnion" aria-label="YouTube"><img src={socialYoutube} alt=""/></a><a href="https://www.instagram.com/westernunion/" aria-label="Instagram"><img src={socialInstagram} alt=""/></a><a href="https://x.com/WesternUnion" aria-label="X"><img src={socialX} alt=""/></a></div></div></div>
       </div>

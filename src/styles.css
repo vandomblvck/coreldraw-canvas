@@ -534,7 +534,7 @@
 .track-status a { text-decoration: underline; }
 .track-footer { background: var(--background); }
 .track-footer-inner { max-width: 1045px; margin: auto; padding: 31px 0 20px; }
-.track-footer-links { font-size: 12px; line-height: 2.05; }
+.track-footer-links { font-size: 12px; line-height: 2.05; overflow-wrap: anywhere; }
 .track-footer-links a { color: var(--muted-foreground); white-space: nowrap; }
 .track-separator { margin: 0 5px; color: var(--muted-foreground); }
 .track-legal { max-width: 840px; font-size: 12px; line-height: 1.25; margin: 29px 0 0; }
