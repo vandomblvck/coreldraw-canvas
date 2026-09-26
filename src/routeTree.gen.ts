@@ -11,8 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrackTransferRouteImport } from './routes/track-transfer'
-import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as EcoencyptAdminIndexRouteImport } from './routes/ecoencypt/admin/index'
 import { Route as EcoencyptAdminLoginRouteImport } from './routes/ecoencypt/admin/login'
 
@@ -24,16 +22,6 @@ const IndexRoute = IndexRouteImport.update({
 const TrackTransferRoute = TrackTransferRouteImport.update({
   id: '/track-transfer',
   path: '/track-transfer',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/admin/',
-  path: '/admin/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin/login',
-  path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EcoencyptAdminIndexRoute = EcoencyptAdminIndexRouteImport.update({
@@ -50,16 +38,12 @@ const EcoencyptAdminLoginRoute = EcoencyptAdminLoginRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/track-transfer': typeof TrackTransferRoute
-  '/admin/login': typeof AdminLoginRoute
-  '/admin/': typeof AdminIndexRoute
   '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
   '/ecoencypt/admin/': typeof EcoencyptAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/track-transfer': typeof TrackTransferRoute
-  '/admin/login': typeof AdminLoginRoute
-  '/admin': typeof AdminIndexRoute
   '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
   '/ecoencypt/admin': typeof EcoencyptAdminIndexRoute
 }
@@ -67,34 +51,19 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/track-transfer': typeof TrackTransferRoute
-  '/admin/login': typeof AdminLoginRoute
-  '/admin/': typeof AdminIndexRoute
   '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
   '/ecoencypt/admin/': typeof EcoencyptAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/track-transfer'
-    | '/admin/login'
-    | '/admin/'
-    | '/ecoencypt/admin/login'
-    | '/ecoencypt/admin/'
+    '/' | '/track-transfer' | '/ecoencypt/admin/login' | '/ecoencypt/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/track-transfer'
-    | '/admin/login'
-    | '/admin'
-    | '/ecoencypt/admin/login'
-    | '/ecoencypt/admin'
+  to: '/' | '/track-transfer' | '/ecoencypt/admin/login' | '/ecoencypt/admin'
   id:
     | '__root__'
     | '/'
     | '/track-transfer'
-    | '/admin/login'
-    | '/admin/'
     | '/ecoencypt/admin/login'
     | '/ecoencypt/admin/'
   fileRoutesById: FileRoutesById
@@ -102,8 +71,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   TrackTransferRoute: typeof TrackTransferRoute
-  AdminLoginRoute: typeof AdminLoginRoute
-  AdminIndexRoute: typeof AdminIndexRoute
   EcoencyptAdminLoginRoute: typeof EcoencyptAdminLoginRoute
   EcoencyptAdminIndexRoute: typeof EcoencyptAdminIndexRoute
 }
@@ -122,20 +89,6 @@ declare module '@tanstack/react-router' {
       path: '/track-transfer'
       fullPath: '/track-transfer'
       preLoaderRoute: typeof TrackTransferRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/': {
-      id: '/admin/'
-      path: '/admin'
-      fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/admin/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ecoencypt/admin/': {
@@ -158,8 +111,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   TrackTransferRoute: TrackTransferRoute,
-  AdminLoginRoute: AdminLoginRoute,
-  AdminIndexRoute: AdminIndexRoute,
   EcoencyptAdminLoginRoute: EcoencyptAdminLoginRoute,
   EcoencyptAdminIndexRoute: EcoencyptAdminIndexRoute,
 }
