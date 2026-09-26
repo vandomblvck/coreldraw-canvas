@@ -102,7 +102,7 @@ function HomePage() {
     resetScroll();
     const timer = setTimeout(resetScroll, 100);
     return () => clearTimeout(timer);
-  }, [locationKey]);
+  }, [locationHref]);
   useEffect(() => {
     const onScroll = () => setCtaVisible(window.scrollY > 300);
     onScroll();
