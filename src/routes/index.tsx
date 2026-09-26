@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUp, BadgeCheck, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, CircleHelp, CreditCard, Facebook, Gift, Globe2, IdCard, Instagram, Landmark, Lightbulb, LockKeyhole, MapPin, Menu, MessageCircleQuestion, Radar, ReceiptText, RefreshCcw, Search, Send, Settings, ShieldCheck, Smartphone, Star, Store, Tag, UsersRound, Wallet, X, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/Primary_Black.svg.asset.json";
@@ -91,6 +91,13 @@ function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [footerLocation, setFooterLocation] = useState("United States");
   const [footerOpen, setFooterOpen] = useState<string | null>(null);
+  const [ctaVisible, setCtaVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setCtaVisible(window.scrollY > 300);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
   const rate = currency === "MXN" ? 17.9977 : currency === "INR" ? 83.47 : currency === "GTQ" ? 7.67 : currency === "PHP" ? 56.8 : currency === "USD" ? 1 : 0.92;
   const currencies = [{code:"MXN",name:"Mexico",flag:mxFlag.url},{code:"GTQ",name:"Guatemala",flag:guatemalaFlag.url},{code:"PHP",name:"Philippines",flag:philippinesFlag.url},{code:"USD",name:"Philippines",flag:philippinesFlag.url},{code:"INR",name:"India",flag:inFlag.url},{code:"EUR",name:"Europe",flag:euFlag.url}];
@@ -158,6 +165,6 @@ function HomePage() {
       <section className="wu-footer-connect" aria-label="Important pages and social media"><div><h3>IMPORTANT PAGES</h3><div className="wu-footer-links">{["Home","About us","Contact us","Fraud awareness","Online Privacy Statement","Your Privacy Choices","Terms & Conditions","Ad Choices","Cookie Information","Law Enforcement Assistance"].map((label,i)=><a key={label} href={i===0?"#top":`${official}/${["","about-us.html","contact-us.html","fraud-awareness.html","privacy-statement.html","privacy-choices.html","terms-conditions.html","ad-choices.html","cookie-information.html","law-enforcement.html"][i]}`}>{label}</a>)}</div></div><div className="wu-footer-social"><h3>FIND US ON SOCIAL</h3><div><a aria-label="Facebook" href="https://www.facebook.com/WesternUnion"><Facebook size={27} fill="currentColor"/></a><a aria-label="YouTube" href="https://www.youtube.com/user/WesternUnion"><Youtube size={27} fill="currentColor"/></a><a aria-label="Instagram" href="https://www.instagram.com/westernunion/"><Instagram size={27}/></a><a aria-label="X" href="https://x.com/WesternUnion"><X size={27} strokeWidth={1.2}/></a></div></div></section>
       <div className="wu-footer-bottom"><img src={footerLogo.url} alt="Western Union" className="w-[295px]"/><div><p>Services may be provided by Western Union Financial Services, Inc. NMLS# 906983 and/or Western Union International Services, LLC NMLS# 906985. These licensed companies may be verified through the NMLS Consumer Access website<span className="wu-footer-mobile-link"> - <a href="https://www.nmlsconsumeraccess.org/">https://www.nmlsconsumeraccess.org/</a></span>.</p><p>Western Union Financial Services, Inc. and Western Union International Services, LLC are licensed as Money Transmitters by the New York State Department of Financial Services. See terms and conditions for details.</p><p className="wu-footer-mobile-footnote"><sup>1</sup>Fee reductions apply only to the Western Union transfer fee for a single Western Union Money Transfer. Excludes all other services. Cannot be combined with other Western Union promotional offers.</p><p className="mt-12 wu-copyright">© 2026 Western Union Holdings, Inc. All Rights Reserved</p></div></div>
     </div></footer>
-    <div className="wu-mobile-cta"><Action href={sendUrl} className="w-full text-brand">Start now</Action></div>
+    <div className={`wu-mobile-cta ${ctaVisible ? "wu-mobile-cta-visible" : ""}`}><Action href={sendUrl} className="w-full text-brand">Start now</Action></div>
   </main>;
 }
