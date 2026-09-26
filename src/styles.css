@@ -516,7 +516,11 @@
 .track-menu-panel li a svg { width: 24px; height: 24px; flex-shrink: 0; stroke-width: 1.5; color: oklch(.92 .045 95); }
 .track-menu-panel li a:hover svg { color: var(--brand); }
 .track-menu-panel li a > span { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.track-menu-new { font-style: normal; font-size: 13px; font-weight: 700; color: #fff; background: var(--track-blue); border-radius: 2px; padding: 3px 8px; }
+.track-menu-new { font-style: normal; font-size: 13px; font-weight: 700; color: var(--track-header); background: var(--brand); border-radius: 2px; padding: 3px 8px; }
+@media (min-width: 621px) {
+  .track-menu-auth, .track-menu-panel li:nth-child(-n+4), .track-menu-panel li:nth-child(6) { display: none; }
+  .track-menu-panel li a > span { width: 100%; justify-content: space-between; }
+}
 .track-main { background: var(--track-surface); padding: 32px 16px 54px; }
 .track-form-wrap { max-width: 672px; margin: auto; background: var(--card); padding: 36px 16px 26px; }
 .track-heading-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
