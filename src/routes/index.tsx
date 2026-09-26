@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/Primary_Black.svg.asset.json";
 import wMark from "@/assets/wu-w-mark.svg.asset.json";
 import squarespaceLogo from "@/assets/squarespace-logo.png.asset.json";
+import nordvpnLogo from "@/assets/nordvpn-logo.png.asset.json";
 import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
 import appPhoto from "@/assets/section-786x560-1-1790132239916.webp.asset.json";
 import morePhoto from "@/assets/GettyImages-2170511239-scaled-1790132239918.webp.asset.json";
