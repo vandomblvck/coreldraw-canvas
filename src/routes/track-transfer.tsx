@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowDownToLine, ArrowUpFromLine, Menu, Search, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, Building2, CreditCard, Crosshair, HandCoins, Landmark, MapPin, Menu, MessageCircleQuestion, ReceiptText, Search, Send, Settings, Smartphone, Star, UsersRound, X } from "lucide-react";
 import { countries } from "@/lib/countries";
 import { Button } from "@/components/ui/button";
 import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
