@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowDownToLine, ArrowUpFromLine, Menu, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, Menu, Search, X } from "lucide-react";
+import { countries } from "@/lib/countries";
 import { Button } from "@/components/ui/button";
 import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
@@ -59,6 +60,9 @@ function TrackTransfer() {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [year, setYear] = useState("");
+  const [receiverCountry, setReceiverCountry] = useState(countries.find(item => item.iso === "us") ?? countries[countries.length - 1]);
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [countrySearch, setCountrySearch] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const valid = mtcn.length === 10 && firstName.trim().length > 0;
   const detailsValid = lookupBy === "phone" ? phone.trim().length >= 7 : firstName.trim().length > 0;
@@ -116,9 +120,22 @@ function TrackTransfer() {
               <label className="track-input-wrap grow"><input aria-label="Receiver's first name" placeholder="Receiver's first name"/></label>
             </div>
           )}
-          <label className="track-select-wrap track-receiver-country"><span className="track-select-label">Receiver's country</span>
-            <span className="track-country-value"><img src="https://flagcdn.com/w80/us.png" alt="" width="34" height="24"/>United States</span>
-          </label>
+          <div className="track-country-picker">
+            <button type="button" className="track-select-wrap track-receiver-country" aria-haspopup="listbox" aria-expanded={countryOpen} onClick={() => {setCountryOpen(!countryOpen);setCountrySearch("")}}>
+              <span className="track-select-label">Receiver's country</span>
+              <span className="track-country-value"><img src={`https://flagcdn.com/w80/${receiverCountry.iso}.png`} alt="" width="34" height="24"/>{receiverCountry.name}</span>
+            </button>
+            {countryOpen && <div className="track-country-menu">
+              <div className="track-country-search"><Search size={20} aria-hidden="true"/><input autoFocus aria-label="Search country" placeholder="Search" value={countrySearch} onChange={event => setCountrySearch(event.target.value)}/></div>
+              <div className="track-country-options" role="listbox" aria-label="Receiver's country">
+                {countries.filter(item => item.name.toLowerCase().includes(countrySearch.toLowerCase())).map(item => (
+                  <button type="button" key={item.iso} role="option" aria-selected={item.name === receiverCountry.name} className={item.name === receiverCountry.name ? "track-country-option active" : "track-country-option"} onClick={() => {setReceiverCountry(item);setCountryOpen(false)}}>
+                    <img src={item.flag} alt=""/>{item.name}
+                  </button>
+                ))}
+              </div>
+            </div>}
+          </div>
           <div className="track-field-row">
             <label className="track-select-wrap grow"><select aria-label="Amount type" value={amountKind} onChange={event => setAmountKind(event.target.value as "send" | "receive")}><option value="send">Select send amount</option><option value="receive">Select receive amount</option></select></label>
             <label className="track-input-wrap grow track-amount"><input aria-label={amountKind === "send" ? "Enter send amount" : "Enter receive amount"} placeholder={amountKind === "send" ? "Enter send amount" : "Enter receive amount"} inputMode="decimal" value={amount} onChange={event => setAmount(event.target.value.replace(/[^\d.]/g, ""))}/><span className="track-amount-currency">USD</span></label>
