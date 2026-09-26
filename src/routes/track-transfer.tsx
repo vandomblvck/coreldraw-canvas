@@ -63,7 +63,7 @@ function TrackTransfer() {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [year, setYear] = useState("");
-  const [receiverCountry, setReceiverCountry] = useState(countries.find(item => item.iso === "us") ?? countries[countries.length - 1]);
+  const [receiverCountry, setReceiverCountry] = useState(countries.find(item => item.iso === "us") ?? countries[0]!);
   const [countryOpen, setCountryOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
