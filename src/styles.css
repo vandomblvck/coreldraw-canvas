@@ -116,6 +116,7 @@
 .wu-deal-logo { height: 120px; display: grid; place-items: center; font-size: 26px; font-weight: 700; }
 .wu-deal-logo-desktop img { width: 94px; height: 94px; }
 .wu-deal-logo-desktop img.wu-deal-logo-nordvpn { width: 200px; height: auto; }
+.wu-deal-logo-desktop img.wu-deal-logo-deferit { width: 200px; height: auto; }
 .wu-deal-body { padding: 14px 17px; border-top: 1px dashed var(--border); }
 .wu-deal-body strong { display: block; margin: 10px 0 5px; }
 .wu-deal-body p { margin: 0; font-size: 15px; }
@@ -380,7 +381,7 @@
   .wu-deal-brand-0 img { width: 94px; height: 94px; }
   .wu-deal-brand-1 img.wu-deal-logo-nordvpn { width: 140px; height: auto; }
   .wu-deal-brand-2 img { width: 94px; height: 94px; }
-  .wu-deal-brand-3 strong { background: var(--accent-foreground); color: var(--primary-foreground); border-radius: 999px; padding: 6px 12px; font-size: 21px; }
+  .wu-deal-brand-3 img.wu-deal-logo-deferit { width: 140px; height: auto; }
   .wu-deals { padding: 24px 0 42px; }
   .wu-deals h2 { position: relative; font-size: 38px; line-height: 1.18; padding-right: 47px; }
   .wu-deals h2 svg { position: absolute; top: 9px; right: 1px; width: 27px; height: 32px; }
