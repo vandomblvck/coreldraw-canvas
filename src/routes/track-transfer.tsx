@@ -83,7 +83,24 @@ function TrackTransfer() {
         <Button variant="ghost" className="track-menu-trigger" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span className="track-menu-desktop">{menuOpen ? <X size={26}/> : <Menu size={29}/>}</span><span className="track-menu-mobile">{menuOpen ? "Close" : "Menu"}</span></Button>
         <div className="track-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><a href={`${official}/us/en/web/user/register`}>Register</a></div>
       </div>
-      {menuOpen && <nav className="track-menu-list" aria-label="Site menu"><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link><a href={`${official}/us/en/web/send-money/start`}>Send money</a><Link to="/track-transfer" onClick={() => setMenuOpen(false)}>Track a transfer</Link><a href={`${official}/us/en/frequently-asked-questions.html`}>Help</a><a href={`${official}/us/en/web/user/login`}>Log in</a><a href={`${official}/us/en/web/user/register`}>Register</a></nav>}
+      {menuOpen && <nav className="track-menu-panel" aria-label="Site menu">
+        <div className="track-menu-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><span aria-hidden="true"/><a href={`${official}/us/en/web/user/register`}>Sign up</a></div>
+        <ul>
+          <li><a href={`${official}/us/en/web/send-money/start`}><Send aria-hidden="true"/>Send money</a></li>
+          <li><a href={`${official}/us/en/receive-money.html`}><HandCoins aria-hidden="true"/>Pick up cash</a></li>
+          <li><Link to="/track-transfer" onClick={() => setMenuOpen(false)}><Crosshair aria-hidden="true"/>Track transfer</Link></li>
+          <li><a href={`${official}/us/en/bill-pay.html`}><ReceiptText aria-hidden="true"/>Pay bills</a></li>
+          <li><a href={`${official}/us/en/find-locations.html`}><MapPin aria-hidden="true"/>Find locations</a></li>
+          <li><a href={`${official}/us/en/frequently-asked-questions.html`}><MessageCircleQuestion aria-hidden="true"/>Help</a></li>
+          <li><a href={`${official}/us/en/rewards.html`}><Star aria-hidden="true"/><span>Western Union Rewards<em className="track-menu-new">New</em></span></a></li>
+          <li><a href={`${official}/us/en/refer-a-friend.html`}><UsersRound aria-hidden="true"/>Refer a Friend</a></li>
+          <li><a href={`${official}/us/en/pay-inmate.html`}><Landmark aria-hidden="true"/>Pay inmate</a></li>
+          <li><a href={`${official}/us/en/mobile-top-up.html`}><Smartphone aria-hidden="true"/>Mobile top-up</a></li>
+          <li><a href={`${official}/us/en/web/user/login`}><Building2 aria-hidden="true"/>Update delivery method</a></li>
+          <li><a href={`${official}/us/en/prepaid-card.html`}><CreditCard aria-hidden="true"/>Western Union Prepaid</a></li>
+          <li><a href={`${official}/us/en/web/user/login`}><Settings aria-hidden="true"/>Settings</a></li>
+        </ul>
+      </nav>}
     </header>
     <section className="track-main">
       <div className="track-form-wrap">
