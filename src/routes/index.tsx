@@ -84,7 +84,7 @@ function Action({ children, href, variant = "wuBlack", className = "" }: {childr
 }
 
 function HomePage() {
-  const locationKey = useRouterState({ select: (s) => s.location.key });
+  const locationHref = useRouterState({ select: (s) => s.location.href });
   const [amount, setAmount] = useState("100.00");
   const [currency, setCurrency] = useState("MXN");
   const [currencyName, setCurrencyName] = useState("Mexico");
