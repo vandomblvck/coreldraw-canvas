@@ -366,3 +366,91 @@
   .wu-desktop-currency { display: none; }
   .wu-mobile-currency { display: flex; }
 }
+.wu-reason-mobile, .wu-reasons-action, .wu-footer-mobile-link, .wu-footer-mobile-footnote { display: none; }
+.wu-footer-directory-toggle { padding: 0; height: auto; color: inherit; font: inherit; }
+.wu-footer-directory-toggle svg { display: none; }
+@media (max-width: 620px) {
+  .wu-deals { padding: 24px 0 42px; }
+  .wu-deals h2 { position: relative; font-size: 38px; line-height: 1.18; padding-right: 47px; }
+  .wu-deals h2 svg { position: absolute; top: 9px; right: 1px; width: 27px; height: 32px; }
+  .wu-deals > .wu-shell > p { font-size: 15px; line-height: 1.35; margin-top: 12px; max-width: 350px; }
+  .wu-deals-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 34px 8px 28px; }
+  .wu-deal { min-width: 0; min-height: 262px; border-radius: 8px; overflow: hidden; }
+  .wu-deal-label { height: 40px; padding: 8px 9px; font-size: 15px; white-space: nowrap; }
+  .wu-deal:nth-child(4) .wu-deal-label { background: var(--secondary); }
+  .wu-deal-logo { height: 110px; font-size: 20px; text-align: center; }
+  .wu-deal-body { padding: 15px 11px 10px; font-size: 15px; border-top: 1px dashed var(--border); line-height: 1.2; }
+  .wu-deal-body strong { margin: 12px 0 3px; font-size: 14px; }
+  .wu-deal-body p { font-size: 14px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .wu-deals > .wu-shell > a { display: flex; width: 100%; height: 52px; }
+  .wu-pickup { margin-top: 32px; margin-bottom: 27px; padding: 35px 33px 28px; min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 16px; }
+  .wu-pickup > svg { width: 57px; height: 57px; }
+  .wu-pickup h2 { font-size: 32px; line-height: 1.1; }
+  .wu-pickup p { margin-top: 15px; font-size: 16px; line-height: 1.4; }
+  .wu-pickup a { width: 100%; margin-top: 10px; }
+  .wu-reasons { display: block; padding-block: 38px 31px; }
+  .wu-reasons > img { display: none; }
+  .wu-reasons h2 { font-size: 33px; line-height: 1.11; }
+  .wu-reasons-grid { display: block; margin-top: 27px; }
+  .wu-reasons-grid > div { margin-bottom: 34px; }
+  .wu-reasons-grid > div:nth-child(4) { display: none; }
+  .wu-reasons-grid svg { width: 32px; height: 32px; margin-bottom: 7px; }
+  .wu-reasons-grid h3 { font-size: 21px; margin: 0 0 16px; }
+  .wu-reasons-grid p { font-size: 16px; line-height: 1.42; margin: 0; }
+  .wu-reason-desktop { display: none; }
+  .wu-reason-mobile { display: inline; }
+  .wu-reasons-action { display: flex; width: 100%; margin-top: 20px; }
+  .wu-review { text-align: left; padding: 34px 16px 27px; }
+  .wu-review h2 { font-size: 34px; line-height: 1.12; max-width: 310px; }
+  .wu-review p { font-size: 16px; line-height: 1.42; margin: 19px 0; }
+  .wu-review a { height: 49px; padding-inline: 24px; }
+  .wu-faq { padding-top: 37px; padding-bottom: 0; }
+  .wu-faq h2 { font-size: 34px; max-width: 290px; }
+  .wu-faq details:first-of-type { margin-top: 31px; }
+  .wu-faq details:last-child { border-bottom: 1px solid var(--border); }
+  .wu-faq summary { gap: 16px; padding: 10px 0 13px; align-items: flex-start; font-size: 17px; line-height: 1.38; font-weight: 900; }
+  .wu-faq summary span { width: 38px; height: 38px; flex: 0 0 38px; font-family: Arial,sans-serif; font-size: 28px; font-weight: 400; }
+  .wu-faq details p { margin-left: 54px; font-size: 15px; }
+  .wu-legal-notes { padding: 29px 0 62px; font-size: 14px; line-height: 1.32; }
+  .wu-legal-notes > .wu-shell { width: calc(100% - 48px); }
+  .wu-legal-notes p { margin-bottom: 17px; }
+  .wu-legal-notes sup, .wu-footer-mobile-footnote sup { font-size: 10px; }
+  .wu-footer > .wu-shell { width: calc(100% - 48px); }
+  .wu-footer-directory { padding: 35px 0 22px; }
+  .wu-footer-directory h2 { font-size: 25px; line-height: 1.15; max-width: 300px; }
+  .wu-footer-directory-grid { display: block; margin-top: 25px; }
+  .wu-footer-directory-column { margin-bottom: 18px; }
+  .wu-footer-directory-column h3 { margin: 0; font: 16px/1.4 "Roboto WU", Arial, sans-serif; }
+  .wu-footer-directory-toggle { display: flex; gap: 13px; align-items: center; font: inherit; font-weight: 400; border-radius: 0; }
+  .wu-footer-directory-toggle svg { display: block; width: 18px; height: 18px; transition: transform .2s ease; }
+  .wu-footer-directory-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .wu-footer-directory-column ul { display: none; margin: 14px 0 24px 31px; }
+  .wu-footer-directory-column ul.wu-footer-directory-open { display: block; }
+  .wu-footer-directory-column li { margin-bottom: 11px; font-size: 15px; }
+  .wu-footer-worldwide { padding: 33px 0 43px; }
+  .wu-footer-worldwide h2 { font-size: 25px; }
+  .wu-footer-worldwide > p { margin: 17px 0 24px; font-size: 20px; line-height: 1.3; }
+  .wu-footer-destinations { gap: 9px; }
+  .wu-footer-location { height: 80px; padding-inline: 15px; }
+  .wu-footer-location > span:first-child { margin-left: 39px; font-size: 13px; }
+  .wu-footer-location-value { gap: 10px; font-size: 20px; }
+  .wu-footer-location-value img, .wu-footer-destination img { width: 24px; height: 24px; }
+  .wu-footer-popular > span { font-size: 13px; margin: 0 0 12px; }
+  .wu-footer-destination-list { display: grid; grid-template-columns: 1fr; gap: 23px; }
+  .wu-footer .wu-footer-destination { height: 46px; width: 100%; padding: 0 24px; gap: 9px; font-size: 17px; }
+  .wu-footer-destination svg { transform: rotate(-45deg); }
+  .wu-footer-connect { display: block; padding: 41px 12px 35px; }
+  .wu-footer-connect h3 { font-size: 12px; }
+  .wu-footer-links { display: block; margin-top: 17px; line-height: 1.5; }
+  .wu-footer-links a { display: inline; font-size: 16px; white-space: normal; margin-right: 14px; }
+  .wu-footer-social { margin-top: 17px; }
+  .wu-footer-social > div { gap: 16px; margin-top: 10px; }
+  .wu-footer-social a { width: 41px; height: 41px; }
+  .wu-footer-bottom { display: flex; flex-direction: column-reverse; gap: 24px; padding: 29px 16px 64px; font-size: 14px; line-height: 1.35; }
+  .wu-footer-bottom p { margin: 0 0 19px; }
+  .wu-footer-mobile-link, .wu-footer-mobile-footnote { display: inline; }
+  .wu-footer-mobile-link a { color: var(--link); text-decoration: none; overflow-wrap: anywhere; }
+  .wu-footer-mobile-footnote { display: block; }
+  .wu-footer-bottom .wu-copyright { margin: 45px 0 0; }
+  .wu-footer-bottom > img { width: 155px; align-self: center; }
+}
