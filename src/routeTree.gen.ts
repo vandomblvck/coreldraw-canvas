@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrackTransferRouteImport } from './routes/track-transfer'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as EcoencyptAdminIndexRouteImport } from './routes/ecoencypt/admin/index'
+import { Route as EcoencyptAdminLoginRouteImport } from './routes/ecoencypt/admin/login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +36,32 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EcoencyptAdminIndexRoute = EcoencyptAdminIndexRouteImport.update({
+  id: '/ecoencypt/admin/',
+  path: '/ecoencypt/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcoencyptAdminLoginRoute = EcoencyptAdminLoginRouteImport.update({
+  id: '/ecoencypt/admin/login',
+  path: '/ecoencypt/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/track-transfer': typeof TrackTransferRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
+  '/ecoencypt/admin/': typeof EcoencyptAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/track-transfer': typeof TrackTransferRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin': typeof AdminIndexRoute
+  '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
+  '/ecoencypt/admin': typeof EcoencyptAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,34 @@ export interface FileRoutesById {
   '/track-transfer': typeof TrackTransferRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/ecoencypt/admin/login': typeof EcoencyptAdminLoginRoute
+  '/ecoencypt/admin/': typeof EcoencyptAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/track-transfer' | '/admin/login' | '/admin/'
+  fullPaths:
+    | '/'
+    | '/track-transfer'
+    | '/admin/login'
+    | '/admin/'
+    | '/ecoencypt/admin/login'
+    | '/ecoencypt/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/track-transfer' | '/admin/login' | '/admin'
-  id: '__root__' | '/' | '/track-transfer' | '/admin/login' | '/admin/'
+  to:
+    | '/'
+    | '/track-transfer'
+    | '/admin/login'
+    | '/admin'
+    | '/ecoencypt/admin/login'
+    | '/ecoencypt/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/track-transfer'
+    | '/admin/login'
+    | '/admin/'
+    | '/ecoencypt/admin/login'
+    | '/ecoencypt/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +104,8 @@ export interface RootRouteChildren {
   TrackTransferRoute: typeof TrackTransferRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  EcoencyptAdminLoginRoute: typeof EcoencyptAdminLoginRoute
+  EcoencyptAdminIndexRoute: typeof EcoencyptAdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +138,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ecoencypt/admin/': {
+      id: '/ecoencypt/admin/'
+      path: '/ecoencypt/admin'
+      fullPath: '/ecoencypt/admin/'
+      preLoaderRoute: typeof EcoencyptAdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecoencypt/admin/login': {
+      id: '/ecoencypt/admin/login'
+      path: '/ecoencypt/admin/login'
+      fullPath: '/ecoencypt/admin/login'
+      preLoaderRoute: typeof EcoencyptAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +160,8 @@ const rootRouteChildren: RootRouteChildren = {
   TrackTransferRoute: TrackTransferRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
+  EcoencyptAdminLoginRoute: EcoencyptAdminLoginRoute,
+  EcoencyptAdminIndexRoute: EcoencyptAdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
