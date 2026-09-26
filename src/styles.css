@@ -334,3 +334,15 @@
   .wu-mobile-cta a { height: 48px; }
   .wu-footer { padding-bottom: 77px; }
 }
+.wu-mobile-break { display: none; }
+@media (max-width: 620px) {
+  .wu-mobile-break { display: initial; }
+  .wu-hero h1 { font-size: 36px; line-height: 1.2; }
+  .wu-tabs-wrap { gap: 12px; }
+  .wu-tab { font-size: 14px; }
+  .wu-way { min-height: 188px; }
+  .wu-way p { max-width: 225px; }
+  .wu-reward-card:last-of-type { background: var(--primary); color: var(--primary-foreground); }
+  .wu-reward-card:first-child strong { display: block; max-width: 130px; margin-inline: auto; }
+  .wu-reward-card:first-child small { display: block; margin-top: 5px; }
+}
