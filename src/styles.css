@@ -189,7 +189,7 @@
  .wu-reasons { gap: 35px; }
 }
 @media (max-width: 620px) {
- .wu-logo-desktop { display: none; } .wu-logo-mobile { display: block; width: 48px; height: auto; }
+ .wu-logo-desktop { display: none; } .wu-logo-mobile { display: block; width: 68px; height: auto; }
  .wu-nav-inner > a .wu-logo-desktop { width: 145px; } .wu-nav-links { gap: 8px; } .wu-nav-links a, .wu-nav-links button { font-size: 13px; }
  .wu-nav-links .wu-register, .wu-nav-links .wu-language { display:none; }
  .wu-hero h1 { font-size: 30px; } .wu-hero-inner { padding-bottom: 28px; } .wu-intro { font-size: 17px; }
@@ -235,7 +235,7 @@
 @media (max-width: 620px) {
   .wu-shell { width: calc(100% - 32px); }
   .wu-nav { height: 72px; }
-  .wu-nav-inner > a img { width: 68px; }
+  .wu-nav-inner > a .wu-logo-mobile { width: 68px; }
   .wu-nav-links { gap: 15px; }
   .wu-nav-links .wu-language { display: flex; font-size: 16px; gap: 8px; }
   .wu-nav-links .wu-language svg { width: 24px; height: 24px; }
