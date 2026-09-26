@@ -88,6 +88,7 @@ function Action({ children, href, variant = "wuBlack", className = "" }: {childr
 function HomePage() {
   const [amount, setAmount] = useState("100.00");
   const [currency, setCurrency] = useState("MXN");
+  const [currencyName, setCurrencyName] = useState("Mexico");
   const [currencyOpen, setCurrencyOpen] = useState(false);
   const [currencySearch, setCurrencySearch] = useState("");
   const [waysTab, setWaysTab] = useState<"send" | "receive">("send");
@@ -103,9 +104,9 @@ function HomePage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
-  const rate = currency === "MXN" ? 17.9977 : currency === "INR" ? 83.47 : currency === "GTQ" ? 7.67 : currency === "PHP" ? 56.8 : currency === "USD" ? 1 : 0.92;
-  const currencies = [{code:"MXN",name:"Mexico",flag:mxFlag.url},{code:"GTQ",name:"Guatemala",flag:guatemalaFlag.url},{code:"PHP",name:"Philippines",flag:philippinesFlag.url},{code:"USD",name:"Philippines",flag:philippinesFlag.url},{code:"INR",name:"India",flag:inFlag.url},{code:"EUR",name:"Europe",flag:euFlag.url}];
-  const selectedCurrencyFlag = currencies.find(item=>item.code === currency && (currency !== "USD" || item.name === "Philippines"))?.flag ?? mxFlag.url;
+  const rates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
+  const rate = rates[currency] ?? 1;
+  const selectedCurrencyFlag = currencies.find(item=>item.code === currency && item.name === currencyName)?.flag ?? usFlag.url;
   const receiverAmount = (numericAmount * rate).toFixed(2);
   const wayCards = waysTab === "send" ? [
     { title: "Send online", text: <> <a className="text-link underline" href={loginUrl}>Log in</a> or <a className="text-link underline" href={registerUrl}>sign up</a> and create your free profile to send money online.</>, action: "Send money instantly", link: sendUrl, icon: ArrowUp },
