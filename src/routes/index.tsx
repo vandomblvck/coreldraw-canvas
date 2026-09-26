@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUp, BadgeCheck, BadgeDollarSign, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, CircleHelp, CreditCard, Gift, Globe2, IdCard, Landmark, Lightbulb, LockKeyhole, MapPin, Menu, MessageCircleQuestion, Radar, ReceiptText, RefreshCcw, Search, Send, Settings, ShieldCheck, Smartphone, Star, Store, Tag, UsersRound, Wallet, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
