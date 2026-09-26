@@ -183,10 +183,9 @@
 .wu-footer-links { display: flex; flex-wrap: wrap; column-gap: 28px; row-gap: 4px; max-width: 760px; margin: 19px 0 0; line-height: 1.25; }
 .wu-footer-links a { color: var(--brand); font-family: "Right Grotesk", Arial, sans-serif; font-weight: 500; font-size: 18px; white-space: nowrap; }
 .wu-footer-social > div { display: flex; gap: 24px; align-items: center; margin-top: 19px; }
-.wu-footer-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--primary-foreground); background: var(--social-facebook); text-decoration: none; }
-.wu-footer-social a:nth-child(2) { background: var(--social-youtube); }
-.wu-footer-social a:nth-child(3) { background: var(--social-instagram); }
-.wu-footer-social a:nth-child(4) { background: transparent; border: 1px solid var(--border); }
+.wu-footer-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--primary-foreground); background: var(--social-facebook); text-decoration: none; overflow: hidden; }
+.wu-footer-social a img { width: 100%; height: 100%; border-radius: 50%; display: block; }
+.wu-footer-social a:nth-child(4) { background: transparent; border: 0; }
 .wu-footer-bottom { display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 42px 0 60px; line-height: 1.4; }
 .wu-logo-mobile { display: none; }
 @media (max-width: 900px) {
