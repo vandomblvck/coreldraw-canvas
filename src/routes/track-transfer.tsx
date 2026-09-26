@@ -54,6 +54,9 @@ function TrackTransfer() {
   const [firstName, setFirstName] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [result, setResult] = useState<Awaited<ReturnType<typeof trackTransfer>> | null>(null);
+  const lookupTransfer = useServerFn(trackTransfer);
   const [mode, setMode] = useState<"mtcn" | "details">("mtcn");
   const [lookupBy, setLookupBy] = useState<"phone" | "names">("phone");
   const [phone, setPhone] = useState("");
