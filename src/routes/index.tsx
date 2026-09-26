@@ -20,13 +20,10 @@ import discountReward from "@/assets/discount_rewards.svg.asset.json";
 import giftReward from "@/assets/gift.svg.asset.json";
 import usFlag from "@/assets/us.svg.asset.json";
 import mxFlag from "@/assets/mx.svg.asset.json";
-import inFlag from "@/assets/in.svg.asset.json";
-import euFlag from "@/assets/eu.svg.asset.json";
 import indiaFlag from "@/assets/in-footer.svg.asset.json";
 import pakistanFlag from "@/assets/pk-footer.svg.asset.json";
 import chinaFlag from "@/assets/cn-footer.svg.asset.json";
-import guatemalaFlag from "@/assets/gt-mobile.svg.asset.json";
-import philippinesFlag from "@/assets/ph-mobile.svg.asset.json";
+import { currencies } from "@/lib/currencies";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
 import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
 import socialInstagram from "@/assets/social/instagram.svg";
@@ -88,6 +85,7 @@ function Action({ children, href, variant = "wuBlack", className = "" }: {childr
 function HomePage() {
   const [amount, setAmount] = useState("100.00");
   const [currency, setCurrency] = useState("MXN");
+  const [currencyName, setCurrencyName] = useState("Mexico");
   const [currencyOpen, setCurrencyOpen] = useState(false);
   const [currencySearch, setCurrencySearch] = useState("");
   const [waysTab, setWaysTab] = useState<"send" | "receive">("send");
@@ -103,9 +101,9 @@ function HomePage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
-  const rate = currency === "MXN" ? 17.9977 : currency === "INR" ? 83.47 : currency === "GTQ" ? 7.67 : currency === "PHP" ? 56.8 : currency === "USD" ? 1 : 0.92;
-  const currencies = [{code:"MXN",name:"Mexico",flag:mxFlag.url},{code:"GTQ",name:"Guatemala",flag:guatemalaFlag.url},{code:"PHP",name:"Philippines",flag:philippinesFlag.url},{code:"USD",name:"Philippines",flag:philippinesFlag.url},{code:"INR",name:"India",flag:inFlag.url},{code:"EUR",name:"Europe",flag:euFlag.url}];
-  const selectedCurrencyFlag = currencies.find(item=>item.code === currency && (currency !== "USD" || item.name === "Philippines"))?.flag ?? mxFlag.url;
+  const rates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
+  const rate = rates[currency] ?? 1;
+  const selectedCurrencyFlag = currencies.find(item=>item.code === currency && item.name === currencyName)?.flag ?? usFlag.url;
   const receiverAmount = (numericAmount * rate).toFixed(2);
   const wayCards = waysTab === "send" ? [
     { title: "Send online", text: <> <a className="text-link underline" href={loginUrl}>Log in</a> or <a className="text-link underline" href={registerUrl}>sign up</a> and create your free profile to send money online.</>, action: "Send money instantly", link: sendUrl, icon: ArrowUp },
@@ -139,7 +137,7 @@ function HomePage() {
       </div>
       <div className="wu-quote"><div className="wu-offer"><Gift size={27} strokeWidth={1.5}/><span>Get a <strong>0 USD transfer fee*</strong> on your first online transfer!</span></div>
         <div className="wu-field"><div><label htmlFor="amount">You’re sending</label><input id="amount" aria-label="Amount you are sending in USD" inputMode="decimal" value={amount} onChange={e=>setAmount(e.target.value.replace(/[^\d.]/g,""))} onBlur={()=>setAmount(numericAmount.toFixed(2))}/></div><span className="wu-currency"><img className="wu-flag" src={usFlag.url} alt="United States"/> USD</span></div>
-        <div className="wu-currency-wrap"><div className="wu-field"><div><label htmlFor="currency">Your receiver gets</label><strong className="text-[17px]">{receiverAmount}</strong></div><span className="wu-desktop-currency wu-currency"><img className="wu-flag" src={selectedCurrencyFlag} alt=""/><select id="currency" value={currency} onChange={e=>setCurrency(e.target.value)} aria-label="Receiver currency" className="bg-transparent outline-none">{currencies.map(item=><option key={`${item.code}-${item.name}`} value={item.code}>{item.code}</option>)}</select><ChevronDown size={17}/></span><Button variant="ghost" className="wu-mobile-currency wu-currency" aria-label="Receiver currency" aria-expanded={currencyOpen} onClick={()=>{setCurrencyOpen(!currencyOpen);setCurrencySearch("")}}><img className="wu-flag" src={selectedCurrencyFlag} alt=""/>{currency}<ChevronDown size={17}/></Button></div>{currencyOpen && <div className="wu-currency-menu"><div className="wu-currency-search"><Search size={22}/><input autoFocus aria-label="Search currency" placeholder="Search" value={currencySearch} onChange={e=>setCurrencySearch(e.target.value)}/></div><div className="wu-currency-options">{currencies.filter(item=>`${item.code} ${item.name}`.toLowerCase().includes(currencySearch.toLowerCase())).map(item=><Button variant="ghost" key={`${item.code}-${item.name}`} className="wu-currency-option" onClick={()=>{setCurrency(item.code);setCurrencyOpen(false)}}><img className="wu-flag" src={item.flag} alt=""/>{item.code} - {item.name}</Button>)}</div></div>}</div>
+        <div className="wu-currency-wrap"><div className="wu-field"><div><label htmlFor="currency">Your receiver gets</label><strong className="text-[17px]">{receiverAmount}</strong></div><span className="wu-desktop-currency wu-currency"><img className="wu-flag" src={selectedCurrencyFlag} alt=""/><select id="currency" value={`${currency}|${currencyName}`} onChange={e=>{const parts=e.target.value.split("|");setCurrency(parts[0] ?? "");setCurrencyName(parts.slice(1).join("|"));}} aria-label="Receiver currency" className="bg-transparent outline-none">{currencies.map(item=><option key={`${item.code}-${item.name}`} value={`${item.code}|${item.name}`}>{item.code} - {item.name}</option>)}</select><ChevronDown size={17}/></span><Button variant="ghost" className="wu-mobile-currency wu-currency" aria-label="Receiver currency" aria-expanded={currencyOpen} onClick={()=>{setCurrencyOpen(!currencyOpen);setCurrencySearch("")}}><img className="wu-flag" src={selectedCurrencyFlag} alt=""/>{currency}<ChevronDown size={17}/></Button></div>{currencyOpen && <div className="wu-currency-menu"><div className="wu-currency-search"><Search size={22}/><input autoFocus aria-label="Search currency" placeholder="Search" value={currencySearch} onChange={e=>setCurrencySearch(e.target.value)}/></div><div className="wu-currency-options">{currencies.filter(item=>`${item.code} ${item.name}`.toLowerCase().includes(currencySearch.toLowerCase())).map(item=><Button variant="ghost" key={`${item.code}-${item.name}`} className="wu-currency-option" onClick={()=>{setCurrency(item.code);setCurrencyName(item.name);setCurrencyOpen(false)}}><img className="wu-flag" src={item.flag} alt=""/>{item.code} - {item.name}</Button>)}</div></div>}</div>
         <div className="wu-summary"><div className="wu-summary-row"><span>Exchange rate</span><span><s className="text-muted-foreground mr-2">{(rate * 0.9636).toFixed(4)} {currency}</s><strong>{rate.toFixed(4)} {currency}</strong></span></div><div className="wu-summary-row"><span>Our fees</span><span><s className="text-muted-foreground">1.99 USD</s> 0.00 USD <strong className="ml-2 bg-mint rounded-full px-3">100% off</strong></span></div><div className="wu-summary-row"><span>Delivery time</span><strong>In minutes</strong></div><div className="wu-summary-row wu-summary-total"><span>Total Amount</span><span>{numericAmount.toFixed(2)} USD</span></div></div>
         <Action href={sendUrl} className="w-full mt-[26px] text-brand">Send now</Action>
         <p className="wu-disclaimer">*Western Union makes money from FX. Fees and rates subject to change without notice. Offer not available for Quick Collect, transfers within the United States, credit cards and Google Pay.</p>
