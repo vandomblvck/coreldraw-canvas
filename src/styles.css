@@ -738,41 +738,37 @@ button.track-receiver-country { width: 100%; text-align: left; cursor: pointer; 
 .track-result-row span:first-child { color: oklch(.5 .02 95); }
 .track-result-detail { font-size: 14px; margin: 4px 0 0; }
 
-/* Customer result: reference composition, separate from the tracking form. */
-.track-timeline-result { margin: 0 -16px -26px; color: var(--foreground); font-family: "Roboto WU", Arial, sans-serif; }
-.track-timeline-reference { background: var(--track-surface); text-align: center; padding: 22px 16px 26px; font-size: 23px; line-height: 1.2; color: var(--muted-foreground); }
-.track-timeline-reference strong { display: block; margin-top: 10px; color: var(--foreground); font-weight: 400; font-variant-numeric: tabular-nums; }
-.track-timeline-body { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); padding: 30px 32px 31px; min-height: 349px; }
-.track-timeline-steps { position: relative; list-style: none; margin: 0; padding: 0 18px 0 0; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
-.track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { content: ""; position: absolute; left: 27px; top: 20px; bottom: 29px; width: 5px; background: var(--track-progress); }
-.track-timeline-step { position: relative; display: grid; grid-template-columns: 62px minmax(0, 1fr); align-items: center; min-height: 42px; font-size: 25px; line-height: 1.15; color: var(--foreground); }
+/* Compact customer result: two-column composition at every screen width. */
+.track-timeline-result { width: min(100%, 478px); margin: 0 auto -26px; color: var(--foreground); font-family: "Roboto WU", Arial, sans-serif; background: var(--background); }
+.track-timeline-reference { background: var(--track-surface); text-align: center; padding: 12px 10px 14px; font-size: 16px; line-height: 1.25; color: var(--muted-foreground); }
+.track-timeline-reference strong { display: block; margin-top: 5px; color: var(--foreground); font-weight: 400; font-variant-numeric: tabular-nums; }
+.track-timeline-body { display: grid; grid-template-columns: minmax(0, 45%) minmax(0, 55%); padding: 16px 16px 15px; min-height: 187px; }
+.track-timeline-steps { position: relative; list-style: none; margin: 0; padding: 0 7px 0 0; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { content: ""; position: absolute; left: 12px; top: 12px; bottom: 13px; width: 3px; background: var(--track-progress); }
+.track-timeline-step { position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; min-height: 30px; font-size: 16px; line-height: 1.18; color: var(--foreground); }
 .track-timeline-step:last-child { z-index: 1; }
-.track-timeline-marker { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--track-progress); color: var(--primary-foreground); }
-.track-timeline-check { font: 29px/1 Arial, sans-serif; transform: translateY(-1px); }
-.track-timeline-step-current .track-timeline-marker { width: 58px; height: 58px; margin-left: -9px; background: var(--background); border: 3px solid var(--track-progress); }
-.track-timeline-dot { width: 29px; height: 29px; border-radius: 50%; background: var(--track-progress); }
+.track-timeline-marker { position: relative; z-index: 1; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--track-progress); color: var(--primary-foreground); }
+.track-timeline-check { font: 18px/1 Arial, sans-serif; transform: translateY(-1px); }
+.track-timeline-step-current .track-timeline-marker { width: 32px; height: 32px; margin-left: -4px; background: var(--background); border: 2px solid var(--track-progress); }
+.track-timeline-dot { width: 16px; height: 16px; border-radius: 50%; background: var(--track-progress); }
 .track-timeline-step-current .track-timeline-label { font-weight: 700; }
-.track-timeline-message { position: relative; min-width: 0; border-left: 4px solid var(--track-progress-faint); padding: 0 0 0 18px; }
-.track-timeline-message::after { content: ""; position: absolute; left: -14px; bottom: 21px; width: 17px; height: 17px; border-left: 3px solid var(--track-progress-faint); border-bottom: 3px solid var(--track-progress-faint); background: var(--background); transform: rotate(45deg); }
-.track-timeline-message h2 { margin: 0 0 24px; font-size: 28px; line-height: 1.2; font-weight: 400; }
-.track-timeline-message p { margin: 0; font-size: 22px; line-height: 1.55; overflow-wrap: anywhere; }
-.track-timeline-actions { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px dashed var(--track-progress-faint); margin: 0 32px; padding: 22px 0 29px; gap: 12px; }
-.track-timeline-action, .track-timeline-actions .track-timeline-action { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 9px; min-width: 0; height: auto; padding: 0; background: transparent; color: var(--track-blue); font: 22px/1.3 "Roboto WU", Arial, sans-serif; text-align: center; text-decoration: none; white-space: normal; border-radius: 0; }
+.track-timeline-message { position: relative; min-width: 0; border-left: 2px solid var(--track-progress-faint); padding: 0 0 0 11px; }
+.track-timeline-message::after { content: ""; position: absolute; left: -7px; bottom: 12px; width: 10px; height: 10px; border-left: 2px solid var(--track-progress-faint); border-bottom: 2px solid var(--track-progress-faint); background: var(--background); transform: rotate(45deg); }
+.track-timeline-message h2 { margin: 0 0 13px; font-size: 18px; line-height: 1.2; font-weight: 400; }
+.track-timeline-message p { margin: 0; font-size: 15px; line-height: 1.45; overflow-wrap: anywhere; }
+.track-timeline-actions { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px dashed var(--track-progress-faint); margin: 0 16px; padding: 15px 0 17px; gap: 8px; }
+.track-timeline-action, .track-timeline-actions .track-timeline-action { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; min-width: 0; height: auto; padding: 0; background: transparent; color: var(--track-blue); font: 15px/1.25 "Roboto WU", Arial, sans-serif; text-align: center; text-decoration: none; white-space: normal; border-radius: 0; }
 .track-timeline-actions .track-timeline-action:hover { background: transparent; color: var(--track-blue); text-decoration: underline; }
-.track-timeline-action svg { width: 40px; height: 40px; stroke-width: 1.3; }
+.track-timeline-action svg { width: 25px; height: 25px; stroke-width: 1.3; }
 @media (max-width: 620px) {
-  .track-timeline-result { margin: 0 -32px; }
-  .track-timeline-reference { font-size: 19px; padding: 18px 16px 20px; }
-  .track-timeline-body { display: block; padding: 25px 26px 27px; min-height: 0; }
-  .track-timeline-steps { min-height: 190px; gap: 33px; padding: 0 0 25px; }
-  .track-timeline-step { grid-template-columns: 60px 1fr; font-size: 22px; }
-  .track-timeline-steps:has(.track-timeline-step + .track-timeline-step)::before { bottom: 54px; }
-  .track-timeline-message { margin: 5px 0 0 28px; padding-left: 17px; }
-  .track-timeline-message h2 { font-size: 25px; margin-bottom: 15px; }
-  .track-timeline-message p { font-size: 19px; line-height: 1.45; }
-  .track-timeline-actions { margin: 0 26px; gap: 8px; padding: 23px 0 30px; }
-  .track-timeline-action, .track-timeline-actions .track-timeline-action { font-size: 16px; min-height: 78px; }
-  .track-timeline-action svg { width: 32px; height: 32px; }
+  .track-timeline-result { width: calc(100% + 64px); margin: 0 -32px; }
+}
+@media (max-width: 350px) {
+  .track-timeline-body { grid-template-columns: minmax(0, 46%) minmax(0, 54%); padding-inline: 12px; }
+  .track-timeline-step { grid-template-columns: 32px minmax(0, 1fr); font-size: 14px; }
+  .track-timeline-message { padding-left: 9px; }
+  .track-timeline-message h2 { font-size: 17px; }
+  .track-timeline-message p { font-size: 14px; }
 }
 
 /* Full-width transfer administration */
