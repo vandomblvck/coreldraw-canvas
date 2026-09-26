@@ -346,3 +346,18 @@
   .wu-reward-card:first-child strong { display: block; max-width: 130px; margin-inline: auto; }
   .wu-reward-card:first-child small { display: block; margin-top: 5px; }
 }
+.wu-currency-wrap { position: relative; }
+.wu-currency-wrap .wu-field { margin-top: 16px; }
+.wu-currency-menu { position: absolute; top: 100%; left: 0; right: 0; z-index: 15; background: var(--card); border: 1px solid var(--border); border-radius: 0 0 8px 8px; padding: 8px 12px; box-shadow: 0 10px 20px color-mix(in oklab, var(--primary) 12%, transparent); }
+.wu-currency-search { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 7px; padding: 9px 12px; }
+.wu-currency-search input { width: 100%; min-width: 0; outline: none; }
+.wu-currency-options { max-height: 205px; overflow-y: auto; }
+.wu-currency-option { display: flex; justify-content: flex-start; gap: 12px; width: 100%; height: 48px; border-bottom: 1px solid var(--border); border-radius: 0; font-weight: 700; }
+@media (max-width: 620px) {
+  .wu-currency-wrap .wu-field { margin-top: 8px; }
+  .wu-field + .wu-currency-wrap .wu-field { margin-top: 8px; }
+  .wu-currency-wrap .wu-currency { width: auto; height: 43px; min-width: 102px; padding: 0 0 0 12px; border-left: 1px solid var(--border); border-radius: 0; font-size: 17px; }
+  .wu-currency-menu { top: calc(100% - 1px); }
+  .wu-currency-search { height: 51px; margin-bottom: 7px; }
+  .wu-currency-option { font-size: 14px; }
+}
