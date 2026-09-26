@@ -1,24 +1,98 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowUp, BadgeCheck, ChevronDown, Gift, Globe2, Lightbulb, LockKeyhole, Menu, RefreshCcw, ShieldCheck, Smartphone, Store, Tag, Wallet, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import logo from "@/assets/Primary_Black.svg.asset.json";
+import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
+import appPhoto from "@/assets/section-786x560-1-1790132239916.webp.asset.json";
+import morePhoto from "@/assets/GettyImages-2170511239-scaled-1790132239918.webp.asset.json";
+import rewardsPhoto from "@/assets/media-1790132239914.webp.asset.json";
+import reasonsPhoto from "@/assets/Dynamic_reasons-Canada-1790132241476.webp.asset.json";
+import appStore from "@/assets/app-store-final.svg.asset.json";
+import googlePlay from "@/assets/google-play-badge-ai.svg.asset.json";
+import starReward from "@/assets/star_rewards.svg.asset.json";
+import discountReward from "@/assets/discount_rewards.svg.asset.json";
+import giftReward from "@/assets/gift.svg.asset.json";
+import usFlag from "@/assets/us.svg.asset.json";
+import mxFlag from "@/assets/mx.svg.asset.json";
+import inFlag from "@/assets/in.svg.asset.json";
+import euFlag from "@/assets/eu.svg.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const official = "https://www.westernunion.com/us/en";
+const sendUrl = `${official}/web/send-money/start`;
+const loginUrl = `${official}/web/user/login`;
+const registerUrl = `${official}/web/user/register`;
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "Send Money Online from the United States | Western Union" },
+    { name: "description", content: "Send and receive money with Western Union online, in the app, or at an agent location." },
+    { property: "og:title", content: "Send Money Online from the United States | Western Union" },
+    { property: "og:description", content: "Send and receive money with Western Union online, in the app, or at an agent location." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+function Action({ children, href, variant = "wuBlack", className = "" }: {children: React.ReactNode; href: string; variant?: "wuBlack" | "wuYellow" | "wuOutline" | "wuLightOutline"; className?: string}) {
+  return <Button asChild variant={variant} className={`h-[52px] px-8 text-[16px] ${className}`}><a href={href}>{children}</a></Button>;
+}
+
+function HomePage() {
+  const [amount, setAmount] = useState("100.00");
+  const [currency, setCurrency] = useState("MXN");
+  const [waysTab, setWaysTab] = useState<"send" | "receive">("send");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const numericAmount = Math.max(0, Number(amount) || 0);
+  const rate = currency === "MXN" ? 17.9977 : currency === "INR" ? 83.47 : 0.92;
+  const receiverAmount = (numericAmount * rate).toFixed(2);
+  const wayCards = waysTab === "send" ? [
+    { title: "Send online", text: <> <a className="text-link underline" href={loginUrl}>Log in</a> or <a className="text-link underline" href={registerUrl}>sign up</a> and create your free profile to send money online.</>, action: "Send money instantly", link: sendUrl, icon: ArrowUp },
+    { title: "Send with our app", text: <>Send money, pay bills, check exchange rates, or start a transfer in the app and pay in-store — all on the go.</>, action: "Download Western Union App", link: `${official}/mobile-app.html`, icon: Smartphone },
+    { title: "Send in person", text: <>Reliable money transfer service at thousands of Western Union® US agent locations.</>, action: "Find locations near you", link: `${official}/agent-locator.html`, icon: Store },
+  ] : [
+    { title: "Receive in a bank account", text: <>Have money sent directly to your bank account from around the world.</>, action: "Learn more", link: `${official}/receive-money.html`, icon: Wallet },
+    { title: "Receive with the app", text: <>Keep track of your incoming transfer on the Western Union app.</>, action: "Download the app", link: `${official}/mobile-app.html`, icon: Smartphone },
+    { title: "Pick up cash", text: <>Collect your money at a participating Western Union agent location.</>, action: "Find locations near you", link: `${official}/agent-locator.html`, icon: Store },
+  ];
+  return <main>
+    <header className="wu-nav"><div className="wu-shell wu-nav-inner">
+      <a href="#top" aria-label="Western Union home"><img src={logo.url} alt="Western Union" className="w-[220px] h-auto" /></a>
+      <nav className="wu-nav-links" aria-label="Primary navigation">
+        <a className="wu-desktop" href={sendUrl}>Send money</a>
+        <a className="wu-desktop" href={`${official}/track-transfer.html`}>Track a transfer</a>
+        <a className="wu-language flex items-center gap-2" href={`${official}/home.html`} aria-label="Language: English"><Globe2 size={26} /> EN</a>
+        <Button variant="ghost" size="icon" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={26} /> : <Menu size={26} />}</Button>
+        <Action href={loginUrl} className="wu-desktop">Log in</Action>
+        <Action href={registerUrl} variant="wuOutline" className="wu-register">Register</Action>
+      </nav>
+    </div>{menuOpen && <div className="absolute z-20 right-4 top-[76px] md:top-[94px] bg-card border border-border rounded-md shadow-lg p-5 flex flex-col gap-4 min-w-[220px] text-primary"><a href={sendUrl}>Send money</a><a href={`${official}/track-transfer.html`}>Track a transfer</a><a href={loginUrl}>Log in</a><a href={registerUrl}>Register</a><a href={`${official}/agent-locator.html`}>Find locations</a></div>}</header>
+    <section id="top" className="wu-hero"><div className="wu-shell wu-hero-inner">
+      <div className="wu-hero-copy"><h1 className="wu-heading">Send money online from the<br className="hidden xl:block" /> United States at our best price</h1>
+        <div className="wu-intro"><Lightbulb size={29} className="shrink-0 mt-1" strokeWidth={1.8}/><span>Join millions of customers around the world and start sending and receiving money with Western Union.</span></div>
+        <div className="wu-trust"><div><div className="font-display font-medium text-[18px] leading-none"><span className="text-teal text-[28px]">★</span>Trustpilot</div><div className="wu-trust-stars">{[1,2,3,4,5].map(i => <span key={i}>★</span>)}</div></div><strong>4.3</strong><span className="wu-trust-divider"/><strong className="leading-6">Excellent<br/>169,837+ reviews</strong></div>
+        <a className="wu-fraud underline underline-offset-2" href={`${official}/fraud-awareness.html`}><ShieldCheck size={23} strokeWidth={1.8} /><span>Smarter. Safer. Together. Learn how to #BeFraudSmart.</span></a>
+      </div>
+      <div className="wu-quote"><div className="wu-offer"><Gift size={27} strokeWidth={1.5}/><span>Get a <strong>0 USD transfer fee*</strong> on your first online transfer!</span></div>
+        <div className="wu-field"><div><label htmlFor="amount">You’re sending</label><input id="amount" aria-label="Amount you are sending in USD" inputMode="decimal" value={amount} onChange={e=>setAmount(e.target.value.replace(/[^\d.]/g,""))} onBlur={()=>setAmount(numericAmount.toFixed(2))}/></div><span className="wu-currency"><img className="wu-flag" src={usFlag.url} alt="United States"/> USD</span></div>
+        <div className="wu-field"><div><label htmlFor="currency">Your receiver gets</label><strong className="text-[17px]">{receiverAmount}</strong></div><span className="wu-currency"><img className="wu-flag" src={currency === "MXN" ? mxFlag.url : currency === "INR" ? inFlag.url : euFlag.url} alt=""/><select id="currency" value={currency} onChange={e=>setCurrency(e.target.value)} aria-label="Receiver currency" className="bg-transparent outline-none"><option value="MXN">MXN</option><option value="INR">INR</option><option value="EUR">EUR</option></select><ChevronDown size={17}/></span></div>
+        <div className="wu-summary"><div className="wu-summary-row"><span>Exchange rate</span><span><s className="text-muted-foreground mr-2">17.3417 MXN</s><strong>{rate.toFixed(4)} {currency}</strong></span></div><div className="wu-summary-row"><span>Our fees</span><span><s className="text-muted-foreground">1.99 USD</s> 0.00 USD <strong className="ml-2 bg-mint rounded-full px-3">100% off</strong></span></div><div className="wu-summary-row"><span>Delivery time</span><strong>In minutes</strong></div><div className="wu-summary-row wu-summary-total"><span>Total Amount</span><span>{numericAmount.toFixed(2)} USD</span></div></div>
+        <Action href={sendUrl} className="w-full mt-[26px] text-brand">Send now</Action>
+        <p className="wu-disclaimer">*Western Union makes money from FX. Fees and rates subject to change without notice. Offer not available for Quick Collect, transfers within the United States, credit cards and Google Pay.</p>
+      </div>
+    </div></section>
+    <section className="wu-benefits"><div className="wu-shell wu-benefits-inner"><div className="wu-benefits-item"><LockKeyhole size={23}/><span>We are committed to keeping your data secured.</span></div><div className="wu-benefits-item"><Tag size={23}/><span>Send money to 200+ countries or territories online or in-store.</span></div><div className="wu-benefits-item"><Wallet size={23}/><span>Reliable service since 1851.</span></div></div></section>
+    <section className="wu-ways"><div className="wu-shell"><h2 className="wu-heading wu-section-title">Convenient ways to send and receive money</h2><div className="wu-tabs" role="tablist" aria-label="Money transfer options"><Button variant="ghost" role="tab" aria-selected={waysTab === "send"} className={`wu-tab rounded-none h-auto font-normal ${waysTab === "send" ? "active" : ""}`} onClick={()=>setWaysTab("send")}>Ways to send money</Button><Button variant="ghost" role="tab" aria-selected={waysTab === "receive"} className={`wu-tab rounded-none h-auto font-normal ${waysTab === "receive" ? "active" : ""}`} onClick={()=>setWaysTab("receive")}>Ways to receive money</Button></div><div className="wu-ways-grid">{wayCards.map(card=><article className="wu-way" key={card.title}><card.icon size={36} strokeWidth={1.6}/><h3>{card.title}</h3><p>{card.text}</p><Action href={card.link} variant="wuYellow" className="mt-auto h-[38px] px-5 text-[14px] max-w-[225px] whitespace-normal text-center">{card.action}</Action></article>)}</div></div></section>
+    <section className="wu-app"><img className="wu-app-photo" src={appPhoto.url} alt="Western Union app displayed on a smartphone"/><div className="wu-shell"><div className="wu-app-copy"><div className="wu-app-copy-content"><h2 className="wu-heading wu-section-title">Money transfers at your fingertips with the Western Union® app</h2><ul className="wu-app-list"><li><ArrowUp size={33}/>Send money quickly or start a transfer and pay in-store.</li><li><RefreshCcw size={33}/>Track your money transfer in real time.</li><li><Wallet size={33}/>Send again quickly to friends and family.</li></ul><Action href={`${official}/mobile-app.html`}>Download the app</Action><div className="wu-badges"><a href="https://apps.apple.com/us/app/western-union-send-money/id424716908" aria-label="Download on the App Store"><b>4.8 ★★★★★</b><img src={appStore.url} alt="Download on the App Store"/></a><a href="https://play.google.com/store/apps/details?id=com.westernunion.android.mtapp" aria-label="Get it on Google Play"><b>4.6 ★★★★★</b><img src={googlePlay.url} alt="Get it on Google Play"/></a></div><small>Rating as of September 14, 2026</small></div></div></div></section>
+    <section className="wu-shell wu-more"><img src={morePhoto.url} alt="Customer at his business counter"/><div><h2 className="wu-heading wu-section-title">Get more with Western Union</h2><p>Bill pay, money orders, prepaid card, mobile top-ups, and much more. Learn more about all the financial services you can depend on.</p><p>Streamline your finances, prepare for the unexpected, and stay connected to those you care about. For everything you do with your money, Western Union is your home for it all, and more.</p><p>One name, many possibilities.</p><Action href={`${official}/money-services.html`} variant="wuOutline" className="min-w-[295px] mt-9">Get more</Action></div></section>
+    <aside className="wu-shell wu-referral"><h2 className="wu-heading">Join us today</h2><span>Refer your friends to Western Union and earn exciting rewards for every successful referral.</span><Action href={`${official}/refer-a-friend.html`} variant="wuLightOutline" className="min-w-[200px]">Learn more</Action></aside>
+    <section className="wu-rewards"><div className="wu-shell wu-rewards-inner"><img src={rewardsPhoto.url} alt="Mother and child embracing"/><div><h2 className="wu-heading">Western Union <span>Rewards</span></h2><p>Ready to turn your money transfers into rewards? Just log in or register with Western Union, complete your profile and start earning points!</p><div className="wu-reward-cards"><div className="wu-reward-card"><img src={starReward.url} alt=""/><strong>Earn 100 points</strong><small>with every online money transfer.</small></div><div className="wu-reward-card"><img src={discountReward.url} alt=""/>500 points = up to 2 USD discount on money transfer fees.⁵</div><div className="wu-reward-card">Member exclusive deals from brands you love.<img src={giftReward.url} alt="" className="!w-32 !h-32 !mt-8"/></div></div><div className="wu-reward-actions"><Action href={registerUrl} className="min-w-[225px]">Register</Action><Action href={loginUrl} variant="wuOutline" className="min-w-[225px]">Login</Action></div></div></div></section>
+    <section className="wu-deals"><div className="wu-shell"><h2 className="wu-heading text-[40px]">Deals and discounts, just for you <LockKeyhole className="inline float-right" size={31}/></h2><p className="mt-5">Discover offers exclusively selected for Western Union Rewards members.</p><div className="wu-deals-grid">{[{label:"Deal of the week",brand:"▧",name:"Squarespace",offer:"10% Off New Paid Website Sub...",detail:"Save 10% on new paid subscriptions for the website product. This offer is..."},{label:"Trending",brand:"◉ NordVPN",name:"NordVPN",offer:"NordVPN 70% Off for 2 Years ...",detail:"NordVPN offers secure and reliable online protection with discounted..."},{label:"Trending",brand:"↗",name:"Amazon Music Affiliate Program",offer:"30-Day Free Trial of Amazon M...",detail:"Enjoy a 30-day free trial of Amazon Music Unlimited to explore its extensiv..."},{label:"",brand:"deferit",name:"Deferit",offer:"Deferit pays your bill now. You ...",detail:"Get up to $500 for bills right now. Pay it back later, in 4 smaller payments."}].map(item=><article className="wu-deal" key={item.name}><div className="wu-deal-label">{item.label || " "}</div><div className="wu-deal-logo">{item.brand}</div><div className="wu-deal-body">{item.name}<strong className="truncate">{item.offer}</strong><p>{item.detail}</p></div></article>)}</div><Action href={`${official}/rewards.html`} variant="wuOutline" className="min-w-[235px]">View all offers</Action></div></section>
+    <aside className="wu-shell wu-pickup"><Wallet size={60} className="text-brand shrink-0"/><div className="flex-1"><h2 className="wu-heading">Send money online, available for pickup in minutes⁵</h2><p>Simply transfer money to an agent location, and your recipient can collect the cash within minutes.</p></div><Action href={sendUrl} variant="wuLightOutline" className="min-w-[225px]">Send now</Action></aside>
+    <section className="wu-shell wu-reasons"><img src={reasonsPhoto.url} alt="Customer checking her phone outdoors"/><div><h2 className="wu-heading wu-section-title">Our customers made millions of money transfers with Western Union last year. Here’s why:</h2><div className="wu-reasons-grid"><div><Tag size={34}/><h3>Ease and convenience</h3><p>Send and receive money the way that’s convenient for you: online, with our app, or in person at an agent location.</p></div><div><ShieldCheck size={34}/><h3>Commitment to security</h3><p>Our encryption and fraud prevention efforts help protect your Western Union® money transfers.</p></div><div><Globe2 size={34}/><h3>Global reach</h3><p>Send money to loved ones around the world.</p></div><div><BadgeCheck size={34}/><h3>Trusted service</h3><p>Reliable money transfers for generations.</p></div></div></div></section>
+    <section className="wu-review"><h2 className="wu-heading wu-section-title">Review us on Trustpilot!</h2><p className="my-7 text-[17px]">Help us improve your experience by giving us a review today.</p><Action href="https://www.trustpilot.com/review/www.westernunion.com" variant="wuYellow">Leave review</Action></section>
+    <section className="wu-shell wu-faq"><h2 className="wu-heading wu-section-title">Frequently asked questions</h2>{[{q:"How can I send someone money immediately?",a:"You can send and receive money quickly with Western Union using our website, mobile app, or in person at an agent location. Many transfers may be available for pickup in minutes, depending on service type, destination, and receiver method."},{q:"How do I send money to someone with Western Union?",a:"Register or log in, choose the destination and amount, enter your receiver’s details, then review and pay for your transfer."},{q:"Does Western Union have a digital wallet?",a:"The Western Union app is a money transfer app allowing you to send money, track transfers, and pay bills."}].map(item=><details key={item.q}><summary><span>+</span>{item.q}</summary><p>{item.a}</p></details>)}</section>
+    <footer className="wu-footer"><div className="wu-shell"><div className="text-[13px] font-bold">IMPORTANT PAGES</div><div className="wu-footer-links">{["Home","About us","Contact us","Fraud awareness","Online Privacy Statement","Your Privacy Choices","Terms & Conditions","Ad Choices","Cookie Information","Law Enforcement Assistance"].map((label,i)=><a key={label} href={i===0?"#top":`${official}/${["","about-us.html","contact-us.html","fraud-awareness.html","privacy-statement.html","privacy-choices.html","terms-conditions.html","ad-choices.html","cookie-information.html","law-enforcement.html"][i]}`}>{label}</a>)}</div><div className="wu-footer-bottom"><img src={footerLogo.url} alt="Western Union" className="w-[295px]"/><div><p>Services may be provided by Western Union Financial Services, Inc. NMLS# 906983 and/or Western Union International Services, LLC NMLS# 906985. These licensed companies may be verified through the NMLS Consumer Access website.</p><p>Western Union Financial Services, Inc. and Western Union International Services, LLC are licensed as Money Transmitters by the New York State Department of Financial Services. See terms and conditions for details.</p><p>¹Fee reductions apply only to the Western Union transfer fee for a single Western Union Money Transfer. Excludes all other services. Cannot be combined with other Western Union promotional offers.</p><p className="mt-12">© 2026 Western Union Holdings, Inc. All Rights Reserved</p></div></div></div></footer>
+  </main>;
 }

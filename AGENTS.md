@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the single-page Western Union reference implementation at `/` with semantic styling in `src/styles.css` and CDN asset pointers in `src/assets`; this preserves the supplied visual reference without embedding browser screenshots.
