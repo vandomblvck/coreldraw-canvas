@@ -82,7 +82,7 @@ export const updateTransfer = createServerFn({ method: "POST" })
     await requireAdmin(context.supabase, context.userId);
     const updates = Object.fromEntries(
       Object.entries(data.updates).filter(([, value]) => value !== undefined),
-    );
+    ) as import("@/integrations/supabase/types").TablesUpdate<"transfers">;
     const { data: row, error } = await context.supabase
       .from("transfers")
       .update(updates)
