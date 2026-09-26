@@ -116,7 +116,7 @@ function TrackTransfer() {
           <Button variant="ghost" role="tab" aria-selected={role === "receiver"} className={role === "receiver" ? "track-tab active" : "track-tab"} onClick={() => {setRole("receiver");setSubmitted(false)}}><ArrowDownToLine aria-hidden="true"/>I'm the receiver</Button>
         </div>
         {mode === "mtcn" ? (
-        <form className="track-form" onSubmit={event => {event.preventDefault(); if(valid) setSubmitted(true)}}>
+        <form className="track-form" onSubmit={async event => {event.preventDefault(); if(!valid || searching) return; setSearching(true); setResult(null); try { setResult(await lookupTransfer({data: {mtcn, firstName: firstName.trim()}})); } catch { setResult({found: false}); } setSearching(false); setSubmitted(true); }}>
           <label htmlFor="track-mtcn" className="track-instruction">Please enter your 10-digit tracking number (MTCN).</label>
           <div className="track-number" onClick={() => inputRef.current?.focus()}>
             {Array.from({length: 10}, (_, index) => <span key={index} className={`track-digit ${index === 3 || index === 6 ? "track-digit-gap" : ""}`}>{mtcn[index] ?? ""}</span>)}
