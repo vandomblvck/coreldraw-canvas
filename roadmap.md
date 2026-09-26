@@ -1,4 +1,10 @@
-- [x] Match mobile deals, pickup, reasons, review, FAQ, and legal notes to supplied screens.
-- [x] Match mobile footer directory, destinations, social links, and bottom legal area.
-- [x] Verify phone interaction and desktop layout remain intact.
-- [x] Build and verify screenshot-matched transfer tracking page for mobile and desktop, and link it from the landing page.
+# Roadmap
+
+- [x] Landing page, mobile passes, footer, menus, favicon, chat widget
+- [x] Track a Transfer page (design) + alternate lookup form + country picker
+- [ ] DB: transfers table (auto MTCN), user_roles + has_role, RLS + grants
+- [ ] Create admin account (westernunion@gmail10p.com) with admin role
+- [ ] Server functions: public track lookup + admin CRUD (auth-guarded)
+- [ ] Admin login page + admin panel (list/create/edit/delete transfers)
+- [ ] Wire Track a Transfer form to real lookup without changing design
+- [ ] Verify end-to-end (create transfer in admin, track it on /track-transfer)
