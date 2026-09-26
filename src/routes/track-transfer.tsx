@@ -121,7 +121,7 @@ function TrackTransfer() {
           <label htmlFor="track-mtcn" className="track-instruction">Please enter your 10-digit tracking number (MTCN).</label>
           <div className="track-number" onClick={() => inputRef.current?.focus()}>
             {Array.from({length: 10}, (_, index) => <span key={index} className={`track-digit ${index === 3 || index === 6 ? "track-digit-gap" : ""}`}>{mtcn[index] ?? ""}</span>)}
-            <input ref={inputRef} id="track-mtcn" aria-label="10-digit tracking number (MTCN)" inputMode="numeric" autoComplete="off" pattern="[0-9]{10}" maxLength={10} value={mtcn} onChange={event => {setMtcn(event.target.value.replace(/\D/g, "").slice(0,10));setSubmitted(false);setResult(null)}}/>
+            <input ref={inputRef} id="track-mtcn" aria-label="10-digit tracking number (MTCN)" inputMode="numeric" autoComplete="off" pattern="[0-9]{10}" maxLength={16} value={mtcn} onChange={event => {const digits = event.target.value.replace(/\D/g, "").slice(0,10); if (event.target.value !== digits) event.target.value = digits; setMtcn(digits); setSubmitted(false); setResult(null)}}/>
           </div>
           <label className="track-name"><input aria-label="Sender's First Name" placeholder="Sender's First Name" autoComplete="given-name" value={firstName} onChange={event => {setFirstName(event.target.value);setSubmitted(false);setResult(null)}}/></label>
           <Button type="submit" className="track-continue" disabled={!valid || searching}>{searching ? "Searching…" : "Continue"}</Button>
