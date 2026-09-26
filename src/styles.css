@@ -189,8 +189,7 @@
  .wu-reasons { gap: 35px; }
 }
 @media (max-width: 620px) {
- .wu-logo-desktop { display: none; } .wu-logo-mobile { display: block; width: 48px; height: auto; }
- .wu-nav-inner > a img { width: 145px; } .wu-nav-links { gap: 8px; } .wu-nav-links a, .wu-nav-links button { font-size: 13px; }
+ .wu-nav-inner > a .wu-logo-desktop { width: 145px; } .wu-nav-links { gap: 8px; } .wu-nav-links a, .wu-nav-links button { font-size: 13px; }
  .wu-nav-links .wu-register, .wu-nav-links .wu-language { display:none; }
  .wu-hero h1 { font-size: 30px; } .wu-hero-inner { padding-bottom: 28px; } .wu-intro { font-size: 17px; }
  .wu-trust { flex-wrap: wrap; } .wu-fraud { font-size: 15px; gap: 15px; }
