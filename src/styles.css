@@ -361,3 +361,8 @@
   .wu-currency-search { height: 51px; margin-bottom: 7px; }
   .wu-currency-option { font-size: 14px; }
 }
+.wu-mobile-currency { display: none; }
+@media (max-width: 620px) {
+  .wu-desktop-currency { display: none; }
+  .wu-mobile-currency { display: flex; }
+}
