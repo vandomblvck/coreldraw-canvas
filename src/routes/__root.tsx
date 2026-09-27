@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import appManifest from "../assets/manifest.webmanifest?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -95,6 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "icon", href: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { rel: "manifest", href: appManifest },
     ],
     scripts: [],
   }),
