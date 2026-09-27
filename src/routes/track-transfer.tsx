@@ -12,7 +12,7 @@ import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
 import socialInstagram from "@/assets/social/instagram.svg";
 import socialX from "@/assets/social/icon-X-former-twitter-dark-web.svg";
 
-const official = "https://www.westernunion.com";
+const official = "/";
 const links = [
   "Home", "About us", "Contact us", "Refer a Friend", "Blog", "Help", "Fraud awareness",
   "Report a security bug", "Investor relations", "Careers", "Western Union Foundation",
@@ -21,20 +21,20 @@ const links = [
   "Accessibility Statement", "How to find your WU tracking number", "Send money with confidence",
 ];
 const hrefs: Record<string, string> = {
-  "About us": "https://corporate.westernunion.com/", "Contact us": `${official}/us/en/contact-us.html`,
-  "Refer a Friend": `${official}/us/en/refer-a-friend.html`, Blog: `${official}/blog/`,
-  Help: `${official}/us/en/frequently-asked-questions.html`, "Fraud awareness": `${official}/global/en/fraud-awareness/fraud-home.html`,
-  "Report a security bug": `${official}/us/en/fraud-awareness.html`, "Investor relations": "https://ir.westernunion.com/",
-  Careers: "https://careers.westernunion.com/", "Western Union Foundation": "https://www.westernunionfoundation.org/",
-  News: "https://corporate.westernunion.com/newsroom.html", "Become an agent": "https://agentportal.westernunion.com/",
-  "State licensing": `${official}/us/en/legal/state-licenses.html`,
-  "Law enforcement subpoena information": `${official}/us/en/legal/law-enforcement.html`,
-  "Terms and Conditions": `${official}/us/en/legal/terms-conditions.html`,
-  "Online Privacy Statement": `${official}/global/en/privacy-statement.html`,
-  Sitemap: `${official}/us/en/sitemap.html`, "Cookie Information": `${official}/us/en/legal/cookie-information.html`,
-  "Accessibility Statement": `${official}/us/en/accessibility.html`,
-  "How to find your WU tracking number": `${official}/us/en/frequently-asked-questions/track-a-transfer.html`,
-  "Send money with confidence": `${official}/us/en/fraud-awareness.html`,
+  "About us": "/", "Contact us": "/",
+  "Refer a Friend": "/", Blog: "/",
+  Help: "/", "Fraud awareness": "/",
+  "Report a security bug": "/", "Investor relations": "/",
+  Careers: "/", "Western Union Foundation": "/",
+  News: "/", "Become an agent": "/",
+  "State licensing": "/",
+  "Law enforcement subpoena information": "/",
+  "Terms and Conditions": "/",
+  "Online Privacy Statement": "/",
+  Sitemap: "/", "Cookie Information": "/",
+  "Accessibility Statement": "/",
+  "How to find your WU tracking number": "/",
+  "Send money with confidence": "/",
 };
 
 export const Route = createFileRoute("/track-transfer")({
@@ -83,29 +83,29 @@ function TrackTransfer() {
       <div className="track-header-inner">
         <Link to="/" aria-label="Western Union home" className="track-logo"><img src={footerLogo.url} alt="Western Union" /></Link>
         <nav className="track-nav" aria-label="Primary navigation">
-          <a href={`${official}/us/en/web/send-money/start`}>Send money</a><a href={`${official}/us/en/receive-money.html`}>Pick up cash</a>
-          <Link to="/track-transfer">Track transfer</Link><a href={`${official}/us/en/bill-pay.html`}>Pay bills</a><a href={`${official}/us/en/frequently-asked-questions.html`}>Help</a>
+          <a href={"/"}>Send money</a><a href={"/"}>Pick up cash</a>
+          <Link to="/track-transfer">Track transfer</Link><a href={"/"}>Pay bills</a><a href={"/"}>Help</a>
         </nav>
         <Button variant="ghost" className="track-menu-trigger" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span className="track-menu-desktop">{menuOpen ? <X size={26}/> : <Menu size={29}/>}</span><span className="track-menu-mobile">{menuOpen ? "Close" : "Menu"}</span></Button>
-        <div className="track-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><a href={`${official}/us/en/web/user/register`}>Register</a></div>
+        <div className="track-auth"><a href={"/"}>Log in</a><a href={"/"}>Register</a></div>
       </div>
       {menuOpen && <div className="track-menu-backdrop" aria-hidden="true" onClick={() => setMenuOpen(false)} />}
       {menuOpen && <nav className="track-menu-panel" aria-label="Site menu">
-        <div className="track-menu-auth"><a href={`${official}/us/en/web/user/login`}>Log in</a><span aria-hidden="true"/><a href={`${official}/us/en/web/user/register`}>Sign up</a></div>
+        <div className="track-menu-auth"><a href={"/"}>Log in</a><span aria-hidden="true"/><a href={"/"}>Sign up</a></div>
         <ul>
-          <li><a href={`${official}/us/en/web/send-money/start`}><Send aria-hidden="true"/>Send money</a></li>
-          <li><a href={`${official}/us/en/receive-money.html`}><HandCoins aria-hidden="true"/>Pick up cash</a></li>
+          <li><a href={"/"}><Send aria-hidden="true"/>Send money</a></li>
+          <li><a href={"/"}><HandCoins aria-hidden="true"/>Pick up cash</a></li>
           <li><Link to="/track-transfer" onClick={() => setMenuOpen(false)}><Crosshair aria-hidden="true"/>Track transfer</Link></li>
-          <li><a href={`${official}/us/en/bill-pay.html`}><ReceiptText aria-hidden="true"/>Pay bills</a></li>
-          <li><a href={`${official}/us/en/find-locations.html`}><MapPin aria-hidden="true"/>Find locations</a></li>
-          <li><a href={`${official}/us/en/frequently-asked-questions.html`}><MessageCircleQuestion aria-hidden="true"/>Help</a></li>
-          <li><a href={`${official}/us/en/rewards.html`}><Star aria-hidden="true"/><span>Western Union<br/>Rewards<em className="track-menu-new">New</em></span></a></li>
-          <li><a href={`${official}/us/en/refer-a-friend.html`}><UsersRound aria-hidden="true"/>Refer a Friend</a></li>
-          <li><a href={`${official}/us/en/pay-inmate.html`}><Landmark aria-hidden="true"/>Pay inmate</a></li>
-          <li><a href={`${official}/us/en/mobile-top-up.html`}><Smartphone aria-hidden="true"/>Mobile top-up</a></li>
-          <li><a href={`${official}/us/en/web/user/login`}><Building2 aria-hidden="true"/>Update delivery method</a></li>
-          <li><a href={`${official}/us/en/prepaid-card.html`}><CreditCard aria-hidden="true"/>Western Union Prepaid</a></li>
-          <li><a href={`${official}/us/en/web/user/login`}><Settings aria-hidden="true"/>Settings</a></li>
+          <li><a href={"/"}><ReceiptText aria-hidden="true"/>Pay bills</a></li>
+          <li><a href={"/"}><MapPin aria-hidden="true"/>Find locations</a></li>
+          <li><a href={"/"}><MessageCircleQuestion aria-hidden="true"/>Help</a></li>
+          <li><a href={"/"}><Star aria-hidden="true"/><span>Western Union<br/>Rewards<em className="track-menu-new">New</em></span></a></li>
+          <li><a href={"/"}><UsersRound aria-hidden="true"/>Refer a Friend</a></li>
+          <li><a href={"/"}><Landmark aria-hidden="true"/>Pay inmate</a></li>
+          <li><a href={"/"}><Smartphone aria-hidden="true"/>Mobile top-up</a></li>
+          <li><a href={"/"}><Building2 aria-hidden="true"/>Update delivery method</a></li>
+          <li><a href={"/"}><CreditCard aria-hidden="true"/>Western Union Prepaid</a></li>
+          <li><a href={"/"}><Settings aria-hidden="true"/>Settings</a></li>
         </ul>
       </nav>}
     </header>
@@ -180,7 +180,7 @@ function TrackTransfer() {
             <label className="track-select-wrap"><select aria-label="Year" value={year} onChange={event => setYear(event.target.value)}><option value="">Year</option>{years.map(value => <option key={value} value={value}>{value}</option>)}</select></label>
           </fieldset>
           <Button type="submit" className="track-continue" disabled={!detailsValid}>Continue</Button>
-          {submitted && <p className="track-status" role="status">For your security, check your transfer status directly on <a href={`${official}/web/global-service/track-transfer`}>Western Union's official tracking page</a>.</p>}
+          {submitted && <p className="track-status" role="status">For your security, check your transfer status directly on <a href={"/"}>Western Union's official tracking page</a>.</p>}
           <button type="button" className="track-help-link" onClick={() => {setMode("mtcn");setSubmitted(false)}}>I have an MTCN</button>
         </form>
         )}
@@ -190,7 +190,7 @@ function TrackTransfer() {
       <div className="track-footer-inner">
         <nav className="track-footer-links" aria-label="Footer navigation">{links.map((label, index) => <span key={label}>{index > 0 && <span className="track-separator" aria-hidden="true">|</span>}{label === "Home" ? <Link to="/">Home</Link> : <a href={hrefs[label]}>{label}</a>}{" "}</span>)}</nav>
         <p className="track-legal">Services may be provided by Western Union Financial Services, Inc. NMLS# 906983 and/or Western Union International Services, LLC NMLS# 906985, which are licensed as Money Transmitters by the New York State Department of Financial Services. See terms and conditions for details.</p>
-        <div className="track-footer-bottom"><p>© 2026 Western Union Holdings, Inc. All Rights Reserved</p><div className="track-social"><strong>Follow us on</strong><div><a href="https://www.facebook.com/WesternUnion" aria-label="Facebook"><img src={socialFacebook} alt=""/></a><a href="https://www.youtube.com/user/WesternUnion" aria-label="YouTube"><img src={socialYoutube} alt=""/></a><a href="https://www.instagram.com/westernunion/" aria-label="Instagram"><img src={socialInstagram} alt=""/></a><a href="https://x.com/WesternUnion" aria-label="X"><img src={socialX} alt=""/></a></div></div></div>
+        <div className="track-footer-bottom"><p>© 2026 Western Union Holdings, Inc. All Rights Reserved</p><div className="track-social"><strong>Follow us on</strong><div><a href="/" aria-label="Facebook"><img src={socialFacebook} alt=""/></a><a href="/" aria-label="YouTube"><img src={socialYoutube} alt=""/></a><a href="/" aria-label="Instagram"><img src={socialInstagram} alt=""/></a><a href="/" aria-label="X"><img src={socialX} alt=""/></a></div></div></div>
       </div>
     </footer>
   </main>;
