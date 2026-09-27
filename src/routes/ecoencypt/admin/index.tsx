@@ -29,7 +29,7 @@ export const Route = createFileRoute("/ecoencypt/admin/")({
   head: () => ({ meta: [
     { title: "Transfer Dashboard | Western Union" }, { name: "description", content: "Secure transfer management dashboard." },
     { property: "og:title", content: "Transfer Dashboard | Western Union" }, { property: "og:description", content: "Secure transfer management dashboard." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex, nofollow" },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex, nofollow, noarchive, nosnippet, noimageindex" },
   ] }),
   component: AdminPanel,
 });

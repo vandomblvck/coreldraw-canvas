@@ -7,7 +7,7 @@ export const Route = createFileRoute("/ecoencypt/admin/login")({
   head: () => ({ meta: [
     { title: "Admin Login | Western Union" },
     { name: "description", content: "Administrator sign in for transfer management." },
-    { name: "robots", content: "noindex, nofollow" },
+    { name: "robots", content: "noindex, nofollow, noarchive, nosnippet, noimageindex" },
   ] }),
   component: AdminLogin,
 });
