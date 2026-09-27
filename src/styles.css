@@ -72,7 +72,7 @@
 .wu-quote { background: var(--card); border-radius: 9px; padding: 26px; align-self: start; color: var(--foreground); }
 .wu-offer { min-height: 72px; background: var(--mint); border-radius: 9px; padding: 14px 17px; display: flex; align-items: center; gap: 17px; font-size: 17px; line-height: 1.4; }
 .wu-field { border: 1px solid var(--border); border-radius: 9px; height: 64px; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; margin-top: 16px; }
-.wu-field label { display: block; font-size: 14px; line-height: 1.15; }
+.wu-field label { display: block; font-size: 14px; line-height: 1.15; white-space: nowrap; }
 .wu-field input { border: 0; outline: 0; font-weight: 700; font-size: 17px; width: 150px; color: var(--foreground); background: transparent; }
 .wu-field input:focus { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 3px; }
 .wu-currency { display: flex; gap: 6px; align-items: center; font-weight: 700; }
