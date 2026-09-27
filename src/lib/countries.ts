@@ -57,5 +57,5 @@ const list: [string, string][] = [
 export const countries: CountryOption[] = list.map(([name, iso]) => ({
   name,
   iso,
-  flag: `https://flagcdn.com/w80/${iso}.png`,
+  flag: `/flags/${iso}.png`,
 }));
