@@ -69,7 +69,10 @@ function isSensitivePath(path: string) {
 
 function withPrivacyHeaders(response: Response, path: string): Response {
   const res = new Response(response.body, response);
-  res.headers.set("X-Robots-Tag", ROBOTS_POLICY);
+  // robots.txt must stay crawlable/indexable so Google can read the Disallow rules.
+  if (path !== "/robots.txt") {
+    res.headers.set("X-Robots-Tag", ROBOTS_POLICY);
+  }
   if (isSensitivePath(path)) {
     res.headers.set("Cache-Control", "no-store, private, max-age=0");
   }
