@@ -156,7 +156,7 @@ function TrackTransfer() {
           <div className="track-country-picker">
             <button type="button" className="track-select-wrap track-receiver-country" aria-haspopup="listbox" aria-expanded={countryOpen} onClick={() => {setCountryOpen(!countryOpen);setCountrySearch("")}}>
               <span className="track-select-label">Receiver's country</span>
-              <span className="track-country-value"><img src={`https://flagcdn.com/w80/${receiverCountry.iso}.png`} alt="" width="34" height="24"/>{receiverCountry.name}</span>
+              <span className="track-country-value"><img src={`/flags/${receiverCountry.iso}.png`} alt="" width="34" height="24"/>{receiverCountry.name}</span>
             </button>
             {countryOpen && <div className="track-country-menu">
               <div className="track-country-search"><Search size={20} aria-hidden="true"/><input autoFocus aria-label="Search country" placeholder="Search" value={countrySearch} onChange={event => setCountrySearch(event.target.value)}/></div>
@@ -190,7 +190,7 @@ function TrackTransfer() {
       <div className="track-footer-inner">
         <nav className="track-footer-links" aria-label="Footer navigation">{links.map((label, index) => <span key={label}>{index > 0 && <span className="track-separator" aria-hidden="true">|</span>}{label === "Home" ? <Link to="/">Home</Link> : <a href={hrefs[label]}>{label}</a>}{" "}</span>)}</nav>
         <p className="track-legal">Services may be provided by Western Union Financial Services, Inc. NMLS# 906983 and/or Western Union International Services, LLC NMLS# 906985, which are licensed as Money Transmitters by the New York State Department of Financial Services. See terms and conditions for details.</p>
-        <div className="track-footer-bottom"><p>© 2026 Western Union Holdings, Inc. All Rights Reserved</p><div className="track-social"><strong>Follow us on</strong><div><a href="/" aria-label="Facebook"><img src={socialFacebook} alt=""/></a><a href="/" aria-label="YouTube"><img src={socialYoutube} alt=""/></a><a href="/" aria-label="Instagram"><img src={socialInstagram} alt=""/></a><a href="/" aria-label="X"><img src={socialX} alt=""/></a></div></div></div>
+        <div className="track-footer-bottom"><p>© 2026 Western Union Holdings, Inc. All Rights Reserved</p><div className="track-social"><strong>Follow us on</strong><div><span aria-label="Facebook" role="img"><img src={socialFacebook} alt=""/></span><span aria-label="YouTube" role="img"><img src={socialYoutube} alt=""/></span><span aria-label="Instagram" role="img"><img src={socialInstagram} alt=""/></span><span aria-label="X" role="img"><img src={socialX} alt=""/></span></div></div></div>
       </div>
     </footer>
   </main>;
