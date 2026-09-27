@@ -56,7 +56,7 @@ export function TransferTimeline({
       <div className="track-timeline-message"><h2>Status</h2><p>{description}</p></div>
     </div>
     <div className="track-timeline-actions">
-      <a href="https://www.westernunion.com/us/en/find-locations.html" className="track-timeline-action"><MapPin aria-hidden="true"/><span>Find a location</span></a>
+      <a href="/" className="track-timeline-action"><MapPin aria-hidden="true"/><span>Find a location</span></a>
       <Button type="button" variant="ghost" className="track-timeline-action" onClick={onReset}><Crosshair aria-hidden="true"/><span>Track a new transfer</span></Button>
     </div>
   </section>;
