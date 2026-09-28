@@ -24,6 +24,7 @@ import indiaFlag from "@/assets/in-footer.svg.asset.json";
 import pakistanFlag from "@/assets/pk-footer.svg.asset.json";
 import chinaFlag from "@/assets/cn-footer.svg.asset.json";
 import { currencies } from "@/lib/currencies";
+import { getExchangeRates } from "@/lib/rates.functions";
 import { loadSmartsupp, hideSmartsupp } from "@/lib/smartsupp";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
 import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
@@ -96,6 +97,7 @@ function HomePage() {
   const [footerLocation, setFooterLocation] = useState("United States");
   const [footerOpen, setFooterOpen] = useState<string | null>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
+  const [liveRates, setLiveRates] = useState<Record<string, number> | null>(null);
   // Always land at the very top of the Homepage, never at a restored scroll position.
   useEffect(() => {
     const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
@@ -113,9 +115,16 @@ function HomePage() {
       hideSmartsupp();
     };
   }, []);
+  useEffect(() => {
+    let cancelled = false;
+    getExchangeRates()
+      .then((data) => { if (!cancelled) setLiveRates(data.rates); })
+      .catch(() => { /* keep fallback rates */ });
+    return () => { cancelled = true; };
+  }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
-  const rates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
-  const rate = rates[currency] ?? 1;
+  const fallbackRates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
+  const rate = liveRates?.[currency] ?? fallbackRates[currency] ?? 1;
   const selectedCurrencyFlag = currencies.find(item=>item.code === currency && item.name === currencyName)?.flag ?? usFlag.url;
   const receiverAmount = (numericAmount * rate).toFixed(2);
   const wayCards = waysTab === "send" ? [
