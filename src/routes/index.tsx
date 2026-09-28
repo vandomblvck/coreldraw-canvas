@@ -24,6 +24,7 @@ import indiaFlag from "@/assets/in-footer.svg.asset.json";
 import pakistanFlag from "@/assets/pk-footer.svg.asset.json";
 import chinaFlag from "@/assets/cn-footer.svg.asset.json";
 import { currencies } from "@/lib/currencies";
+import { getExchangeRates } from "@/lib/rates.functions";
 import { loadSmartsupp, hideSmartsupp } from "@/lib/smartsupp";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
 import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
@@ -96,6 +97,7 @@ function HomePage() {
   const [footerLocation, setFooterLocation] = useState("United States");
   const [footerOpen, setFooterOpen] = useState<string | null>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
+  const [liveRates, setLiveRates] = useState<Record<string, number> | null>(null);
   // Always land at the very top of the Homepage, never at a restored scroll position.
   useEffect(() => {
     const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
