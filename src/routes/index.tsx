@@ -115,9 +115,16 @@ function HomePage() {
       hideSmartsupp();
     };
   }, []);
+  useEffect(() => {
+    let cancelled = false;
+    getExchangeRates()
+      .then((data) => { if (!cancelled) setLiveRates(data.rates); })
+      .catch(() => { /* keep fallback rates */ });
+    return () => { cancelled = true; };
+  }, []);
   const numericAmount = Math.max(0, Number(amount) || 0);
-  const rates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
-  const rate = rates[currency] ?? 1;
+  const fallbackRates: Record<string, number> = { MXN: 17.9977, INR: 83.47, GTQ: 7.67, PHP: 56.8, USD: 1, EUR: 0.92 };
+  const rate = liveRates?.[currency] ?? fallbackRates[currency] ?? 1;
   const selectedCurrencyFlag = currencies.find(item=>item.code === currency && item.name === currencyName)?.flag ?? usFlag.url;
   const receiverAmount = (numericAmount * rate).toFixed(2);
   const wayCards = waysTab === "send" ? [
