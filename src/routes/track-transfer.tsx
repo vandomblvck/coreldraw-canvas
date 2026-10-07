@@ -82,7 +82,7 @@ function TrackTransfer() {
   return <main className="track-page">
     <header className="track-header">
       <div className="track-header-inner">
-        <Link to="/" aria-label="Western Union home" className="track-logo"><img src={footerLogo.url} alt="Western Union" /></Link>
+        <Link to="/" aria-label="Western Union home" className="track-logo"><img src={footerLogo} alt="Western Union" /></Link>
         <nav className="track-nav" aria-label="Primary navigation">
           <a href={"/"}>Send money</a><a href={"/"}>Pick up cash</a>
           <Link to="/track-transfer">Track transfer</Link><a href={"/"}>Pay bills</a><a href={"/"}>Help</a>
