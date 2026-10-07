@@ -6,11 +6,12 @@ import { TransferTimeline } from "@/components/TransferTimeline";
 import { ArrowDownToLine, ArrowUpFromLine, Building2, CreditCard, Crosshair, HandCoins, Landmark, MapPin, Menu, MessageCircleQuestion, ReceiptText, Search, Send, Settings, Smartphone, Star, UsersRound, X } from "lucide-react";
 import { countries } from "@/lib/countries";
 import { Button } from "@/components/ui/button";
-import footerLogo from "@/assets/Primary_YellowWhite.svg.asset.json";
 import socialFacebook from "@/assets/social/facebook-icon-1-1.svg";
 import socialYoutube from "@/assets/social/youtube-icon-1-1.svg";
 import socialInstagram from "@/assets/social/instagram.svg";
 import socialX from "@/assets/social/icon-X-former-twitter-dark-web.svg";
+
+const footerLogo = "/assets/Primary_Black.svg";
 
 const official = "/";
 const links = [
